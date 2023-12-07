@@ -14,10 +14,6 @@ async function main() {
             });
         })();
 
-        // let data = {}
-        // data.name = statusList[0];
-        // data.created_by = 'system'
-        // await db.Status.create(data);
     } catch (error) {
         console.error(error)
     }
