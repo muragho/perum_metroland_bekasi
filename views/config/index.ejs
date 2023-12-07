@@ -1,0 +1,63 @@
+<%- include('../layouts/header-ui') %>
+    <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="post fs-6 d-flex flex-column-fluid border border-top-1 border-left-1 border-right-0 border-bottom-0"
+            id="kt_post">
+            <div class="container-xxl">
+
+                <div class="row gy-5 g-xl-10">
+                    <div class="col-xl-4 mb-xl-10">
+                        <div class="card h-md-100">
+                            <div class="card-header ribbon">
+                                <div class="card-title text-uppercase">media promosi</div>
+                                <div class="ribbon-label bg-success">PROMO</div>
+                            </div>
+                            <div class="card-body pb-0">
+                                <!--begin::Wrapper-->
+                                <div class="d-flex flex-column justify-content-between h-100">
+                                    <div class="pt-2">
+                                        <div class="text-start text-gray-600 fs-5 fw-bold pb-1">Promo dengan
+                                            judul<code id="title_promo"><%= promo.title %></code> dimulai pada tanggal
+                                            <br>
+                                            <span id="start_date_promo" class="text-danger">
+                                                <%= moment(promo.start).format( 'DD-MMM-YYYY' ) %>
+                                            </span> s/d <span id="start_date_promo" class="text-success"></span>
+                                            <%= moment(promo.start).add(promo.duration,'d').format('DD-MMM-YYYY') %>
+                                                </span>
+                                        </div>
+
+                                        <span class="fs-6 fw-bold text-gray-400">klik tombol ubah promo untuk merubah
+                                            waktu serta banner</span>
+                                        <div class="text-center py-7">
+                                            <button type="button" class="btn btn-primary btn-sm">Ubah Promo</button>
+                                        </div>
+                                        <!--end::Action-->
+                                    </div>
+                                    <!--end::Section-->
+                                    <!--begin::Image-->
+                                    <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom max-h-175px min-h-175px"
+                                        style="background-image:url('/metroland/assets/promo/promo.jpeg')"></div>
+                                    <!--end::Image-->
+                                </div>
+                                <!--end::Wrapper-->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <!--end::Col-->
+                    <!--begin::Col-->
+
+                    <!--end::Col-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <%- include('../layouts/footer-ui') %>
+        <%- include('../layouts/menu-ui') %>
+            <%- include('../layouts/script') %>
+                <script src="/metroland/assets/js/pages/config/index.js"></script>
+                <%- include('../layouts/end-tag') %>
