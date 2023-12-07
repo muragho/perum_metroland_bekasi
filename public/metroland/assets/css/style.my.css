@@ -1,0 +1,49 @@
+:root{
+    --clr-gold:#D29F33;
+    --clr-white:#ffff;
+}
+
+.btn-gold{
+    background: #D29F33;
+    color: #ffff;
+    border: none;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+  z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+
+.card-title-product{
+	color: #B37F2C;
+	font-weight: 400;
+}
+
+.input-kpr {
+	width: 100%;
+	padding: 8px 8px;
+	margin: 8px 0;
+	box-sizing: border-box;
+	border: 3px solid var(--clr-gold);
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	outline: none;
+  }
+
+  .input-kpr:focus {
+	border: 3px solid #A57817;
+  }
