@@ -27,6 +27,7 @@ async function productPage(req, res) {
             title, header, products: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi
         });
     } catch (error) {
+        console.error(error);
         return res.status(INTERNAL_SERVER_ERROR).render("500/index");
     }
 }
