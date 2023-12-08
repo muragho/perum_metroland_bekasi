@@ -71,3 +71,4 @@ function setClusterFacility(clusterId) {
             showErrorAlert(error);
         });
 }
+

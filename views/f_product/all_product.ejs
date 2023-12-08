@@ -41,13 +41,10 @@
                     const title=product.title.split(" ");const totWord = title.length;
                     if(number % 2 === 0){%>
 
-                    <div class=" card mx-auto mx-5 my-5">
+                    <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
                         <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
                             <div class="col-md-6" data-aos="fade-right" data-aos-duration="3000">
-                                <img src="/metroland/assets/img/Torino.jpg" class="img-fluid float-start" alt="...">
-                            </div>
-                            <div class="col-md-6" data-aos="fade-left" data-aos-duration="3000">
-                                <div class="card-body">
+                                <div class="card-body text-end">
                                     <h1 class="card-title-product text-uppercase">
                                         <%= product.title.replace(title[totWord-1] , '' )%>
                                             <% if(totWord> 1){%>
@@ -57,21 +54,30 @@
                                                 </span>
                                                 <%}%>
                                     </h1>
-                                    <p class="card-text">
+                                    <p class="card-text text-start fs-6 text-wrap">
                                         <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                     </p>
                                     <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
                                             src="/metroland/assets/img/arrow.png"></a>
                                 </div>
                             </div>
+                            <div class="col-md-6" data-aos="fade-left" data-aos-duration="3000">
+                                <img src="/metroland/assets/img/Torino.jpg" class="img-fluid float-end rounded"
+                                    alt="...">
+                            </div>
                         </div>
                     </div>
 
                     <%}else{%>
-                        <div class="card mx-auto mx-5 my-5">
+
+                        <div class=" card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
                             <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
                                 <div class="col-md-6" data-aos="fade-right" data-aos-duration="3000">
-                                    <div class="card-body text-end">
+                                    <img src="/metroland/assets/img/Torino.jpg" class="img-fluid float-start rounded"
+                                        alt="...">
+                                </div>
+                                <div class="col-md-6" data-aos="fade-left" data-aos-duration="3000">
+                                    <div class="card-body">
                                         <h1 class="card-title-product text-uppercase">
                                             <%= product.title.replace(title[totWord-1] , '' )%>
                                                 <% if(totWord> 1){%>
@@ -81,15 +87,12 @@
                                                     </span>
                                                     <%}%>
                                         </h1>
-                                        <p class="card-text text-start">
+                                        <p class="card-text fs-6 text-wrap">
                                             <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                         </p>
                                         <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
                                                 src="/metroland/assets/img/arrow.png"></a>
                                     </div>
-                                </div>
-                                <div class="col-md-6" data-aos="fade-left" data-aos-duration="3000">
-                                    <img src="/metroland/assets/img/Torino.jpg" class="img-fluid float-end" alt="...">
                                 </div>
                             </div>
                         </div>
@@ -97,12 +100,8 @@
                         <%}number++});%>
 
             </div>
-
         </div>
 
-        <a href="https://wa.me/6281210012200?text=Hi%20Metroland" class="float" target="_blank">
-            <i class="fa fa-whatsapp my-float"></i>
-        </a>
         <%- include('../layouts/f_footer') %>
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>

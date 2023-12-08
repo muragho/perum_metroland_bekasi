@@ -22,6 +22,7 @@
                     <ul class="nav nav-pills mt-5 justify-content-between nav-justified" id="pills-tab" role="tablist">
                         <%let no=1; data.clusters.forEach(cluster=> {%>
                             <li class="nav-item" role="presentation" data-aos="fade-up" data-aos-duration="3000">
+
                                 <button class="nav-link btn-sm tab-cluster <%- no == 1 ?" active":""%>" id="pills-<%=
                                         cluster.id %>-tab" data-cluster_id="<%= cluster.id %>"
                                             data-bs-toggle="pill"
@@ -106,11 +107,13 @@
 
                                                     <div class="spec-img col-md-7">
                                                         <div id="carouselExample_<%= cluster.id %>"
-                                                            class="carousel carousel-dark slide">
+                                                            class="carousel carousel-dark slide" data-bs-ride="carousel"
+                                                            data-bs-pause="hover">
+
                                                             <div class="carousel-inner">
                                                                 <%let ciNo=1; cluster.ClusterImages.forEach(ci=>{%>
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
-                                                                        %>">
+                                                                        %>" data-bs-interval="2000">
                                                                         <img src="/metroland/assets/img_cluster/<%= ci.image %>"
                                                                             class="img-fluid">
                                                                     </div>
@@ -182,12 +185,8 @@
             </div>
         </div>
 
-        <a href="https://wa.me/6281210012200?text=Hi%20Metroland" class="float" target="_blank">
-            <i class="fa fa-whatsapp my-float"></i>
-        </a>
-
         <%- include('../layouts/f_footer') %>
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-            <script type="module" src="/metroland/assets/js/front_end/product/index.js"></script>
+            <script src="/metroland/assets/js/front_end/product/index.js"></script>
             <%- include('../layouts/f_end') %>

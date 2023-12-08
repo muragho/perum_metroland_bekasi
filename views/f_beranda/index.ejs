@@ -40,62 +40,60 @@
 
                     const title=product.title.split(" ");const totWord = title.length;
                     if(number % 2 === 0){%>
-
-                    <div class=" card mx-auto mx-5 my-5">
+                    <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
                         <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                            <div class="col-md-6 h-100" data-aos="fade-right" data-aos-duration="3000">
-                                <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
-                                    class="img-fluid float-start" alt="...">
-                            </div>
-                            <div class="col-md-6" data-aos="fade-left" data-aos-duration="3000">
-                                <div class="card-body">
+                            <div class="col-md-6" data-aos="fade-right" data-aos-duration="2000">
+                                <div class="card-body text-end">
                                     <h1 class="card-title-product text-uppercase">
-                                        <%= product.title.replace(title[totWord-1] , '' )%>
+                                        <%= product.title.replace(title[totWord-1].trim() , '' )%>
                                             <% if(totWord> 1){%>
                                                 <span
                                                     style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
-                                                    <%= title[totWord-1]%>
+                                                    <%= title[totWord-1].trim()%>
                                                 </span>
                                                 <%}%>
                                     </h1>
-                                    <p class="card-text">
+                                    <p class="card-text text-start fs-6 text-wrap">
                                         <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                     </p>
                                     <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
                                             src="/metroland/assets/img/arrow.png"></a>
                                 </div>
                             </div>
+                            <div class="col-md-6 h-100" style="max-height: 50%;" data-aos="fade-left"
+                                data-aos-duration="2000">
+                                <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
+                                    class="img-fluid float-end rounded" alt="...">
+                            </div>
                         </div>
                     </div>
-
                     <%}else{%>
-                        <div class="card mx-auto mx-5 my-5">
+                        <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
                             <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                                <div class="col-md-6" data-aos="fade-right" data-aos-duration="3000">
-                                    <div class="card-body text-end">
+                                <div class="col-md-6 h-100" data-aos="fade-right" data-aos-duration="2000">
+                                    <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
+                                        class="img-fluid float-start rounded" alt="...">
+                                </div>
+                                <div class="col-md-6" data-aos="fade-left" data-aos-duration="2000">
+                                    <div class="card-body">
                                         <h1 class="card-title-product text-uppercase">
-                                            <%= product.title.replace(title[totWord-1] , '' )%>
+                                            <%= product.title.replace(title[totWord-1], '' )%>
                                                 <% if(totWord> 1){%>
                                                     <span
-                                                        style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
+                                                        style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px;">
                                                         <%= title[totWord-1]%>
                                                     </span>
                                                     <%}%>
                                         </h1>
-                                        <p class="card-text text-start">
+                                        <p class="card-text fs-6 text-wrap">
                                             <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                         </p>
                                         <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
                                                 src="/metroland/assets/img/arrow.png"></a>
                                     </div>
                                 </div>
-                                <div class="col-md-6 h-100" data-aos="fade-left" data-aos-duration="3000">
-                                    <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
-                                        class="img-fluid float-end" alt="...">
-                                </div>
                             </div>
                         </div>
-
                         <%}number++});%>
 
             </div>
@@ -111,7 +109,7 @@
             <div class="container-fluid text-center py-md-5">
                 <h1>Kenapa harus memilih perumahan Metroland?</h1>
                 <div class="row pt-5 px-1">
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="3000">
+                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
                         <div class="symbol symbol-50px symbol-circle">
                             <img class="symbol-label" src="/metroland/assets/img/akses.png">
                         </div>
@@ -119,21 +117,21 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
                     </div>
 
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="3000">
+                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
                         <div class="symbol symbol-50px symbol-circle"><img src="/metroland/assets/img/lokasi.png"
                                 class="symbol-label"></div>
                         <h2>Lokasi Strategis</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
                     </div>
 
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="3000">
+                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
                         <div class="symbol symbol-50px symbol-circle"><img src="/metroland/assets/img/investasi.png"
                                 class="symbol-label"></div>
                         <h2>Investasi Tepat</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
                     </div>
 
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="3000">
+                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
                         <div class="symbol symbol-50px symbol-circle"><img src="/metroland/assets/img/harga.png"
                                 class="symbol-label"></div>
                         <h2>Harga terjangkau</h2>
@@ -227,10 +225,6 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-
-        <a href="https://wa.me/6281210012200?text=Hi%20Metroland" class="float" target="_blank">
-            <i class="fa fa-whatsapp my-float"></i>
-        </a>
 
         <%- include('modal') %>
             <%- include('../layouts/f_footer') %>
