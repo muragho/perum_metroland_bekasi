@@ -21,14 +21,14 @@ var video = document.getElementById("my_video");
 video.addEventListener('loadeddata', (e) => {
     if (video.readyState >= 3) {
         $('.spinner-grow').hide();
-    } else {
-        checkforvideo();
     }
 
 });
 function checkforvideo() {
     var b = setInterval(() => {
+        console.log('1111111')
         if (video.readyState >= 3) {
+            console.log("finish111")
             $('.spinner-grow').hide();
             clearInterval(b);
         }
