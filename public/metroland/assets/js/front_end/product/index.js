@@ -14,21 +14,27 @@ $(document).ready(function () {
         debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
         throttleDelay: 99,
     });
+    checkforvideo();
 });
 
 var video = document.getElementById("my_video");
 video.addEventListener('loadeddata', (e) => {
     if (video.readyState >= 3) {
-        console.log("finish")
         $('.spinner-grow').hide();
+    } else {
+        checkforvideo();
     }
 
 });
-// video.onloadeddata = function () {
-//     // video is loaded
-//     console.log("finish")
-//     $('.spinner-grow').hide();
-// }
+function checkforvideo() {
+    var b = setInterval(() => {
+        if (video.readyState >= 3) {
+            $('.spinner-grow').hide();
+            clearInterval(b);
+        }
+
+    }, 500);
+}
 
 const btnTabCluster = document.getElementsByClassName("tab-cluster");
 
