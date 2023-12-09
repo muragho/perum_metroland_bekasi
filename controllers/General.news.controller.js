@@ -32,10 +32,15 @@ async function detailPage(req, res) {
         let where = {};
         where.id = id;
         const news = await newsService.getDetail(where);
+
+        let next = null;
+        if (news && typeof news !== 'undefined') {
+            next = await newsService.nextNews(news.id);
+        }
         console.log(JSON.stringify(news))
 
         res.render("f_news/detail", {
-            news, moment
+            news, moment, next
         })
     } catch (error) {
         console.error(error);

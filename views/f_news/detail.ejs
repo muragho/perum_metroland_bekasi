@@ -27,14 +27,18 @@
         <!-- berita selanjutnya -->
         <div class="container-fluid bg-opacity-100 p-0 next-news">
             <img src="/metroland/assets/img/berita2.jpg" class="img-fluid ">
-            <div class="title">
-                <a href="">Berita Selanjutnya</a>
-                <img src="/metroland/assets/img/arrow-right.svg">
-                <br><br>
-                <a href="">
-                    <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, voluptates!</h3>
-                </a>
-            </div>
+            <% if(next !=null){%>
+                <div class="title">
+                    <a href="/metroland/berita/<%= next.id%>/detail">Berita Selanjutnya</a>
+                    <img src="/metroland/assets/img/arrow-right.svg">
+                    <br><br>
+                    <a href="">
+                        <h3>
+                            <%= next.title %>
+                        </h3>
+                    </a>
+                </div>
+                <% } %>
         </div>
 
         <%- include('../layouts/f_footer') %>

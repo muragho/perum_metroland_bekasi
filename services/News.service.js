@@ -1,4 +1,5 @@
 const { db } = require('../configs/Database.js');
+const { Op } = require('sequelize');
 
 async function getDetail(where) {
     return await db.News.findOne({ where });
@@ -29,5 +30,17 @@ async function getNewsList(where, page, limit) {
     });
 };
 
+async function nextNews(currentId) {
+    let where = {};
+    where.id = { [Op.gt]: currentId }
+    return await db.News.findOne({ attributes: ['id', 'title'], limit: 1, where });
+}
 
-module.exports = { getAllNews, getAllNewsByLimit, getDetail, getNewsList }
+async function prevNews(currentId) {
+    let where = {};
+    where.id = { [Op.lt]: currentId }
+    return await db.News.findOne({ attributes: ['id', 'title'], limit: 1, where });
+}
+
+
+module.exports = { getAllNews, getAllNewsByLimit, getDetail, getNewsList, nextNews, prevNews }
