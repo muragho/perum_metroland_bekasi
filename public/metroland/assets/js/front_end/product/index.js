@@ -16,6 +16,20 @@ $(document).ready(function () {
     });
 });
 
+var video = document.getElementById("my_video");
+video.addEventListener('loadeddata', (e) => {
+    if (video.readyState >= 3) {
+        console.log("finish")
+        $('.spinner-grow').hide();
+    }
+
+});
+// video.onloadeddata = function () {
+//     // video is loaded
+//     console.log("finish")
+//     $('.spinner-grow').hide();
+// }
+
 const btnTabCluster = document.getElementsByClassName("tab-cluster");
 
 

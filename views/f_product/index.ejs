@@ -3,11 +3,20 @@
     <%- include('../layouts/f_menu_general') %>
 
         <!--CONTENT-->
+
         <div class="hero-video">
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <video id="my_video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source src="/metroland/assets/video/sample-video.mp4" type="video/mp4">
             </video>
         </div>
+        <div class="mw-100 mh-100">
+            <div class="position-absolute top-50 start-50 translate-middle-x">
+                <div class="spinner-grow" style="color: #B37F2C;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
 
         <div class="container-fluid" id="cluster">
             <div class="container my-2 py-5" style="overflow-x: hidden">
