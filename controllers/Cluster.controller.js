@@ -1,5 +1,6 @@
 const clusterServ = require('../services/Cluster.service.js');
 const facilityService = require('../services/Facility.service.js');
+const pagination = require('../helpers/Pagination.js');
 const moment = require('moment');
 const { Op } = require("sequelize");
 const jsdom = require('jsdom');
@@ -20,11 +21,12 @@ async function clusterPage(req, res) {
             where.name = { [Op.substring]: key }
         }
         const { count, rows } = await clusterServ.getAllCluster(where, page, size);
+        let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/metroland/auth/clusters");
         const facilities = await facilityService.getAllFacilities();
         // console.log("--> " + JSON.stringify(rows))
 
         res.render("clusters/index", {
-            title, header, clusters: rows, moment, csrfToken: req.csrfToken(), JSDOM, facilities
+            title, header, clusters: rows, moment, csrfToken: req.csrfToken(), JSDOM, facilities, pagination: pageNumUi
         });
     } catch (error) {
         console.error(`err clusterPage : ${error}`)
