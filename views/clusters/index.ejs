@@ -54,11 +54,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <%if(Object.keys(clusters).length !==0 ){ let no=1; clusters.forEach(cluster=> { %>
+                                <%if(Object.keys(clusters).length !==0 ){ clusters.forEach(cluster=> { %>
 
                                     <tr>
                                         <td>
-                                            <%= no %>
+                                            <%= no +1 %>
                                         </td>
                                         <td>
                                             <div class="d-flex flex-column">
