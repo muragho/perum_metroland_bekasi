@@ -1,8 +1,9 @@
 <%- include('../layouts/header-ui') %>
+    <meta name="csrf-token" content="<%= csrfToken %>">
     <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="post fs-6 d-flex flex-column-fluid border border-top-1 border-left-1 border-right-0 border-bottom-0"
             id="kt_post">
-            <div class="container-xxl">
+            <div class="container-md">
 
                 <div class="row gy-5 g-xl-10">
                     <div class="col-xl-4 mb-xl-10">
@@ -12,7 +13,6 @@
                                 <div class="ribbon-label bg-success">PROMO</div>
                             </div>
                             <div class="card-body pb-0">
-                                <!--begin::Wrapper-->
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="pt-2">
                                         <div class="text-start text-gray-600 fs-5 fw-bold pb-1">Promo dengan
@@ -28,33 +28,28 @@
                                         <span class="fs-6 fw-bold text-gray-400">klik tombol ubah promo untuk merubah
                                             waktu serta banner</span>
                                         <div class="text-center py-7">
-                                            <button type="button" class="btn btn-primary btn-sm">Ubah Promo</button>
+                                            <button type="button" id="btn-promotion" class="btn btn-primary btn-sm"
+                                                data-promition_id="<%= promo_id %>" data-start_date="<%= promo.start %>"
+                                                data-duration="<%= promo.duration %>" data-image="<%= promo.image %>"
+                                                data-title="<%= promo.title %>">Ubah
+                                                Promo</button>
                                         </div>
-                                        <!--end::Action-->
                                     </div>
-                                    <!--end::Section-->
-                                    <!--begin::Image-->
                                     <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom max-h-175px min-h-175px"
-                                        style="background-image:url('/metroland/assets/promo/promo.jpeg')"></div>
-                                    <!--end::Image-->
+                                        style="background-image:url('/metroland/assets/promo/<%=promo.image%>')"></div>
                                 </div>
-                                <!--end::Wrapper-->
                             </div>
                         </div>
                     </div>
 
 
-
-
-
-                    <!--end::Col-->
-                    <!--begin::Col-->
-
-                    <!--end::Col-->
                 </div>
+
+                <%- include('./modal') %>
 
             </div>
         </div>
+
     </div>
     <%- include('../layouts/footer-ui') %>
         <%- include('../layouts/menu-ui') %>

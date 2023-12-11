@@ -22,6 +22,8 @@ function getPromo() {
     })
         .done((response) => {
             if (response.code == 200) {
+
+                $("#img-promotion").attr("src", "/metroland/assets/promo/" + response.data.image);
                 $("#mdl_promosi").modal("show");
             }
 

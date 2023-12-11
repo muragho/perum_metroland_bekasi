@@ -15,7 +15,7 @@ async function configPage(req, res) {
 
 
         res.render("config/index", {
-            title, header, promo: promo.value, moment
+            title, header, csrfToken: req.csrfToken(), promo: promo.value, promo_id: promo.id, moment
         })
     } catch (error) {
         return res.status(INTERNAL_SERVER_ERROR).render("500/index");

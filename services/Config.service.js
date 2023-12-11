@@ -13,4 +13,8 @@ async function getConfigs() {
     return await db.Config.findAll();
 }
 
-module.exports = { getPromo, getConfigs }
+async function doEditConfig(id, data) {
+    return await db.Config.update(data, { where: { id } })
+}
+
+module.exports = { getPromo, getConfigs, doEditConfig }
