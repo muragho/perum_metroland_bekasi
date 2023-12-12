@@ -536,6 +536,9 @@ function doEdit() {
     const isEditImage = document.getElementById('btn-switch-block').checked
     var img1 = $('#logo_klaster_1').prop('files')[0];
     var img2 = $('#logo_klaster_2').prop('files')[0];
+    var img3 = $('#logo_klaster_3').prop('files')[0];
+    var img4 = $('#logo_klaster_4').prop('files')[0];
+    var img5 = $('#logo_klaster_5').prop('files')[0];
     var facilities = $('#mdl_edit_clusters_facility').val();
 
     var formData = new FormData();
@@ -549,6 +552,9 @@ function doEdit() {
     formData.append('isEditImage', isEditImage);
     formData.append('file', img1);
     formData.append('file', img2);
+    formData.append('file', img3);
+    formData.append('file', img4);
+    formData.append('file', img5);
     formData.append('facilities', facilities);
 
     $.ajax({
