@@ -7,6 +7,53 @@ const CONFIG_API_URL = '/metroland/auth/api/v1/configs'
 const btnPromotion = document.getElementById('btn-promotion');
 const mdlBtnSavePromotion = document.getElementById('mdl-btn-save-promotion');
 const mdlBtnCanclePromotion = document.getElementById('mdl-btn-cancle-promotion');
+const btnSaveAbout = document.getElementById("btn-save-about");
+
+var myEditorEdit;
+ClassicEditor
+    .create(document.querySelector('#mdl_edit_content_about'), {
+        ckfinder: {
+            uploadUrl: `/metroland/auth/about/upload`,
+        }
+    })
+    .then(editor => {
+        myEditorEdit = editor;
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
+btnSaveAbout.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const id = $('#about_id').val() == '' ? 0 : $('#about_id').val();
+    const description = myEditorEdit.getData();
+    console.log(id)
+    var formData = new FormData();
+    formData.append('description', description);
+
+    $.ajax({
+        method: "PUT",
+        url: `${CONFIG_API_URL}/about/${id}`,
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
+            if (response.code == 200) {
+
+                showSuccessAlert(`Data berhasil diubah`);
+            } else {
+                showErrorAlert(response.message);
+            }
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
+})
 
 btnPromotion.addEventListener("click", function (e) {
     e.preventDefault();

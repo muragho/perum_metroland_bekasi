@@ -10,14 +10,16 @@ async function configPage(req, res) {
     try {
 
         const configs = await configService.getConfigs();
+        const about = await configService.getAbout();
 
         const promo = configs.find(c => c.code === CFG_PROMO_CODE);
 
 
         res.render("config/index", {
-            title, header, csrfToken: req.csrfToken(), promo: promo.value, promo_id: promo.id, moment
+            title, header, csrfToken: req.csrfToken(), promo: promo.value, promo_id: promo.id, moment, about
         })
     } catch (error) {
+        console.error(error)
         return res.status(INTERNAL_SERVER_ERROR).render("500/index");
     }
 }

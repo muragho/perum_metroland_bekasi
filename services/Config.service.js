@@ -17,4 +17,8 @@ async function doEditConfig(id, data) {
     return await db.Config.update(data, { where: { id } })
 }
 
-module.exports = { getPromo, getConfigs, doEditConfig }
+async function getAbout() {
+    return await db.AboutUs.findOne({ limit: 1, order: [['created_at', 'DESC']] });
+}
+
+module.exports = { getPromo, getConfigs, doEditConfig, getAbout }

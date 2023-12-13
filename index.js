@@ -103,7 +103,17 @@ app.post('/metroland/auth/news/upload', multipartMiddleware, (req, res) => {
     });
 
 });
+app.post('/metroland/auth/about/upload', multipartMiddleware, (req, res) => {
 
+    fs.readFile(req.files.upload.path, function (err, data) {
+        var newPath = __dirname + '/public/metroland/assets/about/' + req.files.upload.name;
+        fs.writeFile(newPath, data, function (err) {
+            if (err) console.log({ err: err });
+        });
+        res.status(200).send({ filename: req.files.upload.name, uploaded: 1, url: '/metroland/assets/about/' + req.files.upload.name })
+    });
+
+});
 
 
 // api routes

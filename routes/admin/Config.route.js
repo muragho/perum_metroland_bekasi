@@ -15,5 +15,6 @@ const urlEncodedParser = bodyParser.urlencoded({
 router.get('/configs', csrfProt, configController.configPage);
 
 router.put('/api/v1/configs/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfig);
+router.put('/api/v1/configs/about/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigAbout);
 
 module.exports = router;

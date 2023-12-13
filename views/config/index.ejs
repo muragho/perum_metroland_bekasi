@@ -42,6 +42,29 @@
                         </div>
                     </div>
 
+                    <div class="col-xl-8 mb-xl-10">
+                        <div class="card h-md-100">
+                            <div class="card-header ribbon">
+                                <div class="card-title text-uppercase">Tentang kami</div>
+
+                            </div>
+                            <div class="card-body pb-0">
+                                <div class="d-flex flex-column h-100">
+                                    <div class="fv-row mb-7">
+                                        <input type="hidden" id="about_id" value="<%= about?about.id:0%>" />
+                                        <textarea name="about" id="mdl_edit_content_about">
+                                            <%=about? about.description:'' %>
+                                        </textarea>
+                                        <div class="col-md-3 mt-3">
+                                            <button type="button" id="btn-save-about"
+                                                class="btn btn-primary btn-sm">Simpan</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
 
                 </div>
 
@@ -54,5 +77,6 @@
     <%- include('../layouts/footer-ui') %>
         <%- include('../layouts/menu-ui') %>
             <%- include('../layouts/script') %>
+                <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
                 <script src="/metroland/assets/js/pages/config/index.js"></script>
                 <%- include('../layouts/end-tag') %>
