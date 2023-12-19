@@ -45,23 +45,31 @@
 
             <div class="modal-body">
 
-                <div>
-                    <label for="exampleFormControlInput1" class="required form-label">Harga Total Properti Anda</label>
-                    <input type="text" id="inp_properti" class="input-kpr" placeholder="" />
-                </div>
+                <form id="mdl-form-kpr" class="form" action="#" method="post" autocomplete="off">
 
-                <div>
-                    <label for="exampleFormControlInput1" class="required form-label">Jangka Waktu (Tahun)</label>
-                    <input type="number" id="inp_jangka_waktu" class="input-kpr" value="10" placeholder="" />
-                </div>
+                    <div class="fv-row">
+                        <label for="exampleFormControlInput1" class="required form-label">Harga Total Properti
+                            Anda</label>
+                        <input type="text" id="inp_properti" name="inp_properti" class="form-control input-kpr"
+                            placeholder="" />
+                    </div>
 
-                <div>
-                    <label for="exampleFormControlInput1" class="required form-label">Bunga (%)</label>
-                    <input type="number" id="inp_bunga" class="input-kpr" value="7.5" placeholder="" />
-                </div>
-                <button class="btn-primary text-white mt-3 mb-3" id="btn-hitung-kpr">
-                    Hitung
-                </button>
+                    <div class="fv-row">
+                        <label for="exampleFormControlInput1" class="required form-label">Jangka Waktu (Tahun)</label>
+                        <input type="number" id="inp_jangka_waktu" name="inp_jangka_waktu"
+                            class="form-control input-kpr" value="10" placeholder="" />
+                    </div>
+
+                    <div class="fv-row">
+                        <label for="exampleFormControlInput1" class="required form-label">Bunga (%)</label>
+                        <input type="number" id="inp_bunga" name="inp_bunga" class="form-control input-kpr" value="7.5"
+                            placeholder="" />
+                    </div>
+                    <button type="button" class="btn-primary text-white mt-3 mb-3" id="btn-hitung-kpr">
+                        Hitung
+                    </button>
+                </form>
+
                 <div>
                     <label>Angsuran per bulan</label>
                 </div>

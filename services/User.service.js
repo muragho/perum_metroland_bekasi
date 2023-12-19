@@ -48,4 +48,15 @@ async function doDecrypt(value) {
 
 }
 
-module.exports = { checkLoginSchema, getByEmail, getByRefToken, doDecrypt }
+async function getAllUser(where, page, per_page) {
+    return await db.User.findAndCountAll({
+        attributes: { exclude: ['deleted_at', 'deleted_by', 'updated_at', 'updated_by', 'created_at', 'created_by'] },
+        where,
+        order: [["id", "DESC"]],
+        offset: (page - 1) * 10,
+        limit: per_page,
+        distinct: true,
+    });
+}
+
+module.exports = { checkLoginSchema, getByEmail, getByRefToken, doDecrypt, getAllUser }

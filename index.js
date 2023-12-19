@@ -31,6 +31,7 @@ const products = require('./routes/admin/Product.route.js');
 const clusters = require('./routes/admin/Cluster.route.js');
 const news = require('./routes/admin/News.route.js');
 const config = require('./routes/admin/Config.route.js');
+const user = require('./routes/admin/User.route.js');
 
 const app = express();
 // const __filename = fileURLToPath(import.meta.url);
@@ -89,6 +90,7 @@ app.use('/metroland/auth', products);
 app.use('/metroland/auth', clusters);
 app.use('/metroland/auth', news);
 app.use('/metroland/auth', config);
+app.use('/metroland/auth', user);
 
 
 

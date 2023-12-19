@@ -13,12 +13,12 @@ $(document).ready(function () {
     getPromo();
 });
 
-const BERANDA_URL = '/metroland/beranda/api/v1/promo'
+const BERANDA_URL = '/metroland/beranda/api/v1'
 
 function getPromo() {
     $.ajax({
         method: "GET",
-        url: `${BERANDA_URL}`,
+        url: `${BERANDA_URL}/promo`,
     })
         .done((response) => {
             if (response.code == 200) {
@@ -34,20 +34,6 @@ function getPromo() {
 
 $('#btn-kpr').click(function () {
     $("#mdl_kpr").modal("show");
-})
-
-$('#btn-hitung-kpr').click(function () {
-    var properti = $('#inp_properti').val();
-    var waktu = $('#inp_jangka_waktu').val();
-    var bunga = $('#inp_bunga').val();
-
-    if (properti != '' && waktu != '' && bunga != '') {
-        var properti_ = parseInt(properti.replaceAll(',', ''));
-        var hasil = (bunga * waktu) / 100;
-        var total = (hasil + properti_)
-        console.log(hasil + ' | ' + total)
-    }
-
 })
 
 $(function () {
@@ -75,3 +61,103 @@ var format = function (num) {
     formatted = output.reverse().join("");
     return ("" + formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
 };
+
+const formKPR = document.getElementById('mdl-form-kpr');
+var validator = FormValidation.formValidation(
+    formKPR,
+    {
+        fields: {
+            inp_properti: {
+                validators: {
+                    notEmpty: {
+                        message: 'Parameter wajib diisi'
+                    }
+                }
+            },
+            inp_jangka_waktu: {
+                validators: {
+                    notEmpty: {
+                        message: 'Parameter wajib diisi'
+                    },
+                    integer: {
+                        message: 'Bilangan bulat'
+                    },
+                    between: {
+                        min: 1,
+                        max: 25,
+                        message: ' nilai min 1 th, nilai max 25 th'
+                    }
+                }
+            },
+            inp_bunga: {
+                validators: {
+                    notEmpty: {
+                        message: 'Parameter wajib diisi'
+                    },
+                    numeric: {
+                        message: 'Input berupa angka'
+                    }
+                }
+            }
+        },
+
+        plugins: {
+            trigger: new FormValidation.plugins.Trigger(),
+            bootstrap: new FormValidation.plugins.Bootstrap5({
+                rowSelector: '.fv-row',
+                eleInvalidClass: '',
+                eleValidClass: ''
+            })
+        }
+    }
+);
+
+$('#btn-hitung-kpr').click(function () {
+    if (validator) {
+        validator.validate().then(function (status) {
+
+            if (status == 'Valid') {
+                doCalculateKPR();
+            }
+        })
+    }
+
+});
+
+function doCalculateKPR() {
+    var tenor = $('#inp_jangka_waktu').val();
+    var bunga = $('#inp_bunga').val();
+    var properti = $('#inp_properti').val().replaceAll(',', '');
+
+    let data = {};
+    data.tenor = tenor;
+    data.bunga = bunga;
+    data.properti = parseInt(properti);
+
+    $.ajax({
+        method: "POST",
+        url: `${BERANDA_URL}/kpr`,
+        data: data
+    })
+        .done((response) => {
+            if (response.code == 200) {
+
+                var total = response.data.angsuran;
+                var totalFinal = setToCurrancy(total);
+                $('#total-angsuran-kpr').html(totalFinal)
+
+            }
+
+        }).fail((error) => {
+            console.log("ini error : " + error)
+        });
+}
+
+function setToCurrancy(value) {
+    const formatter = new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+    });
+
+    return formatter.format(value);
+}

@@ -25,6 +25,31 @@ async function getPromo(req, res) {
     }
 }
 
+async function doCalculateKPR(req, res) {
+    const reqBody = req.body;
+    const tenor = reqBody.tenor;
+    const bunga = reqBody.bunga;
+    const properti = reqBody.properti;
 
+    console.log("properti : " + properti);
+    console.log("bungan : " + bunga);
+    console.log("tenor : " + tenor);
 
-module.exports = { getPromo }
+    try {
+
+        const step1 = (properti * bunga) / 100;
+        const step2 = parseInt(properti) + parseInt(step1);
+        console.log("step1 : " + step1);
+        console.log("step2 : " + step2);
+
+        const step3 = step2 / (tenor * 12);
+        console.log("step3 : " + step3);
+
+        await response(res, 200, 200, 'success', { angsuran: Math.round(step3) });
+    } catch (error) {
+        console.error(error);
+        await response(res, 200, 400, error.message)
+    }
+}
+
+module.exports = { getPromo, doCalculateKPR }
