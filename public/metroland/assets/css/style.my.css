@@ -91,4 +91,8 @@
 	.nav-link:hover{
 	background-color: transparent;
 	}
+
+	.nav {
+		display: block;
+	}
 }
