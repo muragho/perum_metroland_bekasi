@@ -42,7 +42,7 @@
                     if(number % 2 === 0){%>
                     <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
                         <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                            <div class="col-md-6" data-aos="fade-right" data-aos-duration="2000">
+                            <div class="col-md-6 nomor-2" data-aos="fade-right" data-aos-duration="2000">
                                 <div class="card-body text-end">
                                     <h1 class="card-title-product text-uppercase">
                                         <%= product.title.replace(title[totWord-1].trim() , '' )%>
@@ -53,14 +53,14 @@
                                                 </span>
                                                 <%}%>
                                     </h1>
-                                    <p class="card-text text-start fs-6 text-wrap">
+                                    <p class="card-text text-start fs-6 text-wrap">XXX-
                                         <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                     </p>
                                     <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
                                             src="/metroland/assets/img/arrow.png"></a>
                                 </div>
                             </div>
-                            <div class="col-md-6 h-100" style="max-height: 50%;" data-aos="fade-left"
+                            <div class="col-md-6 h-100 nomor-1" style="max-height: 50%;" data-aos="fade-left"
                                 data-aos-duration="2000">
                                 <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
                                     class="img-fluid float-end rounded" alt="...">
