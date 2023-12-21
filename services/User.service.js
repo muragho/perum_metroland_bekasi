@@ -59,4 +59,12 @@ async function getAllUser(where, page, per_page) {
     });
 }
 
-module.exports = { checkLoginSchema, getByEmail, getByRefToken, doDecrypt, getAllUser }
+async function saveData(data) {
+    return await db.User.create(data, { returning: true });
+}
+
+async function updateData(data, id) {
+    return await db.User.update(data, { where: { id } });
+}
+
+module.exports = { checkLoginSchema, getByEmail, getByRefToken, doDecrypt, getAllUser, saveData, updateData }

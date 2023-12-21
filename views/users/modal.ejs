@@ -1,0 +1,48 @@
+<div class="modal fade" id="mdl-add-user" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FORM TAMBAH PENGGUNA</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="mdl-form-add-user" class="form" action="#" autocomplete="off">
+
+                    <input type="hidden" id="mdl-edit-product-id" />
+                    <div class="fv-row form-floating mb-7">
+                        <input type="text" class="form-control" name="username" id="username" placeholder=""
+                            maxlength="15" />
+                        <label for="floatingInput" class="required">Nama</label>
+                    </div>
+                    <div class="fv-row form-floating mb-7">
+                        <input type="text" class="form-control" name="fullname" id="fullname" placeholder=""
+                            maxlength="33" />
+                        <label for="floatingInput" class="required">Nama Lengkap</label>
+                    </div>
+
+                    <div class="fv-row form-floating mb-7">
+                        <input type="email" class="form-control" name="email" id="email" placeholder=""
+                            maxlength="33" />
+                        <label for="floatingInput" class="required">Email</label>
+                    </div>
+                    <div class="fv-row form-floating mb-7">
+                        <input type="password" class="form-control" name="password" id="password" placeholder=""
+                            maxlength="33" />
+                        <label for="floatingInput" class="required">Password</label>
+                    </div>
+
+                    <div class="fv-row form-floating mb-7">
+                        <textarea name="address" class="form-control" id="address"></textarea>
+                        <label for="floatingTextarea2">Alamat</label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="mdl-btn-close-user" class="btn btn-secondary btn-sm">Batal</button>
+                <button type="button" id="mdl-btn-save-user" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>

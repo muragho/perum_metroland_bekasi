@@ -1,33 +1,32 @@
 const response = require('../helpers/Response.js');
-const productService = require('../services/Product.service.js');
-const clusterService = require('../services/Cluster.service.js');
-const fs = require('fs');
-const fs2 = require('fs').promises;
+const userService = require('../services/User.service.js');
 const { db } = require('../configs/Database.js');
+const bcrypt = require('bcryptjs');
+const moment = require('moment');
+const randomstring = require('randomstring');
 
 async function doReset(req, res) {
     console.info(`inside doReset`);
     const userId = req.params.id;
     const bearer = req.bearer;
 
-    // const t = await db.conn.transaction();
     try {
         const date = new Date();
-        let data = {};
+        const newPassword = randomstring.generate({
+            length: 12,
+            charset: 'alphanumeric'
+        });
+        const salt = await bcrypt.genSalt(10);
+        const pwd = await bcrypt.hash(newPassword, salt);
 
+        let data = {};
         data.updated_by = bearer.emailSignIn;
         data.updated_at = date;
+        data.password = pwd;
 
-        db.Product.findByPk(productId).then(product => {
+        await userService.updateData(data, userId);
 
-            const clusters_ = reqBody.clusters.split(',');
-
-            if (product) {
-                product.setClusters(clusters_).then(() => {
-                    response(res, 200, 200, 'Data berhasil diubah');
-                })
-            }
-        })
+        response(res, 200, 200, 'Password berhasil diubah', { password: newPassword });
 
     } catch (error) {
         console.error(`err doEditProduct : ${error}`);
@@ -35,3 +34,38 @@ async function doReset(req, res) {
         await response(res, 200, 400, error.message || 'Data gagal diubah')
     }
 }
+
+async function doSave(req, res) {
+    console.info(`inside doSave`);
+    const reqBody = req.body;
+    const bearer = req.bearer;
+
+    console.log("req : " + JSON.stringify(reqBody))
+    try {
+        const date = new Date();
+        const salt = await bcrypt.genSalt(10);
+        const pwd = await bcrypt.hash(reqBody.password, salt);
+        console.log("pass : " + pwd)
+        let data = JSON.parse(JSON.stringify(reqBody));
+
+        data.updated_by = bearer.emailSignIn;
+        data.updated_at = date;
+        data.join_date = date;
+        data.password = pwd;
+        data.username = reqBody.username + "_" + moment(date).format('DDMMYYHmmss');
+
+        console.log("new Data : " + JSON.stringify(data))
+
+        const newData = userService.saveData(data);
+        console.log(newData)
+
+        response(res, 200, 200, 'Data berhasil disimpan');
+
+    } catch (error) {
+        console.error(`err doSave : ${error}`);
+        // await t.rollback();
+        await response(res, 200, 400, error.message || 'Data gagal disimpan')
+    }
+}
+
+module.exports = { doReset, doSave }
