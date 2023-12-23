@@ -80,10 +80,11 @@
                                         data-kt-menu-placement="bottom-end">
                                         <div class="symbol symbol-20px symbol-circle">
                                             <div class="symbol-label bg-light-primary fs-2 fw-bold text-success">
-                                                <span class="lbl-current-user">?</span>
+                                                <div class="symbol-label"
+                                                    style="background-image:url(/metroland/assets/profile/<%- bearer.imageProfile %>)">
+                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px"
@@ -93,8 +94,11 @@
                                             <div class="menu-content d-flex align-items-center px-3">
 
                                                 <div class="symbol symbol-50px me-5">
-                                                    <div class="symbol-label fs-2 fw-bold text-success">
-                                                        <span class="lbl-current-user">?</span>
+                                                    <div
+                                                        class="symbol-label bg-light-primary fs-2 fw-bold text-success">
+                                                        <div class="symbol-label"
+                                                            style="background-image:url(/metroland/assets/profile/<%- bearer.imageProfile %>)">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="d-flex flex-column">
@@ -109,7 +113,7 @@
                                         </div>
                                         <div class="separator my-2"></div>
                                         <div class="menu-item px-5">
-                                            <a href="#" class="menu-link px-5">Profile</a>
+                                            <a href="/metroland/auth/profile" class="menu-link px-5">Profile</a>
                                         </div>
                                         <div class="separator my-2"></div>
                                         <div class="menu-item px-5">

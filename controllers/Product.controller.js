@@ -13,6 +13,7 @@ async function productPage(req, res) {
     const page = req.query.page || 1;
     const size = req.query.size || 10;
     const key = req.query.q || null;
+    const bearer = req.bearer;
 
     try {
         console.log("key : " + key)
@@ -24,7 +25,7 @@ async function productPage(req, res) {
         let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/metroland/auth/products");
 
         res.render("products/index", {
-            title, header, products: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi
+            title, header, bearer, products: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi
         });
     } catch (error) {
         console.error(error);

@@ -59,6 +59,10 @@ async function getAllUser(where, page, per_page) {
     });
 }
 
+async function findUserByPk(id) {
+    return await db.User.findByPk(id);
+}
+
 async function saveData(data) {
     return await db.User.create(data, { returning: true });
 }
@@ -67,4 +71,4 @@ async function updateData(data, id) {
     return await db.User.update(data, { where: { id } });
 }
 
-module.exports = { checkLoginSchema, getByEmail, getByRefToken, doDecrypt, getAllUser, saveData, updateData }
+module.exports = { checkLoginSchema, getByEmail, getByRefToken, doDecrypt, getAllUser, saveData, updateData, findUserByPk }

@@ -7,6 +7,7 @@ const INTERNAL_SERVER_ERROR = 500;
 const CFG_PROMO_CODE = 100;
 
 async function configPage(req, res) {
+    const bearer = req.bearer;
     try {
 
         const configs = await configService.getConfigs();
@@ -16,7 +17,7 @@ async function configPage(req, res) {
 
 
         res.render("config/index", {
-            title, header, csrfToken: req.csrfToken(), promo: promo.value, promo_id: promo.id, moment, about
+            title, header, bearer, csrfToken: req.csrfToken(), promo: promo.value, promo_id: promo.id, moment, about
         })
     } catch (error) {
         console.error(error)

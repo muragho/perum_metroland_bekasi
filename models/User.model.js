@@ -59,7 +59,11 @@ function model(sequelize) {
         deleted_by: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     };
 
     const options = {

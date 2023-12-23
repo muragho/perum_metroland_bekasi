@@ -13,7 +13,7 @@ async function userPage(req, res) {
     const page = req.query.page || 1;
     const size = req.query.size || 10;
     const key = req.query.q || null;
-
+    const bearer = req.bearer;
     try {
         console.log("key : " + key)
         let where = {};
@@ -29,7 +29,7 @@ async function userPage(req, res) {
         let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/metroland/auth/users");
 
         res.render("users/index", {
-            title, header, users: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi
+            title, header, bearer, users: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi
         });
     } catch (error) {
         console.error(error);
@@ -37,4 +37,22 @@ async function userPage(req, res) {
     }
 }
 
-module.exports = { userPage }
+async function profilePage(req, res) {
+
+    const bearer = req.bearer;
+
+    try {
+
+        const user = await userService.findUserByPk(bearer.idSignIn);
+        console.log(JSON.stringify(user))
+
+        res.render("profile/index", {
+            title, header: 'Profil', bearer, user, moment, csrfToken: req.csrfToken(), JSDOM
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(INTERNAL_SERVER_ERROR).render("500/index");
+    }
+}
+
+module.exports = { userPage, profilePage }

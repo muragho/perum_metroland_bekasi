@@ -21,6 +21,8 @@ async function newsPage(req, res) {
     const page = req.query.page;
     const size = req.query.size;
     const q = req.query.q;
+    const bearer = req.bearer;
+
     console.log(page + " | " + size);
     try {
         const page_ = typeof page === 'undefined' ? 1 : page;
@@ -35,7 +37,7 @@ async function newsPage(req, res) {
         const { count, rows } = await newsService.getAllNews(where, page_, size_)
         let { number, pageNumUi } = pagination.setPagination(rows, count, page_, size_, null, "/metroland/auth/news");
         res.render("news/index", {
-            title, header, csrfToken: req.csrfToken(), pagination: pageNumUi, rows, JSDOM, moment
+            title, header, bearer, csrfToken: req.csrfToken(), pagination: pageNumUi, rows, JSDOM, moment
         })
     } catch (error) {
         console.error(error);

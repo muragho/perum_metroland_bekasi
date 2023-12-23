@@ -14,6 +14,7 @@ async function clusterPage(req, res) {
     const page = parseInt(req.query.page || 1);
     const size = parseInt(req.query.size || 10);
     const key = req.query.q || null;
+    const bearer = req.bearer;
 
     let num = 0;
     let pageNumber = "";
@@ -33,7 +34,7 @@ async function clusterPage(req, res) {
         // console.log("--> " + JSON.stringify(rows))
 
         res.render("clusters/index", {
-            title, header, clusters: rows, moment, csrfToken: req.csrfToken(), JSDOM, facilities, pagination: pageNumber, no: num
+            title, header, bearer, clusters: rows, moment, csrfToken: req.csrfToken(), JSDOM, facilities, pagination: pageNumber, no: num
         });
     } catch (error) {
         console.error(`err clusterPage : ${error}`)

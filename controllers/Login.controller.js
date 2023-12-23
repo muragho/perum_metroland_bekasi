@@ -52,9 +52,10 @@ async function doLogin(req, res) {
       const nameSignIn = user.name;
       const fullnameSignIn = user.fullname;
       const idSignIn = user.id;
+      const imageProfile = user.image == null ? 'nopic.png' : user.image;
 
       const accessToken = jwt.sign(
-        { emailSignIn, nameSignIn, idSignIn, fullnameSignIn },
+        { emailSignIn, nameSignIn, idSignIn, fullnameSignIn, imageProfile },
         pwd, { expiresIn: "15m" }
       );
 

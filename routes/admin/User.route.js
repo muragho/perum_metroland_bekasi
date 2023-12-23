@@ -14,8 +14,12 @@ const urlEncodedParser = bodyParser.urlencoded({
 
 router.get('/users', csrfProt, userController.userPage);
 
+router.get('/profile', csrfProt, userController.profilePage);
+
 //------------------- USER API --------------------
 router.post('/users/api/v1/user', urlEncodedParser, csrfProt, userApiController.doSave);
 router.put('/users/api/v1/user/reset-password/:id', urlEncodedParser, csrfProt, userApiController.doReset);
+router.put('/users/api/v1/user/:id/password', urlEncodedParser, csrfProt, userApiController.doChangePassword);
+router.put('/users/api/v1/profile/:id', multipartForm, urlEncodedParser, csrfProt, userApiController.doChangeProfile);
 
 module.exports = router;
