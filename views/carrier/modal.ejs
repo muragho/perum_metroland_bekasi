@@ -1,0 +1,102 @@
+<div class="modal fade" id="mdl-add-carrier" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">FORM TAMBAH karir</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="mdl-form-edit-product" class="form" action="#" autocomplete="off">
+
+                    <div class="fv-row form-floating mb-7">
+                        <select class="form-select" id="mdl_add_carrier_department" aria-label="">
+                            <% departments.forEach(departmet=>{%>
+                                <option value="<%= departmet.id %>">
+                                    <%= departmet.name %>
+                                </option>
+                                <%}) %>
+
+                        </select>
+                        <label for="mdl_add_carrier_department">Pilih Devisi</label>
+                    </div>
+                    <div class="d-inline-flex mb-3">
+
+                        <div class="fv-row mb-7 me-5">
+                            <label class="d-block fw-bold fs-6 mb-5">
+                                <span>Foto Banner</span>
+                                <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                    title="Pilih banner untuk karir ini"></i>
+                            </label>
+                            <div class="image-input image-input-outline image-input-outline" data-kt-image-input="true">
+                                <div class="image-input-wrapper w-125px h-125px" id="banner_carrier"></div>
+
+                                <label
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Pilih banner untuk informasi karir">
+                                    <i class="bi bi-pencil-fill fs-7"></i>
+                                    <input type="file" name="carrier" id="carrier" accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="avatar_remove" />
+                                </label>
+                                <span
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Batalkan foto karir">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+
+                                <span id="btn-remove-logo-product"
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Remove banner">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-inline-flex mb-2">
+                                <div class="badge badge-light">
+
+                                    <span>Tentukan tanggal berakhir penutupan karir</span>
+                                </div>
+                            </div>
+                            <div class="fv-row mb-7">
+                                <div class="input-group input-group-sm mb-5">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <span class="svg-icon svg-icon-5">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-calendar2" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+                                                <path
+                                                    d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z" />
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control accordion-date-picker" id="exp_date"
+                                        name="exp_date" placeholder="" value="" aria-label=""
+                                        aria-describedby="basic-addon" />
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fv-row mb-7">
+                        <textarea name="mdl_add_carrier_description" class="editor"
+                            id="mdl_add_carrier_description"></textarea>
+                        <label class="text-gray-500">masukan keterangan tambahan dan syarat untuk karir ini</label>
+                    </div>
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="mdl-btn-cancel-carrier" class="btn btn-secondary btn-sm">Batal</button>
+                <button type="button" id="mdl-btn-save-carrier" class="btn btn-primary btn-sm">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>

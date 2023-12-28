@@ -56,12 +56,12 @@ async function doLogin(req, res) {
 
       const accessToken = jwt.sign(
         { emailSignIn, nameSignIn, idSignIn, fullnameSignIn, imageProfile },
-        pwd, { expiresIn: "15m" }
+        pwd, { expiresIn: "1d" }
       );
 
       const refreshToken = jwt.sign(
         { idSignIn },
-        pwd, { expiresIn: "1d" }
+        pwd, { expiresIn: "7d" }
       );
 
       console.log("ref : " + refreshToken)
@@ -77,11 +77,11 @@ async function doLogin(req, res) {
       });
       res.cookie('metroAdmAcc', accessToken, {
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000
+        maxAge: 24 * 60 * 60 * 1000 * 10
       });
       res.cookie('metroAdmRef', refreshToken, {
         httpOnly: true,
-        maxAge: 24 * 60 * 60 * 1000,
+        maxAge: 24 * 60 * 60 * 1000 * 20
       });
       res.redirect("/metroland/auth/homes");
 

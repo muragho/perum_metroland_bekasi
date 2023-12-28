@@ -27,7 +27,11 @@ function model(sequelize) {
         deleted_by: {
             type: DataTypes.STRING,
             allowNull: true
-        }
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
     };
 
     const options = {

@@ -63,64 +63,65 @@ var format = function (num) {
 };
 
 const formKPR = document.getElementById('mdl-form-kpr');
-var validator = FormValidation.formValidation(
-    formKPR,
-    {
-        fields: {
-            inp_properti: {
-                validators: {
-                    notEmpty: {
-                        message: 'Parameter wajib diisi'
-                    }
-                }
-            },
-            inp_jangka_waktu: {
-                validators: {
-                    notEmpty: {
-                        message: 'Parameter wajib diisi'
-                    },
-                    integer: {
-                        message: 'Bilangan bulat'
-                    },
-                    between: {
-                        min: 1,
-                        max: 25,
-                        message: ' nilai min 1 th, nilai max 25 th'
-                    }
-                }
-            },
-            inp_bunga: {
-                validators: {
-                    notEmpty: {
-                        message: 'Parameter wajib diisi'
-                    },
-                    numeric: {
-                        message: 'Input berupa angka'
-                    }
-                }
-            }
-        },
+// var validator = FormValidation.formValidation(
+//     formKPR,
+//     {
+//         fields: {
+//             inp_properti: {
+//                 validators: {
+//                     notEmpty: {
+//                         message: 'Parameter wajib diisi'
+//                     }
+//                 }
+//             },
+//             inp_jangka_waktu: {
+//                 validators: {
+//                     notEmpty: {
+//                         message: 'Parameter wajib diisi'
+//                     },
+//                     integer: {
+//                         message: 'Bilangan bulat'
+//                     },
+//                     between: {
+//                         min: 1,
+//                         max: 25,
+//                         message: ' nilai min 1 th, nilai max 25 th'
+//                     }
+//                 }
+//             },
+//             inp_bunga: {
+//                 validators: {
+//                     notEmpty: {
+//                         message: 'Parameter wajib diisi'
+//                     },
+//                     numeric: {
+//                         message: 'Input berupa angka'
+//                     }
+//                 }
+//             }
+//         },
 
-        plugins: {
-            trigger: new FormValidation.plugins.Trigger(),
-            bootstrap: new FormValidation.plugins.Bootstrap5({
-                rowSelector: '.fv-row',
-                eleInvalidClass: '',
-                eleValidClass: ''
-            })
-        }
-    }
-);
+//         plugins: {
+//             trigger: new FormValidation.plugins.Trigger(),
+//             bootstrap: new FormValidation.plugins.Bootstrap5({
+//                 rowSelector: '.fv-row',
+//                 eleInvalidClass: '',
+//                 eleValidClass: ''
+//             })
+//         }
+//     }
+// );
 
 $('#btn-hitung-kpr').click(function () {
-    if (validator) {
-        validator.validate().then(function (status) {
+    // if (validator) {
+    //     validator.validate().then(function (status) {
 
-            if (status == 'Valid') {
-                doCalculateKPR();
-            }
-        })
-    }
+    //         if (status == 'Valid') {
+    //             doCalculateKPR();
+    //         }
+    //     })
+    // }
+    doCalculateKPR();
 
 });
 

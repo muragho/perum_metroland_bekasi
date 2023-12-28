@@ -1,0 +1,71 @@
+<%- include('../layouts/header-ui') %>
+    <meta name="csrf-token" content="<%= csrfToken %>">
+    <div class="content fs-6 d-flex flex-column flex-column-fluid" id="kt_content">
+        <div class="post fs-6 d-flex flex-column-fluid border border-top-1 border-left-1 border-right-0 border-bottom-0"
+            id="kt_post">
+            <div class="container-xxl">
+                <div class="card col-lg-12 mb-12 mb-lg-0">
+
+                    <form class="form mb-5 ms-5" role="form" method="get" action="carriers">
+                        <div class="row p-5">
+                            <div class="col-md-5 fv-row">
+
+                                <input type="text" class="form-control form-control-solid required"
+                                    placeholder="Cari menggunakan deskripsi" name="q" id="q" maxlength="35"
+                                    autocomplete="off" />
+                            </div>
+                            <div class="col-md-4 fv-row">
+                                <button type="submit" id="btn-search" class="btn btn-primary btn-sm">
+                                    <span class="svg-icon icon-icon-6"><svg xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2"
+                                                rx="1" transform="rotate(45 17.0365 15.1223)" fill="black" />
+                                            <path
+                                                d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"
+                                                fill="black" />
+                                        </svg></span>
+                                    Cari karir
+                                </button>
+                                <button type="button" id="btn-add-carrier" class="btn btn-success btn-sm">
+                                    <span class="svg-icon icon-icon-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z" />
+                                            <path
+                                                d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z" />
+                                        </svg>
+                                    </span>
+                                    Tambah karir
+                                </button>
+
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="container-fluid my-2">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12 border border-primary">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="panel-heading mb-3">
+                        <ul class="pagination pagination-sm pull-right">
+                            <%- pagination %>
+                        </ul>
+                    </div>
+                </div>
+                <%- include('./modal') %>
+            </div>
+        </div>
+    </div>
+    <%- include('../layouts/footer-ui') %>
+        <%- include('../layouts/menu-ui') %>
+            <%- include('../layouts/script') %>
+                <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+                <script src="/metroland/assets/js/pages/carrier/index.js"></script>
+                <%- include('../layouts/end-tag') %>

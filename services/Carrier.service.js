@@ -12,4 +12,8 @@ async function getAllCarrier(where, page, per_page) {
     });
 }
 
-module.exports = { getAllCarrier }
+async function doSave(data) {
+    return await db.Carrier.create(data);
+}
+
+module.exports = { getAllCarrier, doSave }
