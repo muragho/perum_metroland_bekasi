@@ -8,11 +8,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-md-auto bg-nav">
+
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">BERANDA</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#produk">PRODUK</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        PRODUK
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <% products.forEach(product=> {%>
+                            <a class="dropdown-item" href="#<%= product.title.replaceAll(' ',' _') %>">
+                                <%= product.title%>
+                            </a>
+                            <%})%>
+
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/metroland/tentang-kami">TENTANG KAMI</a>
