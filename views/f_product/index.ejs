@@ -4,7 +4,7 @@
 
         <!--CONTENT-->
         <div class="hero-video vdo">
-            <video id="my_video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <video id="my_video" playsinline="playsinline" autoplay="autoplay" loading="lazy" muted="muted" loop="loop">
                 <source src="/metroland/assets/video/sample-video.mp4" type="video/mp4">
             </video>
             <a href="#pills-tabContent" class="scroll-down index_page">
@@ -28,7 +28,8 @@
         <div class="container-fluid" id="cluster">
             <div class="container my-2 py-5" style="overflow-x: hidden">
                 <div class="cluster-title text-center img-fluid">
-                    <img src="/metroland/assets/img/<%= data.image %>" data-aos="fade-right" data-aos-delay="200">
+                    <img src="/metroland/assets/img/<%= data.image %>" loading="lazy" data-aos="fade-right"
+                        data-aos-delay="200">
                     <p data-aos="fade-left" data-aos-delay="200">
                         <%= JSDOM.fragment(data.content).textContent%>
                     </p>
@@ -72,7 +73,7 @@
                                                                     <tbody>
                                                                         <tr data-aos="fade-up" data-aos-duration="3000">
                                                                             <td><img src="/metroland/assets/icons/bedroom.png"
-                                                                                    class="">
+                                                                                    class="" loading="lazy">
                                                                             </td>
                                                                             <td>Kamar Tidur</td>
                                                                             <td class="text-end">
@@ -81,7 +82,7 @@
                                                                         </tr>
                                                                         <tr data-aos="fade-up" data-aos-duration="3000">
                                                                             <td><img src="/metroland/assets/icons/bathroom.png"
-                                                                                    class="">
+                                                                                    class="" loading="lazy">
                                                                             </td>
                                                                             <td>Kamar Mandi</td>
                                                                             <td class="text-end">
@@ -90,7 +91,7 @@
                                                                         </tr>
                                                                         <tr data-aos="fade-up" data-aos-duration="3000">
                                                                             <td><img src="/metroland/assets/icons/garage.png"
-                                                                                    class="">
+                                                                                    class="" loading="lazy">
                                                                             </td>
                                                                             <td>Garasi</td>
                                                                             <td class="text-end">
@@ -99,7 +100,7 @@
                                                                         </tr>
                                                                         <tr data-aos="fade-up" data-aos-duration="3000">
                                                                             <td><img src="/metroland/assets/icons/area.png"
-                                                                                    class="">
+                                                                                    class="" loading="lazy">
                                                                             </td>
                                                                             <td>Luas Tanah</td>
                                                                             <td class="text-end">
@@ -131,7 +132,7 @@
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
                                                                         %>" data-bs-interval="2000">
                                                                         <img src="/metroland/assets/img_cluster/<%= ci.image %>"
-                                                                            class="img-fluid">
+                                                                            class="img-fluid" loading="lazy">
                                                                     </div>
                                                                     <%ciNo++})%>
                                                             </div>
@@ -166,7 +167,7 @@
         <div class="container-fluid bg-white mt-5 py-5">
             <div class="container text-center py-5" data-aos="fade-up" data-aos-duration="3000">
                 <h1 class="pb-3">Proyek Area</h1>
-                <img class="img-fluid" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>">
+                <img class="img-fluid" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy">
             </div>
         </div>
 
