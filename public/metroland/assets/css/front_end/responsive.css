@@ -27,7 +27,7 @@
     
     .nav-link {
         color: white;
-        display: flex;
+        display: inline;
         align-items: center;
         justify-content: center;
         background-color: transparent;
