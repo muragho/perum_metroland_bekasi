@@ -95,7 +95,6 @@
     vertical-align: middle;
 }
 .content-scroll{
-	border: 2px solid #de9906;
     border-radius: 100px;
 	text-align: center;
 	padding-left: 4px;
@@ -106,8 +105,8 @@
 }
 .vdo a {
     position:absolute;
-    bottom:10%;
-    left:40%;
+	bottom: 2%;
+    left:5%;
     color:#de9906;
 }
 
@@ -243,16 +242,16 @@
 		color: var(--clr-whites)
 	}
 
-	.img-fluid {
+	/* .img-fluid {
 		max-width: 80%;
 		height: auto;
-	}
+	} */
 
 	.vdo a {
 		position:absolute;
-		bottom:20%;
-		left:30%;
-		color:#de9906;
+		bottom: 7%;
+		left:10%;
+		color:var(--clr-gold);
 	}
 }
 
@@ -274,8 +273,15 @@
 		color: white;
 	}
 
-	.img-fluid {
+	/* .img-fluid {
 		max-width: 80%;
 		height: auto;
+	} */
+
+	.vdo a {
+		position:absolute;
+		bottom: 7%;
+		left:10%;
+		color:var(--clr-gold);
 	}
 }
