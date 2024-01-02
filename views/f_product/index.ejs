@@ -11,7 +11,6 @@
                 <div class="content-scroll">
                     <div>
                         <i class="bi bi-arrow-down-circle-fill fs-1"></i>
-
                     </div>
                 </div>
             </a>
@@ -131,8 +130,11 @@
                                                                 <%let ciNo=1; cluster.ClusterImages.forEach(ci=>{%>
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
                                                                         %>" data-bs-interval="2000">
-                                                                        <img src="/metroland/assets/img_cluster/<%= ci.image %>"
-                                                                            class="img-fluid" loading="lazy">
+                                                                        <a href="#" class="pop">
+                                                                            <img src="/metroland/assets/img_cluster/<%= ci.image %>"
+                                                                                class="img-fluid" loading="lazy">
+                                                                        </a>
+
                                                                     </div>
                                                                     <%ciNo++})%>
                                                             </div>
@@ -201,9 +203,9 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-
-        <%- include('../layouts/f_footer') %>
-            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-            <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-            <script src="/metroland/assets/js/front_end/product/index.js"></script>
-            <%- include('../layouts/f_end') %>
+        <%- include('modal') %>
+            <%- include('../layouts/f_footer') %>
+                <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+                <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+                <script src="/metroland/assets/js/front_end/product/index.js"></script>
+                <%- include('../layouts/f_end') %>
