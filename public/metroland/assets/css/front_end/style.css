@@ -86,11 +86,11 @@ h1 {
         color: #B37F2C;
     }
   }
-  @media screen and (max-width:922px) {
-.nav-color .nav-link{
-    color: #B37F2C;
+@media screen and (max-width:922px) {
+    .nav-color .nav-link{
+        color: #B37F2C;
+    }
 }
-  }
 .nav-color .navbar-brand img {
     width: 90px;
 }

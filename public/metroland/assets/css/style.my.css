@@ -253,6 +253,11 @@
 		left:10%;
 		color:var(--clr-gold);
 	}
+
+	#pills-tab .nav-item {
+		border: none;
+		margin: -1px;
+	}
 }
 
 @media screen and (max-width:922px) {
@@ -283,5 +288,10 @@
 		bottom: 7%;
 		left:10%;
 		color:var(--clr-gold);
+	}
+
+	#pills-tab .nav-item {
+		border-color: #B37F2C;
+		margin: -1px;
 	}
 }
