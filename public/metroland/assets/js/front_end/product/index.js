@@ -95,4 +95,11 @@ function setClusterFacility(clusterId) {
 $('.pop').on('click', function () {
     $('.imagepreview').attr('src', $(this).find('img').attr('src'));
     $('#imagemodal').modal('show');
-}); 
+});
+$(window).scroll(function () {
+    if ($(window).scrollTop() > 10) {
+        document.getElementById('btn_scroll_down').style.visibility = "hidden";
+    } else {
+        document.getElementById('btn_scroll_down').style.visibility = "visible";
+    }
+})

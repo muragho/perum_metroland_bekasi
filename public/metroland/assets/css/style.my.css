@@ -160,6 +160,11 @@
 		color: var(--clr-white);
   }
 
+  .location-title{
+	font-size: 30px;
+	margin-top: 5px;
+  }
+
 @media screen and (max-width:574px) {
 
 	.nav-item .dropdown-menu {
@@ -257,6 +262,15 @@
 	#pills-tab .nav-item {
 		border: none;
 		margin: -1px;
+	}
+
+	.location-title{
+		font-size: 16px;
+		margin-top: 5px;
+	  }
+
+	.location-description{
+		text-align: center;
 	}
 }
 
