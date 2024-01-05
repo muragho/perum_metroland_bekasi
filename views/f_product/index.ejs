@@ -27,9 +27,8 @@
         <div class="container-fluid" id="cluster">
             <div class="container my-2 py-5" style="overflow-x: hidden">
                 <div class="cluster-title text-center img-fluid">
-                    <img src="/metroland/assets/img/<%= data.image %>" loading="lazy" data-aos="fade-right"
-                        data-aos-delay="200">
-                    <p data-aos="fade-left" data-aos-delay="200">
+                    <img src="/metroland/assets/img/<%= data.image %>" loading="lazy">
+                    <p>
                         <%= JSDOM.fragment(data.content).textContent%>
                     </p>
                 </div>
