@@ -8,8 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="mdl-form-add-product" class="form" action="/metroland/auth/products" method="post"
-                    autocomplete="off">
+                <form id="mdl-form-add-product" class="form" action="/auth/products" method="post" autocomplete="off">
 
                     <div class="fv-row form-floating mb-7">
                         <input type="text" class="form-control" name="product_title" id="mdl-add-title-product"
@@ -23,6 +22,40 @@
                     </div>
 
                     <div class="d-inline-flex mb-3">
+
+                        <div class="fv-row mb-7 me-5">
+                            <label class="d-block fw-bold fs-6 mb-5">
+                                <span>Foto Klaster</span>
+                                <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                    title="foto klaster."></i>
+                            </label>
+                            <div class="image-input image-input-outline image-input-outline" data-kt-image-input="true">
+                                <div class="image-input-wrapper w-125px h-125px" id="image_cluster_add"></div>
+
+                                <label
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Pilih foto untuk banner klaster">
+                                    <i class="bi bi-pencil-fill fs-7"></i>
+                                    <input type="file" name="file_image_cluster_add" id="file_image_cluster_add"
+                                        accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="avatar_remove" />
+                                </label>
+                                <span
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Batalkan foto klaster">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+
+                                <span
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Remove avatar">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+                            </div>
+                        </div>
 
                         <div class="fv-row mb-7 me-5">
                             <label class="d-block fw-bold fs-6 mb-5">
@@ -153,6 +186,40 @@
                     </div>
 
                     <div class="d-inline-flex mb-3">
+
+                        <div class="fv-row mb-7 me-5">
+                            <label class="d-block fw-bold fs-6 mb-5">
+                                <span>Foto Klaster</span>
+                                <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                    title="foto klaster."></i>
+                            </label>
+                            <div class="image-input image-input-outline image-input-outline" data-kt-image-input="true">
+                                <div class="image-input-wrapper w-125px h-125px" id="image_cluster"></div>
+
+                                <label
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="change" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Pilih foto untuk banner klaster">
+                                    <i class="bi bi-pencil-fill fs-7"></i>
+                                    <input type="file" name="image_cluster_edit" id="image_cluster_edit"
+                                        accept=".png, .jpg, .jpeg" />
+                                    <input type="hidden" name="avatar_remove" />
+                                </label>
+                                <span
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Batalkan foto klaster">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+
+                                <span id="btn-remove-image-cluster"
+                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                    data-kt-image-input-action="remove" data-bs-toggle="tooltip" title
+                                    data-bs-original-title="Remove avatar">
+                                    <i class="bi bi-x fs-2"></i>
+                                </span>
+                            </div>
+                        </div>
 
                         <div class="fv-row mb-7 me-5">
                             <label class="d-block fw-bold fs-6 mb-5">

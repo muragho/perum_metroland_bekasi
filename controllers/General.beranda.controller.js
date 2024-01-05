@@ -9,7 +9,7 @@ const INTERNAL_SERVER_ERROR = 500;
 const { JSDOM } = jsdom;
 
 async function berandaPage(req, res) {
-
+    console.log('inside berandaPage')
     try {
 
         const products = await productServ.getAllProductByLimit(4);

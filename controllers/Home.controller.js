@@ -4,6 +4,7 @@ const header = "Dashboard";
 const INTERNAL_SERVER_ERROR = 500;
 
 async function homePage(req, res) {
+    console.log('inside homePage')
     const bearer = req.bearer;
     try {
         // const reqBody = req.body;

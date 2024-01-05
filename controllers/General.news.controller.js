@@ -15,7 +15,7 @@ async function newsPage(req, res) {
 
         let where = {};
         const { count, rows } = await newsService.getNewsList(where, page_, size_);
-        let { number, pageNumUi } = pagination.setPagination(rows, count, page_, size_, null, "/metroland/berita");
+        let { number, pageNumUi } = pagination.setPagination(rows, count, page_, size_, null, "/berita");
         // console.log(JSON.stringify(rows))
         res.render("f_news/index", { rows, moment, pagination: pageNumUi, JSDOM });
     } catch (error) {

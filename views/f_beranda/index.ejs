@@ -57,7 +57,7 @@
                                     <p class="card-text text-start fs-6 text-wrap">
                                         <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                     </p>
-                                    <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
+                                    <a href="/produk/<%= product.id %>">Selanjutnya <img
                                             src="/metroland/assets/img/arrow.png"></a>
                                 </div>
                             </div>
@@ -90,7 +90,7 @@
                                         <p class="card-text fs-6 text-wrap">
                                             <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                         </p>
-                                        <a href="/metroland/produk/<%= product.id %>">Selanjutnya <img
+                                        <a href="/produk/<%= product.id %>">Selanjutnya <img
                                                 src="/metroland/assets/img/arrow.png"></a>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
             </div>
             <div class="text-center">
                 <button class="btn-primary">
-                    <a href="/metroland/produk">Lihat Semua Produk</a>
+                    <a href="/produk">Lihat Semua Produk</a>
                 </button>
             </div>
         </div>
@@ -180,7 +180,7 @@
 
                         <div class="col-md-4" data-aos="zoom-in-right" data-aos-delay="500">
                             <div class="card mx-auto h-100 w-100">
-                                <a href="/metroland/berita/<%= n.id %>/detail">
+                                <a href="/berita/<%= n.id %>/detail">
                                     <%if(n.image_thubnail==null){%>
                                         <img class="img-fluid img-thumbnail card-img-top h-100px"
                                             src="/metroland/assets/image_news_thubnail/noimage.png">
@@ -190,7 +190,7 @@
                                             <%}%>
                                 </a>
                                 <div class="card-body">
-                                    <a href="/metroland/berita/<%= n.id %>/detail">
+                                    <a href="/berita/<%= n.id %>/detail">
                                         <h5 class="card-title">
                                             <%= n.title %>
                                         </h5>
@@ -212,7 +212,7 @@
                 </div>
                 <div class="text-center mt-5">
                     <button class="btn-primary">
-                        <a href="/metroland/berita">Lihat Semua Berita</a>
+                        <a href="/berita">Lihat Semua Berita</a>
                     </button>
                 </div>
             </div>

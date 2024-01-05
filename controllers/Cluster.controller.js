@@ -26,7 +26,7 @@ async function clusterPage(req, res) {
         }
         const { count, rows } = await clusterServ.getAllCluster(where, page, size);
         if (count > 0) {
-            let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/metroland/auth/clusters");
+            let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/auth/clusters");
             num = number;
             pageNumber = pageNumUi;
         }

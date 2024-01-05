@@ -8,8 +8,8 @@ KTUtil.onDOMContentLoaded(function () {
         tags: false
     });
 });
-const CLUSTER_URL = '/metroland/auth/clusters'
-const CLUSTER_API = '/metroland/auth/api/v1/clusters'
+const CLUSTER_URL = '/auth/clusters'
+const CLUSTER_API = '/auth/api/v1/clusters'
 const btnEditCluster = document.getElementsByClassName("btn-edit-cluster");
 const mdlFormAddCluster = document.getElementById("mdl-form-add-cluster");
 const formMdlEditCluster = document.getElementById("mdl-form-edit-cluster");

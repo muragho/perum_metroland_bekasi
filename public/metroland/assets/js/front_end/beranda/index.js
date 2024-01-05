@@ -13,7 +13,7 @@ $(document).ready(function () {
     getPromo();
 });
 
-const BERANDA_URL = '/metroland/beranda/api/v1'
+const BERANDA_URL = '/beranda/api/v1'
 
 function getPromo() {
     $.ajax({

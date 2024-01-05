@@ -26,7 +26,7 @@ async function userPage(req, res) {
         }
         const { count, rows } = await userService.getAllUser(where, page, size);
         console.log(JSON.stringify(rows))
-        let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/metroland/auth/users");
+        let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/auth/users");
 
         res.render("users/index", {
             title, header, bearer, users: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi

@@ -35,9 +35,12 @@ async function doEditProduct(req, res) {
                     await productService.doEdit(productId, { image_site_plan: filename });
                     await fs2.writeFile('./public/metroland/assets/img_site_plan/' + filename, img.buffer);
 
-                } else {
+                } else if (img.fieldname == 'file_logo') {
                     await productService.doEdit(productId, { image: filename });
                     await fs2.writeFile('./public/metroland/assets/img/' + filename, img.buffer);
+                } else {
+                    await productService.doEdit(productId, { image_banner_1: filename });
+                    await fs2.writeFile('./public/metroland/assets/img_product/' + filename, img.buffer);
                 }
             }));
         }
@@ -73,21 +76,55 @@ async function doAddProduct(req, res) {
         const logo = req.files[0];
 
         let data = {};
-        if (req.files.length > 0) {
-            data.image = logo.originalname;
 
-            fs.writeFile('./public/metroland/assets/img/' + logo.originalname, logo.buffer, function (err) {
-                if (err) {
-                    throw new Error(err);
+
+        let siteplanName = null;
+        let logoName = null;
+        let bannername = null;
+
+        if (req.files.length > 0) {
+
+            await Promise.all(req.files.map(async (img) => {
+                const filename = img.originalname.replaceAll(' ', '');
+
+                if (img.fieldname == 'file_siteplan') {
+                    siteplanName = filename;
+                    await fs2.writeFile('./public/metroland/assets/img_site_plan/' + filename, img.buffer);
+
+                } else if (img.fieldname == 'file') {
+                    logoName = filename;
+                    await fs2.writeFile('./public/metroland/assets/img/' + filename, img.buffer);
+                } else {
+                    bannername = filename;
+                    await fs2.writeFile('./public/metroland/assets/img_product/' + filename, img.buffer);
                 }
-            });
+            }));
         }
+
+        // if (req.files.length > 0) {
+        //     data.image = logo.originalname;
+
+        //     fs.writeFile('./public/metroland/assets/img/' + logo.originalname, logo.buffer, function (err) {
+        //         if (err) {
+        //             throw new Error(err);
+        //         }
+        //     });
+        // }
         data.title = reqBody.title
         data.content = reqBody.description;
         data.created_by = bearer.emailSignIn;
         data.updated_by = bearer.emailSignIn;
         data.created_at = date;
         data.updated_at = date;
+        if (logoName != null) {
+            data.image = logoName;
+        }
+        if (siteplanName != null) {
+            data.image_site_plan = siteplanName;
+        }
+        if (bannername != null) {
+            data.image_banner_1 = bannername;
+        }
 
         // console.log(JSON.stringify(reqBody))
         const newProduct = await productService.addProduct(data, null);
@@ -134,15 +171,17 @@ async function getClusterByProduct(req, res) {
 async function removeLogoOrSitePlanImage(req, res) {
     console.info(`inside removeLogoOrSitePlanImage`);
     const productId = req.params.id;
-    const isLogo = req.params.logo == 'logo' ? true : false;
+    const image = req.params.logo;
     const bearer = req.bearer;
     try {
 
         let data = {};
-        if (isLogo) {
+        if (image == 'logo') {
             data.image = null;
-        } else {
+        } else if (image == 'siteplan') {
             data.image_site_plan = null;
+        } else {
+            data.image_bannner_1 = null;
         }
         data.updated_by = bearer.emailSignIn;
         data.updated_at = new Date();

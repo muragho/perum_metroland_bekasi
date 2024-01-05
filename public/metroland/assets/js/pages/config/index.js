@@ -3,7 +3,7 @@ var token = document.querySelector('meta[name="csrf-token"]').getAttribute('cont
 KTUtil.onDOMContentLoaded(function () {
     $("#menu_configure").addClass("active");
 });
-const CONFIG_API_URL = '/metroland/auth/api/v1/configs'
+const CONFIG_API_URL = '/auth/api/v1/configs'
 const btnPromotion = document.getElementById('btn-promotion');
 const mdlBtnSavePromotion = document.getElementById('mdl-btn-save-promotion');
 const mdlBtnCanclePromotion = document.getElementById('mdl-btn-cancle-promotion');
@@ -13,7 +13,7 @@ var myEditorEdit;
 ClassicEditor
     .create(document.querySelector('#mdl_edit_content_about'), {
         ckfinder: {
-            uploadUrl: `/metroland/auth/about/upload`,
+            uploadUrl: `/auth/about/upload`,
         }
     })
     .then(editor => {

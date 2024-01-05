@@ -22,7 +22,7 @@ async function productPage(req, res) {
             where.title = { [Op.substring]: key }
         }
         const { count, rows } = await productServ.getAllProduct(where, page, size)
-        let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/metroland/auth/products");
+        let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/auth/products");
 
         res.render("products/index", {
             title, header, bearer, products: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi

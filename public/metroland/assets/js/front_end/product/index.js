@@ -1,5 +1,5 @@
 
-const CLUSTER_API = '/metroland/api/v1/clusters'
+const CLUSTER_API = '/api/v1/clusters'
 var cluster = document.querySelector('meta[name="first_cluster"]').getAttribute('content');
 
 $(document).ready(function () {
@@ -26,9 +26,7 @@ video.addEventListener('loadeddata', (e) => {
 });
 function checkforvideo() {
     var b = setInterval(() => {
-        console.log('1111111')
         if (video.readyState >= 3) {
-            console.log("finish111")
             $('.spinner-grow').hide();
             clearInterval(b);
         }

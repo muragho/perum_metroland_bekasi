@@ -14,9 +14,9 @@ KTUtil.onDOMContentLoaded(function () {
     });
 });
 
-const PRODUCT_URL = '/metroland/auth/products';
-const PRODUCT_API_URL = '/metroland/auth/api/v1/products';
-const CLUSTER_API_URL = '/metroland/auth/api/v1/clusters';
+const PRODUCT_URL = '/auth/products';
+const PRODUCT_API_URL = '/auth/api/v1/products';
+const CLUSTER_API_URL = '/auth/api/v1/clusters';
 
 const btnEditProduct = document.getElementsByClassName("btn-edit-product");
 const formMdlAddProduct = document.getElementById("mdl-form-add-product");
@@ -26,6 +26,7 @@ const mdlBtnEditProduct = document.getElementById("mdl-btn-edit-product");
 const btnAddProduct = document.getElementById("btn-add-product");
 const mdlBtnCancleProduct = document.getElementById("mdl-btn-cancle-product");
 const btnRemoveSitePlanProduct = document.getElementById("btn-remove-site-plan-product");
+const btnRemoveImageCluster = document.getElementById("btn-remove-image-cluster");
 const btnRemoveLogoProduct = document.getElementById("btn-remove-logo-product");
 
 var myEditorEdit;
@@ -228,6 +229,29 @@ btnRemoveLogoProduct.addEventListener("click", function (e) {
         });
 })
 
+btnRemoveImageCluster.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const productId = $(this).data('produk_id');
+    const TYPE = 'banner';
+    $.ajax({
+        method: "PUT",
+        url: `${PRODUCT_API_URL}/${TYPE}/image/${productId}/product`,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
+            if (response.code == 200) {
+                showSuccessAlert(`data berhasil dihapus`);
+            } else {
+                showErrorAlert(response.message);
+            }
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
+})
+
 $('#q').maxlength({
     warningClass: "badge badge-warning",
     limitReachedClass: "badge badge-success"
@@ -238,12 +262,16 @@ function doAddProduct() {
     var title = $('#mdl-add-title-product').val();
     var description = myEditorAdd.getData();
     var logo = $('#logo_produk').prop('files')[0];
+    var siteplan = $('#img_site_plan_add').prop('files')[0];
+    var banner = $('#file_image_cluster_add').prop('files')[0];
     var clusters = $('#mdl_clusters').val();
 
     var formData = new FormData();
     formData.append('title', title);
     formData.append('description', description);
     formData.append('file', logo);
+    formData.append('file_siteplan', siteplan);
+    formData.append('file_banner', banner);
     formData.append('clusters', clusters);
 
     $.ajax({
@@ -275,6 +303,7 @@ function doEdit() {
     var clusters = $('#mdl_edit_clusters').val();
     var img1 = $('#logo_produk_edit').prop('files')[0];
     var img2 = $('#img_site_plan_edit').prop('files')[0];
+    var img3 = $('#image_cluster_edit').prop('files')[0];
 
     var formData = new FormData();
     formData.append('title', title);
@@ -282,6 +311,7 @@ function doEdit() {
     formData.append('clusters', clusters);
     formData.append('file_logo', img1);
     formData.append('file_site_plan', img2);
+    formData.append('file_banner', img3);
 
     $.ajax({
         method: "PUT",
@@ -351,6 +381,8 @@ function selectedCluster(productId) {
         .done((response) => {
             $("#logo_site_plan").css("background-image", "url()");
             $("#logo_cluster").css("background-image", "url()");
+            $("#image_cluster").css("background-image", "url()");
+
             if (response.code == 200) {
 
                 if (response.data != null) {
@@ -370,6 +402,11 @@ function selectedCluster(productId) {
                     if (response.data.image_site_plan != null) {
                         $("#logo_site_plan").css("background-image", "url(/metroland/assets/img_site_plan/" + response.data.image_site_plan + ")");
                         $('#btn-remove-site-plan-product').attr('data-produk_id', productId);
+                    }
+
+                    if (response.data.image_banner_1 != null) {
+                        $("#image_cluster").css("background-image", "url(/metroland/assets/img_product/" + response.data.image_banner_1 + ")");
+                        $('#btn-remove-image-cluster').attr('data-produk_id', productId);
                     }
                 }
             }

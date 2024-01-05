@@ -35,7 +35,7 @@ async function newsPage(req, res) {
         }
 
         const { count, rows } = await newsService.getAllNews(where, page_, size_)
-        let { number, pageNumUi } = pagination.setPagination(rows, count, page_, size_, null, "/metroland/auth/news");
+        let { number, pageNumUi } = pagination.setPagination(rows, count, page_, size_, null, "/auth/news");
         res.render("news/index", {
             title, header, bearer, csrfToken: req.csrfToken(), pagination: pageNumUi, rows, JSDOM, moment
         })

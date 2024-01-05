@@ -2,8 +2,12 @@
     <%- include('../layouts/f_menu_general') %>
 
         <!--CONTENT-->
-        <div class="hero-image">
-            <img src="/metroland/assets/img/Aglonema.jpg" class="img-fluid">
+        <div class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/metroland/assets/img/Aglonema.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
         </div>
         <!-- isi berita -->
         <div class="container-fluid">
@@ -29,7 +33,7 @@
             <img src="/metroland/assets/img/berita2.jpg" class="img-fluid ">
             <% if(next !=null){%>
                 <div class="title">
-                    <a href="/metroland/berita/<%= next.id%>/detail">Berita Selanjutnya</a>
+                    <a href="/berita/<%= next.id%>/detail">Berita Selanjutnya</a>
                     <img src="/metroland/assets/img/arrow-right.svg">
                     <br><br>
                     <a href="">

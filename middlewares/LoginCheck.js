@@ -4,7 +4,7 @@ function isLogin(req, res, next) {
     const token = req.cookies.metroAdmAcc;
     // const refreshToken = req.cookies.smartQ_Acc;
     if (token == "undefined" || token == null) {
-        return res.redirect("/metroland");
+        return res.redirect("/");
     } else {
         try {
             const bearer = jwt.verify(token, process.env.SIGNATURE);
@@ -13,7 +13,7 @@ function isLogin(req, res, next) {
             next();
         } catch (error) {
             console.error(error);
-            return res.redirect("/metroland/auth")
+            return res.redirect("/auth")
         }
 
     }

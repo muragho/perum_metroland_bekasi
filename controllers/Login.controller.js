@@ -83,7 +83,7 @@ async function doLogin(req, res) {
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000 * 20
       });
-      res.redirect("/metroland/auth/homes");
+      res.redirect("/auth/homes");
 
     } else {
 

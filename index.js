@@ -74,29 +74,27 @@ app.use(function (req, res, next) {
 
 //front end
 // app.use('/', root.berandaPage);
-app.use('/metroland', f_beranda);
-app.use('/metroland', f_cluster);
-app.use('/metroland', f_news);
-app.use('/metroland', f_product);
-app.use('/metroland', f_about);
-app.use('/metroland', f_location);
-app.use('/metroland', f_carrier);
+app.use(f_beranda);
+app.use(f_cluster);
+app.use(f_news);
+app.use(f_product);
+app.use(f_about);
+app.use(f_location);
+app.use(f_carrier);
 
 
 // web admin
-app.use('/metroland/auth', auth);
+app.use('/auth', auth);
 app.use(isLogin);
-app.use('/metroland/auth', homes);
-app.use('/metroland/auth', products);
-app.use('/metroland/auth', clusters);
-app.use('/metroland/auth', news);
-app.use('/metroland/auth', config);
-app.use('/metroland/auth', user);
-app.use('/metroland/auth', karir);
+app.use('/auth', homes);
+app.use('/auth', products);
+app.use('/auth', clusters);
+app.use('/auth', news);
+app.use('/auth', config);
+app.use('/auth', user);
+app.use('/auth', karir);
 
-
-
-app.post('/metroland/auth/news/upload', multipartMiddleware, (req, res) => {
+app.post('/auth/news/upload', multipartMiddleware, (req, res) => {
 
     fs.readFile(req.files.upload.path, function (err, data) {
         var newPath = __dirname + '/public/metroland/assets/image_news/' + req.files.upload.name;
@@ -107,7 +105,7 @@ app.post('/metroland/auth/news/upload', multipartMiddleware, (req, res) => {
     });
 
 });
-app.post('/metroland/auth/about/upload', multipartMiddleware, (req, res) => {
+app.post('/auth/about/upload', multipartMiddleware, (req, res) => {
 
     fs.readFile(req.files.upload.path, function (err, data) {
         var newPath = __dirname + '/public/metroland/assets/about/' + req.files.upload.name;
