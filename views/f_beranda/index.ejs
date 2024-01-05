@@ -43,7 +43,7 @@
                     <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
                         id="<%= product.title.replaceAll(' ',' _')%>">
                         <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                            <div class="col-md-6 nomor-2" data-aos="fade-right" data-aos-duration="2000">
+                            <div class="col-md-6 nomor-2">
                                 <div class="card-body text-end">
                                     <h1 class="card-title-product text-uppercase">
                                         <%= product.title.replace(title[totWord-1].trim() , '' )%>
@@ -61,8 +61,7 @@
                                             src="/metroland/assets/img/arrow.png"></a>
                                 </div>
                             </div>
-                            <div class="col-md-6 h-100 nomor-1" style="max-height: 50%;" data-aos="fade-left"
-                                data-aos-duration="2000">
+                            <div class="col-md-6 h-100 nomor-1" style="max-height: 50%;">
                                 <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
                                     class="img-fluid float-end rounded" alt="...">
                             </div>
@@ -72,11 +71,11 @@
                         <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
                             id="<%= product.title.replaceAll(' ',' _')%>">
                             <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                                <div class="col-md-6 h-100" data-aos="fade-right" data-aos-duration="2000">
+                                <div class="col-md-6 h-100">
                                     <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
                                         class="img-fluid float-start rounded" alt="...">
                                 </div>
-                                <div class="col-md-6" data-aos="fade-left" data-aos-duration="2000">
+                                <div class="col-md-6">
                                     <div class="card-body">
                                         <h1 class="card-title-product text-uppercase">
                                             <%= product.title.replace(title[totWord-1], '' )%>
@@ -111,33 +110,33 @@
             <div class="container-fluid text-center py-md-5">
                 <h1>Kenapa harus memilih perumahan Metroland?</h1>
                 <div class="row pt-5 px-1">
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="col-md-3 col-sm-6">
                         <div class="symbol symbol-50px symbol-circle">
                             <img class="symbol-label" src="/metroland/assets/img/akses.png">
                         </div>
                         <h2>Akses & Transportasi Mudah</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
+
                     </div>
 
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="col-md-3 col-sm-6">
                         <div class="symbol symbol-50px symbol-circle"><img src="/metroland/assets/img/lokasi.png"
                                 class="symbol-label"></div>
                         <h2>Lokasi Strategis</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
+
                     </div>
 
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="col-md-3 col-sm-6">
                         <div class="symbol symbol-50px symbol-circle"><img src="/metroland/assets/img/investasi.png"
                                 class="symbol-label"></div>
                         <h2>Investasi Tepat</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
+
                     </div>
 
-                    <div class="col-md-3 col-sm-6" data-aos="fade-up" data-aos-duration="2000">
+                    <div class="col-md-3 col-sm-6">
                         <div class="symbol symbol-50px symbol-circle"><img src="/metroland/assets/img/harga.png"
                                 class="symbol-label"></div>
                         <h2>Harga terjangkau</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, commodi!</p>
+
                     </div>
                 </div>
             </div>
@@ -164,7 +163,7 @@
                     <img src="/metroland/assets/img/bank-bsi.png">
                 </div>
 
-                <button class="btn-primary text-white my-5" id="btn-kpr" data-aos="zoom-in" data-aos-delay="1000">
+                <button class="btn-primary text-white my-5" id="btn-kpr">
                     <img src="/metroland/assets/img/simulasi kpr.png"
                         style="height: 25px; margin: auto; padding-right: 10px;">Simulasi KPR
                 </button>
@@ -178,7 +177,7 @@
                 <div class="row pt-5 gy-5">
                     <% news.forEach(n=>{%>
 
-                        <div class="col-md-4" data-aos="zoom-in-right" data-aos-delay="500">
+                        <div class="col-md-4">
                             <div class="card mx-auto h-100 w-100">
                                 <a href="/berita/<%= n.id %>/detail">
                                     <%if(n.image_thubnail==null){%>
