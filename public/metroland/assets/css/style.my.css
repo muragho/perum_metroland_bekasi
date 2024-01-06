@@ -272,6 +272,11 @@
 	.location-description{
 		text-align: center;
 	}
+
+	#simulasi img{
+		margin: 5px;
+    	height: 15px;
+	}
 }
 
 @media screen and (max-width:922px) {
@@ -307,5 +312,10 @@
 	#pills-tab .nav-item {
 		border-color: #B37F2C;
 		margin: -1px;
+	}
+
+	#simulasi img{
+		margin: 5px;
+    	height: 15px;
 	}
 }
