@@ -18,22 +18,28 @@
                         <div class="col-md-4">
                             <div class="card mx-auto">
                                 <img src="/metroland/assets/img/karir.png" class="card-img-top">
+
                                 <div class="card-body">
                                     <h5 class="card-title text-uppercase">
                                         <%= element.department.name %>
                                     </h5>
-                                    <a href="">
-                                        <p class="card-text">Job Detail <img
-                                                src="/metroland/assets/img/arrow-right.svg">
-                                        </p>
-                                    </a>
+                                    <% if(element.banner_image !=null){%>
+                                        <a class="pop btn" data-banner_image="<%= element.banner_image %>">
+                                            <p class="card-text">Job Detail <img
+                                                    src="/metroland/assets/img/arrow-right.svg">
+                                            </p>
+                                        </a>
+                                        <%} %>
+                                            <%- element.description %>
                                 </div>
                             </div>
                         </div>
                         <% }) %>
                 </div>
             </div>
+            <%- include('modal') %>
         </div>
+
 
         <%- include('../layouts/f_footer') %>
             <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>

@@ -43,12 +43,137 @@
                         </div>
                     </form>
 
-                    <div class="container-fluid my-2">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-12 border border-primary">
+                    <div class="table-responsive px-5">
+                        <table class="table text-center">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th class="col-3">Department</th>
+                                    <th>Dibuat</th>
+                                    <th>Status</th>
+                                    <th>Deskripsi</th>
+                                    <th>Tindakan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% carriers.forEach(c=>{%>
+                                    <tr>
+                                        <td>
+                                            <%= no + 1 %>
+                                        </td>
+                                        <td>
+                                            <div class="ps-1 text-start">
 
-                            </div>
-                        </div>
+                                                <span class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1 row">
+                                                    <%= c.department.name %>
+                                                </span>
+                                                <span class="badge badge-danger px-2">
+                                                    <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-calendar3"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
+                                                            <path
+                                                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                                                        </svg>
+                                                    </span>
+                                                    <%= moment(c.created_at).format( 'DD-MMM-YYYY' ) %>
+                                                </span>
+                                                s/d
+                                                <span class="badge badge-success px-2">
+                                                    <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-calendar3"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
+                                                            <path
+                                                                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
+                                                        </svg>
+                                                    </span>
+                                                    <%= moment(c.expired).format( 'DD-MMM-YYYY' ) %>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <%= c.created_by %>
+                                        </td>
+                                        <td>
+                                            <% var expDate=moment(c.expired); var today=moment(new Date()) %>
+                                                <% if(expDate.isSameOrAfter(today)){%>
+                                                    <span class="svg-icon svg-icon-2x svg-icon-success"
+                                                        data-bs-toggle="tooltip" title
+                                                        data-bs-original-title="Status Aktif">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                            viewBox="0 0 24 24" fill="none">
+                                                            <path opacity="0.3"
+                                                                d="M6 22H4V3C4 2.4 4.4 2 5 2C5.6 2 6 2.4 6 3V22Z"
+                                                                fill="black" />
+                                                            <path
+                                                                d="M18 14H4V4H18C18.8 4 19.2 4.9 18.7 5.5L16 9L18.8 12.5C19.3 13.1 18.8 14 18 14Z"
+                                                                fill="black" />
+                                                        </svg>
+                                                    </span>
+                                                    <%}else{%>
+                                                        <span class="svg-icon svg-icon-2x svg-icon-danger"
+                                                            data-bs-toggle="tooltip" title
+                                                            data-bs-original-title="Status Tidak Aktif">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path opacity="0.3"
+                                                                    d="M6 22H4V3C4 2.4 4.4 2 5 2C5.6 2 6 2.4 6 3V22Z"
+                                                                    fill="black" />
+                                                                <path
+                                                                    d="M18 14H4V4H18C18.8 4 19.2 4.9 18.7 5.5L16 9L18.8 12.5C19.3 13.1 18.8 14 18 14Z"
+                                                                    fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <%}%>
+                                        </td>
+                                        <td>
+
+                                            <% if(c.description !=null){%>
+                                                <%=JSDOM.fragment(c.description.substring(0,150)).textContent %>
+                                                    <%}%>...
+                                        </td>
+                                        <td>
+                                            <div class="me-0">
+                                                <button
+                                                    class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary"
+                                                    data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                                    <i class="bi bi-three-dots-vertical fs-4"></i>
+                                                </button>
+                                                <!--begin::Menu 3-->
+                                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3"
+                                                    data-kt-menu="true">
+                                                    <!--begin::Heading-->
+                                                    <div class="menu-item px-3">
+                                                        <div
+                                                            class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">
+                                                            Tindakan</div>
+                                                    </div>
+                                                    <div class="menu-item px-3">
+                                                        <a class="menu-link flex-stack px-3 btn-edit-carrier"
+                                                            data-carrier_id="<%= c.id %>" data-csrf="<%= csrfToken %>"
+                                                            data-department="<%= c.departmentId%>"
+                                                            data-exp="<%= c.expired %>"
+                                                            data-banner="<%= c.banner_image %>"
+                                                            data-description="<%= c.description %>">Ubah
+                                                            <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                                data-bs-toggle="tooltip"
+                                                                title="Fungsi yang digunakan untuk merubah isi data karir"></i></a>
+                                                    </div>
+
+                                                </div>
+                                                <!--end::Menu 3-->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%no++ }) %>
+                            </tbody>
+
+                        </table>
                     </div>
 
 

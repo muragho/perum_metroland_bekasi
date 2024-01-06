@@ -16,5 +16,6 @@ router.get('/carriers', csrfProt, carrierController.carrierPage);
 
 //---------------- API -----------------
 router.post('/api/v1/carriers', multipartForm, urlEncodedParser, csrfProt, carrierApi.doAddCarrier);
+router.put('/api/v1/carriers/:id', multipartForm, urlEncodedParser, csrfProt, carrierApi.doEditCarrier);
 
 module.exports = router;
