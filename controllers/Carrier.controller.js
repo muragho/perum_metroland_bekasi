@@ -32,7 +32,7 @@ async function carrierPage(req, res) {
         }
 
         const departments = await departmentService.getAllDepartment();
-        console.log(JSON.stringify(departments))
+        console.log(num)
 
         res.render("carrier/index", {
             title, header, bearer, carriers: rows, departments, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumber, no: num
