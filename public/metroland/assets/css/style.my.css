@@ -277,6 +277,13 @@
 		margin: 5px;
     	height: 15px;
 	}
+
+	.btn-primary a {
+		color: white;
+		text-decoration: none;
+		font-size: small;
+		padding: 5px;
+	}
 }
 
 @media screen and (max-width:922px) {
@@ -317,5 +324,12 @@
 	#simulasi img{
 		margin: 5px;
     	height: 15px;
+	}
+
+	.btn-primary a {
+		color: white;
+		text-decoration: none;
+		font-size: small;
+		padding: 5px;
 	}
 }
