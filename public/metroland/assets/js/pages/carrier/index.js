@@ -92,7 +92,7 @@ mdlBtnEditCarrier.addEventListener("click", function (e) {
     var departmentId = $('#mdl_edit_carrier_department option:selected').val();
     var description = myEditorEdit.getData();
     var carrier = $('#carrier_edit').prop('files')[0];
-    var expDate = $('#exp_date').val()
+    var expDate = $('#exp_date_edit').val();
 
     var formData = new FormData();
     formData.append('departmentId', departmentId);
