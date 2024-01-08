@@ -39,8 +39,14 @@ const btnTabCluster = document.getElementsByClassName("tab-cluster");
 
 function formTabChangeCluster() {
     const clusterId = $(this).data("cluster_id");
-
+    const lat = $(this).data("latitude");
+    const long = $(this).data("longitude");
+    console.log(lat)
     setClusterFacility(clusterId);
+    // if (lat != '' && long != '') {
+    //     reloadMap(-6.175403, 106.824584)
+    // }
+
 
 };
 
@@ -101,3 +107,10 @@ $(window).scroll(function () {
         document.getElementById('btn_scroll_down').style.visibility = "visible";
     }
 })
+
+function reloadMap(lat, long) {
+    var newLocation = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126934.52850657306!2d${lat}!3d${long}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698a4d1f38b353%3A0x69075bc2ab417320!2sKantor%20Pemasaran%20Victoria%20by%20METROLAND!5e0!3m2!1sid!2sid!4v1698081622789!5m2!1sid!2sid`;
+    document.getElementById("mapView").src += newLocation;
+    window.frames['mapView'].location.reload();
+    // document.getElementById("mapView").reload(true);
+}

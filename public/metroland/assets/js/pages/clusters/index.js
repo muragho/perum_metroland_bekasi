@@ -237,6 +237,20 @@ var validator = FormValidation.formValidation(
                     }
                 }
             },
+            latitude: {
+                validators: {
+                    numeric: {
+                        message: 'Nilai berupa angka'
+                    }
+                }
+            },
+            longitude: {
+                validators: {
+                    numeric: {
+                        message: 'Nilai berupa angka'
+                    }
+                }
+            }
         },
 
         plugins: {
@@ -278,6 +292,8 @@ function formEditCluster() {
     const total_garage = $(this).data("total_garage");
     const area = $(this).data("total_area");
     const building_area = $(this).data("total_building_area");
+    const lat = $(this).data("latitude");
+    const long = $(this).data("longitude");
 
     target = document.querySelector("#list-file-cluster");
     if (!blockUI) {
@@ -303,6 +319,8 @@ function formEditCluster() {
                 $('#mdl-edit-cluster-garage').val(total_garage);
                 $('#mdl-edit-cluster-area').val(area);
                 $('#mdl-edit-cluster-home').val(building_area);
+                $('#mdl-edit-cluster-latitude').val(lat);
+                $('#mdl-edit-cluster-longitude').val(long);
 
                 console.log("show images")
                 addImageInput(response);
@@ -533,7 +551,9 @@ function doEdit() {
     const total_garage = $('#mdl-edit-cluster-garage').val();
     const area = $('#mdl-edit-cluster-area').val();
     const building_area = $('#mdl-edit-cluster-home').val();
-    const isEditImage = document.getElementById('btn-switch-block').checked
+    const isEditImage = document.getElementById('btn-switch-block').checked;
+    const latitude = $('#mdl-edit-cluster-latitude').val();
+    const longitude = $('#mdl-edit-cluster-longitude').val();
     var img1 = $('#logo_klaster_1').prop('files')[0];
     var img2 = $('#logo_klaster_2').prop('files')[0];
     var img3 = $('#logo_klaster_3').prop('files')[0];
@@ -556,6 +576,8 @@ function doEdit() {
     formData.append('file', img4);
     formData.append('file', img5);
     formData.append('facilities', facilities);
+    formData.append('latitude', latitude);
+    formData.append('longitude', longitude);
 
     $.ajax({
         method: "PUT",
