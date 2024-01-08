@@ -120,13 +120,13 @@
 
                                                     <div class="spec-img col-md-7">
                                                         <div id="carouselExample_<%= cluster.id %>"
-                                                            class="carousel carousel-dark slide"
-                                                            data-bs-ride="carousel1" data-bs-pause="hover1">
+                                                            class="carousel carousel-dark slide" data-bs-ride="carousel"
+                                                            data-bs-pause="hover">
 
                                                             <div class="carousel-inner">
                                                                 <%let ciNo=1; cluster.ClusterImages.forEach(ci=>{%>
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
-                                                                        %>">
+                                                                        %>" data-bs-interval="2000">
                                                                         <div class="img-container">
                                                                             <a href="#" class="pop">
                                                                                 <img src="/metroland/assets/img_cluster/<%= ci.image %>"

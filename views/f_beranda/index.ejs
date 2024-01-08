@@ -1,7 +1,8 @@
 <%- include('../layouts/f_header') %>
     <%- include('../layouts/f_menu_beranda') %>
 
-        <div id="carouselExampleIndicators" class="carousel slide">
+        <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel"
+            data-bs-pause="hover">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
@@ -11,13 +12,13 @@
                     aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active" data-bs-interval="2000">
                     <img src="/metroland/assets/img/Aglonema.jpg" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="2000">
                     <img src="/metroland/assets/img/Torino.jpg" class="d-block w-100" alt="...">
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" data-bs-interval="2000">
                     <img src="/metroland/assets/img/Untitled-1.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
