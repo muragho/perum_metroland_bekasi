@@ -284,6 +284,11 @@
 		font-size: small;
 		padding: 5px;
 	}
+	.img-container{
+		width: auto;
+		height: auto;
+		object-fit: cover;
+	}
 }
 
 @media screen and (max-width:922px) {
@@ -331,5 +336,11 @@
 		text-decoration: none;
 		font-size: small;
 		padding: 5px;
+	}
+
+	.img-container{
+		width: auto;
+		height: auto;
+		object-fit: contain;
 	}
 }

@@ -54,16 +54,14 @@
                                     role="tabpanel"
                                     aria-labelledby="pills-<%= cluster.id %>-tab" tabindex="0">
                                         <div>
-                                            <div class="card mx-auto mx-5 my-5">
-                                                <div class="row g-0 d-flex align-items-center">
+                                            <div class="card mx-auto mx-5 my-5 align-top">
+                                                <div class="row g-0 d-flex">
                                                     <div class="col-md-5">
                                                         <div class="card-body" style="overflow-x: hidden">
-                                                            <h1 class="card-title" data-aos="fade-right"
-                                                                data-aos-delay="200">
+                                                            <h1 class="card-title">
                                                                 <%= cluster.name.toUpperCase() %>
                                                             </h1>
-                                                            <p class="card-text" data-aos="fade-left"
-                                                                data-aos-delay="200">
+                                                            <p class="card-text">
                                                                 <%= cluster.description %>
                                                             </p>
                                                             <div class="cluster-spec table-responsive">
@@ -122,17 +120,20 @@
 
                                                     <div class="spec-img col-md-7">
                                                         <div id="carouselExample_<%= cluster.id %>"
-                                                            class="carousel carousel-dark slide" data-bs-ride="carousel"
-                                                            data-bs-pause="hover">
+                                                            class="carousel carousel-dark slide"
+                                                            data-bs-ride="carousel1" data-bs-pause="hover1">
 
                                                             <div class="carousel-inner">
                                                                 <%let ciNo=1; cluster.ClusterImages.forEach(ci=>{%>
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
-                                                                        %>" data-bs-interval="2000">
-                                                                        <a href="#" class="pop">
-                                                                            <img src="/metroland/assets/img_cluster/<%= ci.image %>"
-                                                                                class="img-fluid" loading="lazy">
-                                                                        </a>
+                                                                        %>">
+                                                                        <div class="img-container">
+                                                                            <a href="#" class="pop">
+                                                                                <img src="/metroland/assets/img_cluster/<%= ci.image %>"
+                                                                                    class="img-thumbnail1 mx-auto w-100 h-100"
+                                                                                    loading="lazy">
+                                                                            </a>
+                                                                        </div>
 
                                                                     </div>
                                                                     <%ciNo++})%>
