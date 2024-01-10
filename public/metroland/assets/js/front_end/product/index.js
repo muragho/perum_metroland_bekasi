@@ -96,9 +96,9 @@ function setClusterFacility(clusterId) {
                 let clusterImages = '';
                 response.data.cluster_images.forEach(element => {
                     clusterImages += `<div class="carousel-item carousel-item-mdl" id="img-${element.id}">
-                    <div class="img-container">
-                        <a href="#" class="pop">
-                            <img src="/metroland/assets/img_cluster/${element.image}" class="mw-100 mh-100"
+                    <div class="img-container pb-10">
+                        <a href="#" class="pop pb-10">
+                            <img src="/metroland/assets/img_cluster/${element.image}" class="w-auto mh-100"
                                 loading="lazy">
                         </a>
                     </div>

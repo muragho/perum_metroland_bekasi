@@ -10,7 +10,7 @@
             <a href="#pills-tabContent" class="scroll-down index_page" id="btn_scroll_down">
                 <div class="content-scroll">
                     <div>
-                        <i class="bi bi-arrow-down-circle-fill fs-1"></i>
+                        <i class="bi bi-arrow-down-circle fs-1"></i>
                     </div>
                 </div>
             </a>
@@ -28,7 +28,7 @@
             <div class="container my-2 py-5" style="overflow-x: hidden">
                 <div class="cluster-title text-center img-fluid">
                     <img src="/metroland/assets/img/<%= data.image %>" loading="lazy">
-                    <p>
+                    <p id="pills-tabContent">
                         <%= JSDOM.fragment(data.content).textContent%>
                     </p>
                 </div>
@@ -50,7 +50,7 @@
                             <%no++});%>
                     </ul>
 
-                    <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-content">
                         <%let no_=1; data.clusters.forEach(cluster=> {%>
                             <div class="tab-pane fade show <%- no_ == 1?" active":""%>" id="cluster_<%= cluster.id %>"
                                     role="tabpanel"

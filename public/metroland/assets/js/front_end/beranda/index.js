@@ -10,8 +10,23 @@ $(document).ready(function () {
     //     debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
     //     throttleDelay: 99,
     // });
+
     getPromo();
 });
+
+// $(document).click(function (event) {
+//     console.log(event)
+//     $("#navbarNavDropdown").removeClass("show");
+// });
+
+$('.nav-link').click(function () {
+    $("#navbarNavDropdown").removeClass("show");
+});
+$('.dropdown-item').click(function () {
+    $("#navbarNavDropdown").removeClass("show");
+})
+
+
 
 const BERANDA_URL = '/beranda/api/v1'
 
