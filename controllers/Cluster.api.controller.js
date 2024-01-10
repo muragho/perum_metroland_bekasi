@@ -39,14 +39,24 @@ async function doEditCluster(req, res) {
     const clusterId = req.params.id;
     let reqBody = req.body;
     const bearer = req.bearer;
-    console.log(`id : ${clusterId} , body : ${JSON.stringify(reqBody)}`)
+
 
     const t = await db.conn.transaction();
     try {
 
+        if (reqBody.hasOwnProperty('latitude') && reqBody.latitude == '') {
+            await delete reqBody.latitude;
+        }
+        if (reqBody.hasOwnProperty('longitude') && reqBody.longitude == '') {
+            await delete reqBody.longitude;
+        }
+        console.log(`id : ${clusterId} , body : ${JSON.stringify(reqBody)}`)
+
         await clusterService.doEdit(clusterId, reqBody, t);
 
         reqBody.id = clusterId;
+        reqBody.latitude = parseFloat(reqBody.latitude);
+        reqBody.longitude = parseFloat(reqBody.longitude);
 
         if (reqBody.isEditImage) {
 
@@ -148,10 +158,12 @@ async function getClusterFacilities(req, res) {
 
         const facilities = await clusterService.getClusterFacilities(clusterId);
         const access = await accessServices.getAccessByCluster(clusterId);
+        const cluster_images = await clusterService.getClusterImageByCluster(clusterId);
 
         let data = {};
         data.facilities = facilities.facilities;
         data.access = access;
+        data.cluster_images = cluster_images;
 
         await response(res, 200, 200, 'success', data);
 

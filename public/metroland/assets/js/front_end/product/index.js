@@ -67,14 +67,19 @@ function setClusterFacility(clusterId) {
 
                 let html = ``;
                 response.data.facilities.forEach(element => {
-                    html += `<div class="col-md-3 col-sm-6 mb-2">
-                    <div class="card mx-auto">
-                        <img src="/metroland/assets/img/${element.image}" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">${element.name}</h5>
+                    html += `
+                    
+                        <div class="col-md-3 col-sm-6 mb-2">
+                            <div class="card mx-auto">
+                                <a href="#" class="pop-facility">
+                                    <img src="/metroland/assets/img/${element.image}" class="card-img-top">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">${element.name}</h5>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>`;
+                `;
                 });
 
                 let htmlAccess = ``;
@@ -88,8 +93,27 @@ function setClusterFacility(clusterId) {
                 </div>`;
                 })
 
+                let clusterImages = '';
+                response.data.cluster_images.forEach(element => {
+                    clusterImages += `<div class="carousel-item carousel-item-mdl" id="img-${element.id}">
+                    <div class="img-container">
+                        <a href="#" class="pop">
+                            <img src="/metroland/assets/img_cluster/${element.image}" class="mw-100 mh-100"
+                                loading="lazy">
+                        </a>
+                    </div>
+                </div>`
+                })
+
                 document.getElementById("facility-body").innerHTML = html;
                 document.getElementById("access-body").innerHTML = htmlAccess;
+                document.getElementById("clusterImage").innerHTML = clusterImages;
+
+
+                $('.pop-facility').on('click', function () {
+                    $('.imagepreview-facility').attr('src', $(this).find('img').attr('src'));
+                    $('#imagemodal-facility').modal('show');
+                });
             }
         }).fail((error) => {
             showErrorAlert(error);
@@ -97,9 +121,19 @@ function setClusterFacility(clusterId) {
 }
 
 $('.pop').on('click', function () {
+    $(".carousel-item-mdl").removeClass("active");
+
+    var id = $(this).find('img').attr('id');
+    $("#img-" + id).addClass("active");
     $('.imagepreview').attr('src', $(this).find('img').attr('src'));
     $('#imagemodal').modal('show');
 });
+
+$('.pop-proyek-area').on('click', function () {
+    $('.imagepreview-pa').attr('src', $(this).find('img').attr('src'));
+    $('#imagemodal-pa').modal('show');
+});
+
 $(window).scroll(function () {
     if ($(window).scrollTop() > 10) {
         document.getElementById('btn_scroll_down').style.visibility = "hidden";

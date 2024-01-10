@@ -165,6 +165,14 @@
 	margin-top: 5px;
   }
 
+@media only screen and (min-width:992px){
+
+	.imagepreview-facility{
+		width: auto;
+		height: 100%;
+	}
+}
+
 @media screen and (max-width:574px) {
 
 	.nav-item .dropdown-menu {
@@ -289,6 +297,11 @@
 		height: auto;
 		object-fit: cover;
 	}
+
+	.imagepreview-pa img{
+		width: 100%;
+		height: auto;
+	}
 }
 
 @media screen and (max-width:922px) {
@@ -342,5 +355,10 @@
 		width: auto;
 		height: auto;
 		object-fit: contain;
+	}
+
+	.imagepreview-pa img{
+		width: 100%;
+		height: auto;
 	}
 }

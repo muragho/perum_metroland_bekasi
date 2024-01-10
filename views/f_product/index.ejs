@@ -58,7 +58,7 @@
                                         <div>
                                             <div class="card mx-auto mx-5 my-5 align-top">
                                                 <div class="row g-0 d-flex">
-                                                    <div class="col-md-5">
+                                                    <div class="col-md-5 nomor-2">
                                                         <div class="card-body" style="overflow-x: hidden">
                                                             <h1 class="card-title">
                                                                 <%= cluster.name.toUpperCase() %>
@@ -120,7 +120,7 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="spec-img col-md-7">
+                                                    <div class="spec-img col-md-7 nomor-1">
                                                         <div id="carouselExample_<%= cluster.id %>"
                                                             class="carousel carousel-dark slide" data-bs-ride="carousel"
                                                             data-bs-pause="hover">
@@ -133,7 +133,7 @@
                                                                             <a href="#" class="pop">
                                                                                 <img src="/metroland/assets/img_cluster/<%= ci.image %>"
                                                                                     class="img-thumbnail1 mx-auto w-100 h-100"
-                                                                                    loading="lazy">
+                                                                                    id="<%= ci.id %>" loading="lazy">
                                                                             </a>
                                                                         </div>
 
@@ -171,7 +171,10 @@
         <div class="container-fluid bg-white mt-5 py-5">
             <div class="container text-center py-5">
                 <h1 class="pb-3">Proyek Area</h1>
-                <img class="img-fluid" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy">
+                <a href="#" class="pop-proyek-area">
+                    <img class="img-fluid" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>"
+                        loading="lazy">
+                </a>
             </div>
         </div>
 
