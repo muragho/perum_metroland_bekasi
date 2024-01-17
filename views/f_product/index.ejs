@@ -32,14 +32,14 @@
                         <%= JSDOM.fragment(data.content).textContent%>
                     </p>
                 </div>
-
                 <div>
                     <ul class="nav nav-pills mt-5 nav-justified" id="pills-tab" role="tablist">
                         <%let no=1; data.clusters.forEach(cluster=> {%>
                             <li class="nav-item" role="presentation">
 
                                 <button class="nav-link tab-cluster <%- no == 1 ?" active":""%>" id="pills-<%=
-                                        cluster.id %>-tab" data-cluster_id="<%= cluster.id %>"
+                                        cluster.id %>
+                                        -tab" data-cluster_id="<%= cluster.id %>"
                                             data-bs-toggle="pill" data-latitude="<%= cluster.latitude %>"
                                                 data-longitude="<%= cluster.longitude %>"
                                                     data-bs-target="#cluster_<%= cluster.id %>" type="button" role="tab"

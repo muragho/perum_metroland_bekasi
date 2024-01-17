@@ -336,6 +336,20 @@
 
 @media screen and (max-width:922px) {
 	
+	#pills-tab .nav-link.tab-cluster.active{
+		background-color:#B37F2C;
+		/* padding-top: -0.5px;
+		padding-bottom: -0.5px; */
+		padding: 0px -0.1px 0px 0px;
+		margin-top: 0px;
+		margin-bottom: -0px;
+		
+	}
+	#pills-tab > li > .nav-link.active{
+		height: 37px;
+	}
+
+
 	.nav-item .dropdown-menu {
 		display: none;
 		background-color: white;
