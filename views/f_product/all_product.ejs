@@ -42,42 +42,11 @@
                     if(number % 2 === 0){%>
 
                     <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
-                        <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                            <div class="col-md-6 nomor-2">
-                                <div class="card-body text-end">
-                                    <h1 class="card-title-product text-uppercase">
-                                        <%= product.title.replace(title[totWord-1] , '' )%>
-                                            <% if(totWord> 1){%>
-                                                <span
-                                                    style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
-                                                    <%= title[totWord-1]%>
-                                                </span>
-                                                <%}%>
-                                    </h1>
-                                    <p class="card-text text-start fs-6 text-wrap">
-                                        <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
-                                    </p>
-                                    <a href="/produk/<%= product.id %>">Selanjutnya <img
-                                            src="/metroland/assets/img/arrow.png"></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6 nomor-1">
-                                <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
-                                    class="img-fluid float-end rounded" alt="...">
-                            </div>
-                        </div>
-                    </div>
 
-                    <%}else{%>
-
-                        <div class=" card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
+                        <a href="/produk/<%= product.id %>">
                             <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                                <div class="col-md-6">
-                                    <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
-                                        class="img-fluid float-start rounded" alt="...">
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="card-body">
+                                <div class="col-md-6 nomor-2">
+                                    <div class="card-body text-end">
                                         <h1 class="card-title-product text-uppercase">
                                             <%= product.title.replace(title[totWord-1] , '' )%>
                                                 <% if(totWord> 1){%>
@@ -87,14 +56,52 @@
                                                     </span>
                                                     <%}%>
                                         </h1>
-                                        <p class="card-text fs-6 text-wrap">
+                                        <p class="card-text text-start fs-6 text-wrap">
                                             <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
                                         </p>
-                                        <a href="/produk/<%= product.id %>">Selanjutnya <img
-                                                src="/metroland/assets/img/arrow.png"></a>
+                                        Selanjutnya <img
+                                                src="/metroland/assets/img/arrow.png">
                                     </div>
                                 </div>
+                                <div class="col-md-6 nomor-1">
+                                    <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
+                                        class="img-fluid float-end rounded" alt="...">
+                                </div>
                             </div>
+                        </a>
+                    </div>
+
+                    <%}else{%>
+
+                        <div class=" card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded">
+                            
+                            <a href="/produk/<%= product.id %>">
+                                <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
+                                    <div class="col-md-6">
+                                        <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
+                                            class="img-fluid float-start rounded" alt="...">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <h1 class="card-title-product text-uppercase">
+                                                <%= product.title.replace(title[totWord-1] , '' )%>
+                                                    <% if(totWord> 1){%>
+                                                        <span
+                                                            style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
+                                                            <%= title[totWord-1]%>
+                                                        </span>
+                                                        <%}%>
+                                            </h1>
+                                            <p class="card-text fs-6 text-wrap">
+                                                <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
+                                            </p>
+                                            Selanjutnya <img
+                                                    src="/metroland/assets/img/arrow.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
                         </div>
 
                         <%}number++});%>
