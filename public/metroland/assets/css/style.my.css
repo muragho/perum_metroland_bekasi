@@ -177,11 +177,16 @@
     
 }
 
+.img-cluster img{
+	background-color: transparent;
+	border-color: transparent;
+}
+
 @media only screen and (min-width:992px){
 
 	.imagepreview-facility{
-		width: auto;
-		height: 100%;
+		width: 50%;
+		height: auto;
 	}
 
 	.img-product{

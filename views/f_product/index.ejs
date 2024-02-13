@@ -129,10 +129,10 @@
                                                                 <%let ciNo=1; cluster.ClusterImages.forEach(ci=>{%>
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
                                                                         %>" data-bs-interval="2000">
-                                                                        <div class="img-container">
+                                                                        <div class="img-container img-cluster">
                                                                             <a href="#" class="pop">
                                                                                 <img src="/metroland/assets/img_cluster/<%= ci.image %>"
-                                                                                    class="img-thumbnail1 mx-auto w-100 h-100"
+                                                                                    class="img-thumbnail"
                                                                                     id="<%= ci.id %>" loading="lazy">
                                                                             </a>
                                                                         </div>
