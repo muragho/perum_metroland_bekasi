@@ -18,11 +18,20 @@
                         PRODUK
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <% products.forEach(product=> {%>
-                            <a class="dropdown-item" href="#<%= product.title.replaceAll(' ',' _') %>">
-                                <%= product.title%>
-                            </a>
-                            <%})%>
+                        
+                            <% for(i=0;i < products.length;i++) {
+                                
+                                if(i == 0){%>
+                                    <a class="dropdown-item" href="#produk">
+                                        <%= products[i].title%>
+                                    </a>
+                               <% }else{%>
+                                <a class="dropdown-item" href="#<%= products[i].title.replaceAll(' ',' _') %>_header">
+                                    <%= products[i].title%>
+                                </a>
+                               <%}%>
+                                
+                                <%}%>
 
                     </div>
                 </li>

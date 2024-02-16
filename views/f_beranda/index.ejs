@@ -37,20 +37,20 @@
         <!-- produk -->
         <div class="container-fluid py-2" id="produk">
             <div class="container-fluid px-md-5">
-                <% let number=1; products.forEach(product=> {
+                <% let number=1; for(i=0;i<products.length;i++){
 
-                    const title=product.title.split(" ");const totWord = title.length;
+                    const title=products[i].title.split(" ");const totWord = title.length;
                     if(number % 2 === 0){%>
                     <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
-                        id="<%= product.title.replaceAll(' ',' _')%>">
+                        id="<%= products[i].title.replaceAll(' ',' _')%>">
 
-                        <a href="/produk/<%= product.id %>">
+                        <a href="/produk/<%= products[i].id %>">
 
                             <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
                                 <div class="col-md-6 nomor-2">
                                     <div class="card-body text-end">
                                         <h1 class="card-title-product text-uppercase">
-                                            <%= product.title.replace(title[totWord-1].trim() , '' )%>
+                                            <%= products[i].title.replace(title[totWord-1].trim() , '' )%>
                                                 <% if(totWord> 1){%>
                                                     <span
                                                         style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
@@ -59,32 +59,40 @@
                                                     <%}%>
                                         </h1>
                                         <p class="card-text text-start fs-6 text-wrap">
-                                            <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
+                                            <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
+                                            
                                         </p>
                                         Selengkapnya <img src="/metroland/assets/img/arrow.png">
                                     </div>
                                 </div>
                                 <div class="col-md-6 h-100 nomor-1" style="max-height: 50%;">
-                                    <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
+                                    <img src="/metroland/assets/img_product/<%= products[i].image_banner_1%>"
                                         class="img-fluid float-end rounded" alt="...">
                                 </div>
                             </div>
                         </a>
+                        <% if(i < (products.length -1)){ %>
+                            <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
+                        <%}else{%>
+                            <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
+                        <%} %>
+                        
+                        
                     </div>
                     <%}else{%>
                         <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
-                            id="<%= product.title.replaceAll(' ',' _')%>">
-                            <a href="/produk/<%= product.id %>">
+                            id="<%= products[i].title.replaceAll(' ',' _')%>">
+                            <a href="/produk/<%= products[i].id %>">
 
                                 <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
                                     <div class="col-md-6 h-100">
-                                        <img src="/metroland/assets/img_product/<%= product.image_banner_1%>"
+                                        <img src="/metroland/assets/img_product/<%= products[i].image_banner_1%>"
                                             class="img-fluid float-start rounded" alt="...">
                                     </div>
                                     <div class="col-md-6">
                                         <div class="card-body">
                                             <h1 class="card-title-product text-uppercase">
-                                                <%= product.title.replace(title[totWord-1], '' )%>
+                                                <%= products[i].title.replace(title[totWord-1], '' )%>
                                                     <% if(totWord> 1){%>
                                                         <span
                                                             style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px;">
@@ -93,15 +101,20 @@
                                                         <%}%>
                                             </h1>
                                             <p class="card-text fs-6 text-wrap">
-                                                <%= JSDOM.fragment(product.content.substring(0,350)).textContent%>...
+                                                <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
                                             </p>
                                             Selengkapnya <img src="/metroland/assets/img/arrow.png">
                                         </div>
                                     </div>
                                 </div>
                             </a>
+                            <% if(i < (products.length -1)){ %>
+                                <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
+                            <%}else{%>
+                                <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
+                            <%} %>
                         </div>
-                        <%}number++});%>
+                        <%}number++};%>
 
             </div>
             <div class="text-center">
