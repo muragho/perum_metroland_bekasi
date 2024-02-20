@@ -345,13 +345,13 @@
 		background-color:#B37F2C;
 		/* padding-top: -0.5px;
 		padding-bottom: -0.5px; */
-		padding: 0px -0.1px 0px 0px;
+		/* padding: 0px -0.1px 0px 0px; */
 		margin-top: 0px;
 		margin-bottom: -0px;
 		
 	}
 	#pills-tab > li > .nav-link.active{
-		height: 37px;
+		height: 36px;
 	}
 
 
@@ -396,9 +396,9 @@
 
 	#pills-tab .nav-item {
 		border-color: #B37F2C;
-		margin-top: -5px;
-		padding: 0.5rem 0rem;
-		height: 46px;
+		margin-top: -2px;
+		padding: 8px 0px 7px 0.5px;
+		border-width: 1px;
 	}
 
 	#simulasi img{
