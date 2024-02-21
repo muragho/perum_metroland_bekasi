@@ -29,7 +29,7 @@
                 <div class="cluster-title text-center img-fluid">
                     <img src="/metroland/assets/img/<%= data.image %>" loading="lazy">
                     <p id="pills-tabContent">
-                        <%= JSDOM.fragment(data.content).textContent%>
+                        <%# JSDOM.fragment(data.content).textContent%>
                     </p>
                 </div>
                 <div>
@@ -168,19 +168,20 @@
             </div>
         </div>
 
-        <div class="container-fluid bg-white mt-5 py-5">
-            <div class="container text-center py-5">
+        <div class="container-fluid bg-white mt-5">
+            <div class="container1 text-center py-2">
                 <h1 class="pb-3">Proyek Area</h1>
                 <a href="#" class="pop-proyek-area">
-                    <div class="row justify-content-center">
+                    <div class="justify-content-center">
                         <div>
-                            <img class="img-fluid h-75" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>"
+                            <img class="img-fluid img-thumbnail1 card-img-top1" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>"
                                 loading="lazy">
                         </div>
                     </div>
                 </a>
             </div>
         </div>
+        
 
         <div class="container-fluid py-3" id="fasilitas">
             <div class="container-fluid py-3 px-1 text-center">

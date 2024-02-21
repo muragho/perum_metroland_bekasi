@@ -3,7 +3,7 @@
 
         <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel"
             data-bs-pause="hover">
-            <div class="carousel-indicators">
+            <div class="carousel-indicators" id="first_prd">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                     aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -22,6 +22,7 @@
                     <img src="/metroland/assets/img/Untitled-1.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
+            
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -60,8 +61,14 @@
                                         </h1>
                                         <p class="card-text text-start fs-6 text-wrap">
                                             <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
-                                            
                                         </p>
+
+                                        <% if(i < (products.length -1)){ %>
+                                            <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
+                                        <%}else{%>
+                                            <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
+                                        <%} %>
+
                                         Selengkapnya <img src="/metroland/assets/img/arrow.png">
                                     </div>
                                 </div>
@@ -71,11 +78,7 @@
                                 </div>
                             </div>
                         </a>
-                        <% if(i < (products.length -1)){ %>
-                            <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
-                        <%}else{%>
-                            <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
-                        <%} %>
+                        
                         
                         
                     </div>
@@ -103,16 +106,19 @@
                                             <p class="card-text fs-6 text-wrap">
                                                 <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
                                             </p>
+
+                                            <% if(i < (products.length -1)){ %>
+                                                <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
+                                            <%}else{%>
+                                                <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
+                                            <%} %>
+
                                             Selengkapnya <img src="/metroland/assets/img/arrow.png">
                                         </div>
                                     </div>
                                 </div>
                             </a>
-                            <% if(i < (products.length -1)){ %>
-                                <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
-                            <%}else{%>
-                                <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
-                            <%} %>
+                            
                         </div>
                         <%}number++};%>
 
@@ -254,6 +260,6 @@
             <%- include('../layouts/f_footer') %>
                 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
                 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-                <script src="/metroland/assets/js/front_end/beranda/index.js" async></script>
+                <script src="/metroland/assets/js/front_end/beranda/index.js"></script>
 
                 <%- include('../layouts/f_end') %>
