@@ -71,7 +71,7 @@ function setClusterFacility(clusterId) {
                     
                         <div class="col-md-3 col-sm-6 mb-2">
                             <div class="card mx-auto">
-                                <a href="#" class="pop-facility">
+                                <a class="pop-facility">
                                     <img src="/metroland/assets/img/${element.image}" class="card-img-top">
                                 </a>
                                 <div class="card-body">

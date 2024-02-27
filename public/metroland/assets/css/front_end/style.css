@@ -44,7 +44,7 @@ h1 {
    color: white;
    font-weight: 600;
    text-decoration: underline;
-   text-underline-offset: 10px;
+   text-underline-offset: 7px;
    text-decoration-thickness: 3px;
 }
 
@@ -52,7 +52,7 @@ h1 {
     color: white;
     font-weight: 600;
     text-decoration: underline;
-    text-underline-offset: 10px;
+    text-underline-offset: 7px;
     text-decoration-thickness: 3px;
  }
 
@@ -60,7 +60,7 @@ h1 {
    color: #B37F2C;
    font-weight: 600;
    text-decoration: underline;
-   text-underline-offset: 10px;
+   text-underline-offset: 7px;
    text-decoration-thickness: 3px;
 }
 
@@ -68,7 +68,7 @@ h1 {
     color: #B37F2C;
     font-weight: 600;
     text-decoration: underline;
-    text-underline-offset: 10px;
+    text-underline-offset: 7px;
     text-decoration-thickness: 3px;
  }
 
