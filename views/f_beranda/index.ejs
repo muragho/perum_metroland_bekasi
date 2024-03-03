@@ -22,7 +22,7 @@
                     <img src="/metroland/assets/img/Untitled-1.jpg" class="d-block w-100" alt="...">
                 </div>
             </div>
-            
+
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -37,98 +37,96 @@
 
         <!-- produk -->
         <div class="container-fluid py-2" id="produk">
-            <div class="container-fluid px-md-5">
-                <% let number=1; for(i=0;i<products.length;i++){
-
-                    const title=products[i].title.split(" ");const totWord = title.length;
+            <div class="container-fluid px-3">
+                <% let number=1; for(i=0;i<products.length;i++){ const title=products[i].title.split(" ");const totWord = title.length;
                     if(number % 2 === 0){%>
-                    <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
-                        id="<%= products[i].title.replaceAll(' ',' _')%>">
+                    <div class=" card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
+                    id="<%= products[i].title.replaceAll(' ',' _')%>">
 
-                        <a href="/produk/<%= products[i].id %>">
+                    <a href="/produk/<%= products[i].id %>">
 
-                            <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                                <div class="col-md-6 nomor-2">
-                                    <div class="card-body text-end">
-                                        <h1 class="card-title-product text-uppercase">
-                                            <%= products[i].title.replace(title[totWord-1].trim() , '' )%>
-                                                <% if(totWord> 1){%>
-                                                    <span
-                                                        style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
-                                                        <%= title[totWord-1].trim()%>
-                                                    </span>
-                                                    <%}%>
-                                        </h1>
-                                        <p class="card-text text-start fs-6 text-wrap">
-                                            <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
-                                        </p>
+                        <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
+                            <div class="col-md-6 nomor-2">
+                                <div class="card-body text-end">
+                                    <h1 class="card-title-product text-uppercase">
+                                        <%= products[i].title.replace(title[totWord-1].trim() , '' )%>
+                                            <% if(totWord> 1){%>
+                                                <span
+                                                    style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px ;">
+                                                    <%= title[totWord-1].trim()%>
+                                                </span>
+                                                <%}%>
+                                    </h1>
+                                    <p class="card-text text-start fs-6 text-wrap">
+                                        <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
+                                    </p>
 
-                                        <% if(i < (products.length -1)){ %>
-                                            <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
+                                    <% if(i < (products.length -1)){ %>
+                                        <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
                                         <%}else{%>
                                             <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
-                                        <%} %>
-
-                                        Selengkapnya <img src="/metroland/assets/img/arrow.png">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 h-100 nomor-1" style="max-height: 50%;">
-                                    <img src="/metroland/assets/img_product/<%= products[i].image_banner_1%>"
-                                        class="img-fluid float-end rounded" alt="...">
-                                </div>
-                            </div>
-                        </a>
-                        
-                        
-                        
-                    </div>
-                    <%}else{%>
-                        <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
-                            id="<%= products[i].title.replaceAll(' ',' _')%>">
-                            <a href="/produk/<%= products[i].id %>">
-
-                                <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
-                                    <div class="col-md-6 h-100">
-                                        <img src="/metroland/assets/img_product/<%= products[i].image_banner_1%>"
-                                            class="img-fluid float-start rounded" alt="...">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card-body">
-                                            <h1 class="card-title-product text-uppercase">
-                                                <%= products[i].title.replace(title[totWord-1], '' )%>
-                                                    <% if(totWord> 1){%>
-                                                        <span
-                                                            style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px;">
-                                                            <%= title[totWord-1]%>
-                                                        </span>
-                                                        <%}%>
-                                            </h1>
-                                            <p class="card-text fs-6 text-wrap">
-                                                <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
-                                            </p>
-
-                                            <% if(i < (products.length -1)){ %>
-                                                <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
-                                            <%}else{%>
-                                                <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
                                             <%} %>
 
-                                            Selengkapnya <img src="/metroland/assets/img/arrow.png">
-                                        </div>
-                                    </div>
+                                                Selengkapnya <img src="/metroland/assets/img/arrow.png">
                                 </div>
-                            </a>
-                            
+                            </div>
+                            <div class="col-md-6 h-100 nomor-1" style="max-height: 50%;">
+                                <img src="/metroland/assets/img_product/<%= products[i].image_banner_1%>"
+                                    class="img-fluid float-end rounded" alt="...">
+                            </div>
                         </div>
-                        <%}number++};%>
+                    </a>
 
-                        <div class="text-center">
-                            <button class="btn-primary">
-                                <a href="/produk">Lihat Semua Produk</a>
-                            </button>
-                        </div>
+
+
             </div>
-            
+            <%}else{%>
+                <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
+                    id="<%= products[i].title.replaceAll(' ',' _')%>">
+                    <a href="/produk/<%= products[i].id %>">
+
+                        <div class="row g-0 d-flex align-items-center" style="overflow-x: hidden">
+                            <div class="col-md-6 h-100">
+                                <img src="/metroland/assets/img_product/<%= products[i].image_banner_1%>"
+                                    class="img-fluid float-start rounded" alt="...">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h1 class="card-title-product text-uppercase">
+                                        <%= products[i].title.replace(title[totWord-1], '' )%>
+                                            <% if(totWord> 1){%>
+                                                <span
+                                                    style="color: #9B927F; text-decoration: underline; text-underline-offset: 10px; text-decoration-thickness: 4px;">
+                                                    <%= title[totWord-1]%>
+                                                </span>
+                                                <%}%>
+                                    </h1>
+                                    <p class="card-text fs-6 text-wrap">
+                                        <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
+                                    </p>
+
+                                    <% if(i < (products.length -1)){ %>
+                                        <div id="<%= products[i + 1].title.replaceAll(' ',' _') %>_header"></div>
+                                        <%}else{%>
+                                            <div id="<%= products[i].title.replaceAll(' ',' _') %>_header"></div>
+                                            <%} %>
+
+                                                Selengkapnya <img src="/metroland/assets/img/arrow.png">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                <%}number++};%>
+
+                    <div class="text-center">
+                        <button class="btn-primary">
+                            <a href="/produk">Lihat Semua Produk</a>
+                        </button>
+                    </div>
+        </div>
+
         </div>
 
         <!-- brand value -->
@@ -198,10 +196,11 @@
                         style="height: 25px; margin: auto; padding-right: 10px;">Simulasi KPR
                 </button>
             </div>
+            <div id="berita"></div>
         </div>
 
         <!-- berita & event -->
-        <div class="container-fluid bg-white py-5" id="berita">
+        <div class="container-fluid bg-white py-5" id="berita_">
             <div class="container-fluid py-3 px-3">
                 <h1 class="text-center">Berita & Event</h1>
                 <div class="row pt-3 gy-5">
@@ -211,7 +210,7 @@
                             <div class="card mx-auto h-100 w-100">
                                 <a href="/berita/<%= n.id %>/detail">
                                     <%if(n.image_thubnail==null){%>
-                                        <img class="img-fluid img-thumbnail card-img-top h-100px"
+                                        <img class="img-fluid img-thumbnail card-img-top h-100px zoom"
                                             src="/metroland/assets/image_news_thubnail/noimage.png">
                                         <%}else{%>
                                             <img class="img-fluid img-thumbnail card-img-top h-100px"
