@@ -148,3 +148,25 @@ function reloadMap(lat, long) {
     window.frames['mapView'].location.reload();
     // document.getElementById("mapView").reload(true);
 }
+	
+function zoomin() {
+    var myImg = document.getElementById("img-proyek-area");
+    var currWidth = myImg.clientWidth;
+    
+    myImg.classList.remove("img-fluid");
+    if (currWidth == 2500) return false;
+    else {
+      myImg.style.width = (currWidth + 100) + "px";
+    }
+  }
+  
+  function zoomout() {
+    var myImg = document.getElementById("img-proyek-area");
+    var currWidth = myImg.clientWidth;
+
+    myImg.classList.remove("img-fluid");
+    if (currWidth == 100) return false;
+    else {
+      myImg.style.width = (currWidth - 100) + "px";
+    }
+  }

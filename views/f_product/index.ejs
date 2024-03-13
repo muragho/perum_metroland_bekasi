@@ -1,4 +1,58 @@
 <%- include('../layouts/f_header') %>
+ <style>
+    #navbar {
+  overflow: hidden;
+  background-color: #099;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 20px;
+}
+
+#navbar a {
+  float: left;
+  display: block;
+  color: #666;
+  text-align: center;
+  padding-right: 20px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+#navbar a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  cursor: grab;
+  cursor: -o-grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.main img {
+  height: auto;
+  width: 100%;
+}
+
+.button {
+  width: 300px;
+  height: 60px;
+}
+ </style>
     <meta name="first_cluster" content="<%= data.clusters[0].id %>">
     <%- include('../layouts/f_menu_general') %>
 
@@ -174,15 +228,27 @@
                 <a class="pop-proyek-area">
                     <div class="d-flex justify-content-center">
                         <div class="col-md-4 col-sm-12 col-xs-12">
-                            <img class="img-fluid" src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>"
-                            loading="lazy">
+                            <div class="main dragscroll">
+
+                                <img  class="img-fluid" id="img-proyek-area"
+                                    src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy">
+                            </div>
+
                         </div>
-                        
+
                     </div>
                 </a>
+                <div class="row">
+                    <div class="col-md-2 col-sm-12 m-2">
+                        <button type="button" class="btn btn-primary" onclick="zoomin()"> Zoom In</button>
+                    </div>
+                    <div class="col-md-2 col-sm-12 m-2">
+                        <button type="button" class="btn btn-primary" onclick="zoomout()"> Zoom Out</button>
+                    </div>
+                </div>
             </div>
         </div>
-        
+
         <div class="container-fluid py-3" id="fasilitas">
             <div class="container-fluid py-3 px-1 text-center">
                 <h1 class="text-center">Fasilitas</h1>
@@ -190,6 +256,7 @@
                 <div class="row pt-5 justify-content-center" id="facility-body">
 
                 </div>
+
             </div>
         </div>
 
@@ -216,5 +283,7 @@
             <%- include('../layouts/f_footer') %>
                 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
                 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+                <script type="text/javascript" src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
+                
                 <script src="/metroland/assets/js/front_end/product/index.js"></script>
                 <%- include('../layouts/f_end') %>
