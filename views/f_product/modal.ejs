@@ -76,24 +76,58 @@
 <div class="modal fade" id="imagemodal-pa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-fullscreen border-0" data-dismiss="modal">
-        <div class="modal-content bg-transparent">
+        <div class="modal-content bg-transparent1">
             <div class="text-end">
 
                 <div class="btn-close-mdl ms-2" data-bs-dismiss="modal" aria-label="Close">
-                    <span class="svg-icon svg-icon-2">
+                    <!-- <span class="svg-icon svg-icon-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor"
                             class="bi bi-x" viewBox="0 0 24 24">
                             <path
                                 d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
                         </svg>
-                    </span>
+                    </span> -->
+                    <i class="bi bi-x-lg fs-4 btn"></i>
                 </div>
 
             </div>
-            <div class="modal-body text-center">
-                <div class="w-100 h-100">
-                    <img src="" class="imagepreview-pa mw-100 mh-100">
+            
+            <div class="col text-center">
+                <div class="col-md-12 col-sm-12 m-2">
+                    <span id="btn-zoom-in"><i class="bi bi-plus-circle fs-4 btn"></i></span>
+                    <span id="btn-zoom-out"><i class="bi bi-dash-circle fs-4 btn"></i></span>
+                    <!-- <button type="button" class="btn btn-primary" onclick="zoomin()"> In</button> -->
                 </div>
+                
+            </div>
+            <div class="modal-body text-center">
+
+                <div class="d-flex justify-content-center">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <a class="pop-proyek-area">
+
+                            <div class="main dragscroll box1" id="zoomContainer">
+                                <img src="" class="imagepreview-pa mw-100 mh-100 img-fluid" id="zoomImage">
+                                <!-- <img  class="img-fluid" id="zoomImage"
+                                    src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy"> -->
+                            </div>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                <!-- <div class="w-100 h-100">
+                    <img src="" class="imagepreview-pa mw-100 mh-100">
+                    <div class="col">
+                        <div class="col-md-6 col-sm-12 m-2">
+                            <span id="btn-zoom-in" style="border: 1px;"><i class="bi bi-zoom-in fs-4 btn"></i></span>
+                            <span id="btn-zoom-out"><i class="bi bi-zoom-out fs-4 btn"></i></span>
+                            
+                        </div>
+                        
+                    </div>
+                </div> -->
+                
 
             </div>
         </div>
