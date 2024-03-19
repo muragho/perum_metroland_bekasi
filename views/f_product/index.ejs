@@ -1,5 +1,7 @@
 <%- include('../layouts/f_header') %>
- <style>
+    <link href="/metroland/assets/css/front_end/product/index.css" rel="stylesheet" type="text/css" />
+    
+    <style>
     #navbar {
   overflow: hidden;
   background-color: #099;
@@ -222,14 +224,46 @@
             </div>
         </div>
 
+
+
         <div class="container-fluid bg-white">
+            <div class="container text-center py-4">
+                <h1 class="pb-3">Proyek Area</h1>
+                <div class="d-flex justify-content-center">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+                        <div class="main dragscroll box1" id="zoomContainer">
+                            <img  class="img-fluid" id="zoomImage"
+                                src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy">
+                        </div>
+                        <div class="col">
+                            <div class="col-md-6 col-sm-12 m-2">
+                                <span id="btn-zoom-in" style="border: 1px;"><i class="bi bi-zoom-in fs-4 btn"></i></span>
+                                <span id="btn-zoom-out"><i class="bi bi-zoom-out fs-4 btn"></i></span>
+                                <!-- <button type="button" class="btn btn-primary" onclick="zoomin()"> In</button> -->
+                            </div>
+                            <div class="col-md-6 col-sm-12 m-2">
+                                <!-- <button type="button" class="btn btn-primary" onclick="zoomout()"> Out</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div> 
+       
+
+
+
+
+
+
+        <!-- <div class="container-fluid bg-white">
             <div class="container text-center py-4">
                 <h1 class="pb-3">Proyek Area</h1>
                 <a class="pop-proyek-area">
                     <div class="d-flex justify-content-center">
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <div class="main dragscroll">
-
                                 <img  class="img-fluid" id="img-proyek-area"
                                     src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy">
                             </div>
@@ -247,7 +281,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  -->
 
         <div class="container-fluid py-3" id="fasilitas">
             <div class="container-fluid py-3 px-1 text-center">
@@ -281,9 +315,11 @@
         </div>
         <%- include('modal') %>
             <%- include('../layouts/f_footer') %>
+                
                 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
                 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-                <script type="text/javascript" src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
-                
+                <script type="text/javascript"
+                    src="https://cdn.rawgit.com/asvd/dragscroll/master/dragscroll.js"></script>
+
                 <script src="/metroland/assets/js/front_end/product/index.js"></script>
                 <%- include('../layouts/f_end') %>

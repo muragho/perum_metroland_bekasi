@@ -15,6 +15,7 @@ $(document).ready(function () {
     //     throttleDelay: 99,
     // });
     checkforvideo();
+
 });
 
 var video = document.getElementById("my_video");
@@ -148,25 +149,124 @@ function reloadMap(lat, long) {
     window.frames['mapView'].location.reload();
     // document.getElementById("mapView").reload(true);
 }
-	
-function zoomin() {
-    var myImg = document.getElementById("img-proyek-area");
-    var currWidth = myImg.clientWidth;
-    
-    myImg.classList.remove("img-fluid");
-    if (currWidth == 2500) return false;
-    else {
-      myImg.style.width = (currWidth + 100) + "px";
-    }
-  }
-  
-  function zoomout() {
-    var myImg = document.getElementById("img-proyek-area");
-    var currWidth = myImg.clientWidth;
 
-    myImg.classList.remove("img-fluid");
-    if (currWidth == 100) return false;
-    else {
-      myImg.style.width = (currWidth - 100) + "px";
+// function zoomin() {
+//     var myImg = document.getElementById("img-proyek-area");
+//     var currWidth = myImg.clientWidth;
+
+//     myImg.classList.remove("img-fluid");
+//     if (currWidth == 2500) return false;
+//     else {
+//       myImg.style.width = (currWidth + 100) + "px";
+//     }
+//   }
+
+//   function zoomout() {
+//     var myImg = document.getElementById("img-proyek-area");
+//     var currWidth = myImg.clientWidth;
+
+//     myImg.classList.remove("img-fluid");
+//     if (currWidth == 100) return false;
+//     else {
+//       myImg.style.width = (currWidth - 100) + "px";
+//     }
+//   }
+
+
+
+
+
+
+
+// Get references to DOM elements
+const zoomContainer = document.getElementById("zoomContainer"),
+    zoomImage = document.getElementById("zoomImage"),
+    boxes = document.querySelectorAll(".box"),
+    zoomIn = document.getElementById("btn-zoom-in"),
+    zoomOut = document.getElementById("btn-zoom-out");
+
+
+let scl = 2;
+let zoomRatio = 1
+zoomIn.addEventListener("click",(e)=>{
+
+    // Get the dimensions and position of the zoomContainer
+const { left, top, width, height } = zoomContainer.getBoundingClientRect();
+console.log("left : "+left+" , top : "+top)
+// Calculate mouse position relative to zoomContainer
+const mouseX = e.clientX - left;
+const mouseY = e.clientY - top;
+console.log("mouseX : "+mouseX+" , mouseY : "+mouseY)
+
+// Set the zoom ratio (1.5x) and calculate zoom offsets
+
+const zoomX = (mouseX / width) * (1 - zoomRatio);
+const zoomY = (mouseY / height) * (1 - zoomRatio);
+
+// Apply zoom and translation to the zoomImage
+zoomImage.style.transform = `scale(${zoomRatio}) translate(${zoomX * scl}%, ${zoomY * scl
+    }%)`;
+scl = scl + 2;
+zoomRatio = zoomRatio + 1;
+// Change cursor to indicate zoom-in
+zoomContainer.style.cursor = "zoom-in";
+})
+
+zoomOut.addEventListener("click",(e)=>{
+    zoomImage.style.transform = "scale(1) translate(0%, 0%)";
+    zoomContainer.style.cursor = "default";
+
+    scl =2;
+    if(zoomRatio > 1){
+        zoomRatio = zoomRatio -1
     }
-  }
+    
+})
+
+
+
+
+// Store original image source of the zoomContainer
+let originalImageSrc = zoomImage.src;
+
+// Add click event listeners to each box
+boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        // Swap image sources between clicked box and zoomContainer
+        const clickedImage = box.querySelector("img");
+        const tempImageSrc = clickedImage.src;
+
+        clickedImage.src = originalImageSrc;
+        zoomImage.src = tempImageSrc;
+
+        originalImageSrc = zoomImage.src;
+    });
+});
+
+// Zoom effect on mousemove inside the zoomContainer
+// zoomContainer.addEventListener("mousemove", (e) => {
+//     // Get the dimensions and position of the zoomContainer
+//     const { left, top, width, height } = zoomContainer.getBoundingClientRect();
+
+//     // Calculate mouse position relative to zoomContainer
+//     const mouseX = e.clientX - left;
+//     const mouseY = e.clientY - top;
+
+//     // Set the zoom ratio (1.5x) and calculate zoom offsets
+//     const zoomRatio = 1.5;
+//     const zoomX = (mouseX / width) * (1 - zoomRatio);
+//     const zoomY = (mouseY / height) * (1 - zoomRatio);
+
+//     // Apply zoom and translation to the zoomImage
+//     zoomImage.style.transform = `scale(${zoomRatio}) translate(${zoomX * 100}%, ${zoomY * 100
+//         }%)`;
+
+//     // Change cursor to indicate zoom-in
+//     zoomContainer.style.cursor = "zoom-in";
+// });
+
+// Reset zoom effect and cursor on mouseout
+// zoomContainer.addEventListener("mouseout", () => {
+//     zoomImage.style.transform = "scale(1) translate(0%, 0%)";
+//     zoomContainer.style.cursor = "default";
+// });
