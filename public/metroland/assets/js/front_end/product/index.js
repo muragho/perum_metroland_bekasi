@@ -228,6 +228,8 @@ zoomOut.addEventListener("click", (e) => {
 
 zoomIn.addEventListener("click", (e) => {
     zoomImage.style.transform = `scale(${scl})`;
+    zoomImage.style.justifyContent = "left";
+    zoomImage.style.transformOrigin = "top";
 
     // zoomContainer.style.height = "100vh";
     zoomContainer.style.display = "flex";
