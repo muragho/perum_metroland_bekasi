@@ -76,7 +76,7 @@
 <div class="modal fade" id="imagemodal-pa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-fullscreen border-0" data-dismiss="modal">
-        <div class="modal-content bg-transparent1">
+        <div class="modal-content bg-light" style="background: rgba(35, 36, 36, 0.5) !important;">
             <div class="text-end">
                 <div class="btn-close-mdl ms-2" data-bs-dismiss="modal" aria-label="Close">
                     <i class="bi bi-x-lg fs-4 btn"></i>
@@ -84,14 +84,14 @@
 
             </div>
 
-            <div class="modal-body text-center">
+            <div class="modal-body text-center" z-index="-1" style="position: relative;">
 
-                <div class="container-fluid bg-white">
+                <div class="container-fluid">
                     <div class="container text-center py-4">
                         <div class="d-flex justify-content-center">
                             <div class="col-md-4 col-sm-12 col-xs-12">
                                 <div class="main1 dragscroll1" id="zoomContainer">
-                                    <img src="" class="imagepreview-pa mw-100 mh-100 img-fluid" id="zoomImage">
+                                    <img src="" class="imagepreview-pa mw-100 mh-100 img-fluid" id="zoomImage" z-index="2">
                                 </div>
 
                             </div>
@@ -100,11 +100,14 @@
                 </div>
 
             </div>
-            <div class="modal-footer">
-                <div class="col text-center">
-                    <div class="col-md-12 col-sm-12 m-2">
-                        <button class="btn btn-outline-secondary btn-sm" id="btn-zoom-in"><i class="bi bi-plus-circle fs-5"></i></button>
-                        <button class="btn btn-outline-secondary btn-sm" id="btn-zoom-out"><i class="bi bi-dash-circle fs-5"></i></button>
+            <div class="modal-footer" style="border-top: none;">
+                <div class="col d-flex justify-content-center">
+                    <div class="col-md-1 col-sm-12 m-2">
+                        <div class="bg-zoom p-1" style="background: rgba(11, 11, 11, 0.5) !important;">
+
+                            <button class="text-white" style="border: none; background-color: transparent;" id="btn-zoom-in"><i class="bi bi-plus-circle fs-5"></i></button>/
+                            <button class="text-white" style="border: none; background-color: transparent;" id="btn-zoom-out"><i class="bi bi-dash-circle fs-5"></i></button>
+                        </div>
                         <!-- <button type="button" class="btn btn-primary" onclick="zoomin()"> In</button> -->
                     </div>
 

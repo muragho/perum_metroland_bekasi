@@ -1,3 +1,8 @@
+:root{
+  --clr-gold:#D29F33;
+  --clr-white:#ffff;
+}
+
 /* Reset default margin, padding, and box-sizing */
 * {
     margin: 0;
@@ -147,3 +152,16 @@
       grid-row: 1 / span 5;
     }
   }
+
+  .bg-zoom {
+    border: 0px solid black;
+    border-radius: 100px;
+	  text-align: center;
+    background-color: black;
+    /* opacity: .1; */
+}
+.bg-zoom>div {
+    padding: 5px 15px;
+    border-radius: 100px;
+    background: darkblue;
+}
