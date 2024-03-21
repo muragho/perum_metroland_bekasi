@@ -220,7 +220,7 @@ zoomOut.addEventListener("click", (e) => {
         
     }
     zoomIn.disabled = false
-    
+
     scl = scl - 0.2
     zoomImage.style.transform = `scale(${scl})`;
     zoomContainer.style.cursor = "zoom-out";
@@ -229,7 +229,7 @@ zoomOut.addEventListener("click", (e) => {
 zoomIn.addEventListener("click", (e) => {
     zoomImage.style.transform = `scale(${scl})`;
 
-    zoomContainer.style.height = "100vh";
+    // zoomContainer.style.height = "100vh";
     zoomContainer.style.display = "flex";
     zoomContainer.style.alignItems = "center";
     zoomContainer.style.justifyContent = "center";
