@@ -87,17 +87,12 @@
             <div class="modal-body text-center">
 
                 <div class="container-fluid bg-white">
-                    <div class="container text-center py-4">
+                    <div class="ext-center py-4">
                         <div class="d-flex justify-content-center">
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <a class="pop-proyek-area">
-
-                                    <div class="main1 dragscroll" id="zoomContainer">
-                                        <img src="" class="imagepreview-pa mw-100 mh-100 img-fluid" id="zoomImage">
-                                        <!-- <img  class="img-fluid" id="zoomImage"
-                                            src="/metroland/assets/img_site_plan/<%= data.image_site_plan%>" loading="lazy"> -->
-                                    </div>
-                                </a>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="main dragscroll" id="zoomContainer">
+                                    <img src="" class="imagepreview-pa mw-100 mh-100 img-fluid" id="zoomImage">
+                                </div>
 
                             </div>
                         </div>
@@ -108,8 +103,8 @@
             <div class="modal-footer">
                 <div class="col text-center">
                     <div class="col-md-12 col-sm-12 m-2">
-                        <span id="btn-zoom-in"><i class="bi bi-plus-circle fs-4 btn"></i></span>
-                        <span id="btn-zoom-out"><i class="bi bi-dash-circle fs-4 btn"></i></span>
+                        <button class="btn btn-outline-secondary btn-sm" id="btn-zoom-in"><i class="bi bi-plus-circle fs-5"></i></button>
+                        <button class="btn btn-outline-secondary btn-sm" id="btn-zoom-out"><i class="bi bi-dash-circle fs-5"></i></button>
                         <!-- <button type="button" class="btn btn-primary" onclick="zoomin()"> In</button> -->
                     </div>
 

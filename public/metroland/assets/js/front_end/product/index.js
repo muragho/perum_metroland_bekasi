@@ -186,41 +186,64 @@ const zoomContainer = document.getElementById("zoomContainer"),
     zoomOut = document.getElementById("btn-zoom-out");
 
 
-let scl = 2;
+let scl = 1.2;
 let zoomRatio = 1
-zoomIn.addEventListener("click",(e)=>{
+// zoomIn.addEventListener("click",(e)=>{
 
-    // Get the dimensions and position of the zoomContainer
-const { left, top, width, height } = zoomContainer.getBoundingClientRect();
-console.log("left : "+left+" , top : "+top)
-// Calculate mouse position relative to zoomContainer
-const mouseX = e.clientX - left;
-const mouseY = e.clientY - top;
-console.log("mouseX : "+mouseX+" , mouseY : "+mouseY)
+//     // Get the dimensions and position of the zoomContainer
+// const { left, top, width, height } = zoomContainer.getBoundingClientRect();
+// console.log("left : "+left+" , top : "+top)
+// // Calculate mouse position relative to zoomContainer
+// const mouseX = e.clientX - left;
+// const mouseY = e.clientY - top;
+// console.log("mouseX : "+mouseX+" , mouseY : "+mouseY)
 
-// Set the zoom ratio (1.5x) and calculate zoom offsets
+// // Set the zoom ratio (1.5x) and calculate zoom offsets
 
-const zoomX = (mouseX / width) * (1 - zoomRatio);
-const zoomY = (mouseY / height) * (1 - zoomRatio);
+// const zoomX = (mouseX / width) * (1 - zoomRatio);
+// const zoomY = (mouseY / height) * (1 - zoomRatio);
 
-// Apply zoom and translation to the zoomImage
-zoomImage.style.transform = `scale(${zoomRatio}) translate(${zoomX * scl}%, ${zoomY * scl
-    }%)`;
-scl = scl + 2;
-zoomRatio = zoomRatio + 1;
-// Change cursor to indicate zoom-in
-zoomContainer.style.cursor = "zoom-in";
+// // Apply zoom and translation to the zoomImage
+// zoomImage.style.transform = `scale(${zoomRatio}) translate(${zoomX * scl}%, ${zoomY * scl
+//     }%)`;
+// scl = scl + 2;
+// zoomRatio = zoomRatio + 1;
+// // Change cursor to indicate zoom-in
+// zoomContainer.style.cursor = "zoom-in";
+// })
+
+zoomOut.addEventListener("click", (e) => {
+    
+    console.log("out")
+    if (scl <= 1.2) {
+        zoomOut.disabled = true
+        
+    }
+    zoomIn.disabled = false
+    
+    scl = scl - 0.2
+    zoomImage.style.transform = `scale(${scl})`;
+    zoomContainer.style.cursor = "zoom-out";
 })
 
-zoomOut.addEventListener("click",(e)=>{
-    zoomImage.style.transform = "scale(1) translate(0%, 0%)";
-    zoomContainer.style.cursor = "default";
+zoomIn.addEventListener("click", (e) => {
+    zoomImage.style.transform = `scale(${scl})`;
 
-    scl =2;
-    if(zoomRatio > 1){
-        zoomRatio = zoomRatio -1
-    }
+    zoomContainer.style.height = "100vh";
+    zoomContainer.style.display = "flex";
+    zoomContainer.style.alignItems = "center";
+    zoomContainer.style.justifyContent = "center";
     
+    zoomContainer.style.cursor = "move";
+    scl = scl + 0.2
+
+    if(scl > 2){
+        zoomIn.disabled = true
+        
+    }
+    zoomOut.disabled = false
+
+    console.log(scl)
 })
 
 
