@@ -72,7 +72,7 @@ function setClusterFacility(clusterId) {
                     
                         <div class="col-md-3 col-sm-6 mb-2">
                             <div class="card mx-auto">
-                                <a class="pop-facility">
+                                <a class="pop-zoom">
                                     <img src="/metroland/assets/img/${element.image}" class="card-img-top">
                                 </a>
                                 <div class="card-body">
@@ -98,7 +98,7 @@ function setClusterFacility(clusterId) {
                 response.data.cluster_images.forEach(element => {
                     clusterImages += `<div class="carousel-item carousel-item-mdl" id="img-${element.id}">
                     <div class="img-container1 pb-10">
-                        <a href="#" class="pop pb-10">
+                        <a class="pop pb-10">
                             <img src="/metroland/assets/img_cluster/${element.image}" class="img-product"
                                 loading="lazy">
                         </a>
@@ -114,6 +114,12 @@ function setClusterFacility(clusterId) {
                 $('.pop-facility').on('click', function () {
                     $('.imagepreview-facility').attr('src', $(this).find('img').attr('src'));
                     $('#imagemodal-facility').modal('show');
+                });
+
+                $('.pop-zoom').on('click', function () {
+                    console.log("click")
+                    $('.imagepreview-pa').attr('src', $(this).find('img').attr('src'));
+                    $('#imagemodal-pa').modal('show');
                 });
             }
         }).fail((error) => {
@@ -131,6 +137,7 @@ $('.pop').on('click', function () {
 });
 
 $('.pop-proyek-area').on('click', function () {
+    console.log("click")
     $('.imagepreview-pa').attr('src', $(this).find('img').attr('src'));
     $('#imagemodal-pa').modal('show');
 });
