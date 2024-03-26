@@ -246,7 +246,7 @@ zoomIn.addEventListener("click", (e) => {
     zoomContainer.style.cursor = "move";
     scl = scl + 0.2
 
-    if(scl > 2){
+    if(scl > 3){
         zoomIn.disabled = true
         
     }
