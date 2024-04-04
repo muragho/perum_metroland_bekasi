@@ -11,6 +11,7 @@ const btnAddCarrier = document.getElementById("btn-add-carrier");
 const mdlBtnSaveCarrier = document.getElementById("mdl-btn-save-carrier");
 const mdlBtnCancelCarrier = document.getElementById("mdl-btn-cancel-carrier");
 const btnEditCarrier = document.getElementsByClassName("btn-edit-carrier");
+const btnDeleteCarrier = document.getElementsByClassName("btn-delete-carrier");
 const mdlBtnEditCarrier = document.getElementById("mdl-btn-edit-carrier");
 const mdlBtnEditCancelCarrier = document.getElementById("mdl-btn-edit-cancel-carrier");
 
@@ -53,13 +54,13 @@ mdlBtnCancelCarrier.addEventListener("click", function (e) {
 mdlBtnSaveCarrier.addEventListener("click", function (e) {
     e.preventDefault();
 
-    var departmentId = $('#mdl_add_carrier_department option:selected').val();
+    var department = $('#mdl_add_carrier_department').val();
     var description = myEditorAdd.getData();
-    var carrier = $('#carrier_edit').prop('files')[0];
+    var carrier = $('#carrier').prop('files')[0];
     var expDate = $('#exp_date_edit').val()
 
     var formData = new FormData();
-    formData.append('departmentId', departmentId);
+    formData.append('department_name', department);
     formData.append('description', description);
     formData.append('file', carrier);
     formData.append('expired', expDate);
@@ -89,13 +90,13 @@ mdlBtnEditCarrier.addEventListener("click", function (e) {
     e.preventDefault();
 
     var carrierId = $('#mdl_carrier_id').val();
-    var departmentId = $('#mdl_edit_carrier_department option:selected').val();
+    var department = $('#mdl_edit_carrier_department').val();
     var description = myEditorEdit.getData();
     var carrier = $('#carrier_edit').prop('files')[0];
     var expDate = $('#exp_date_edit').val();
 
     var formData = new FormData();
-    formData.append('departmentId', departmentId);
+    formData.append('department_name', department);
     formData.append('description', description);
     formData.append('file', carrier);
     formData.append('expired', expDate);
@@ -152,7 +153,7 @@ $("#exp_date_edit").daterangepicker({
 
 function formEditCarrier() {
     const carrierId = $(this).data("carrier_id");
-    const department = $(this).data("department");
+    const department = $(this).data("department_name");
     const description = $(this).data("description");
     const banner = $(this).data("banner");
     const exp = $(this).data("exp");
@@ -161,7 +162,7 @@ function formEditCarrier() {
     const tgl = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     console.log(carrierId)
     $('#mdl_carrier_id').val(carrierId);
-    $('#mdl_edit_carrier_department').val(department).change();
+    $('#mdl_edit_carrier_department').val(department);
     $('#exp_date_edit').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
@@ -174,9 +175,10 @@ function formEditCarrier() {
     myEditorEdit.setData(description);
 
     if (banner != '' && banner != null) {
-        console.log('ada banner')
+        console.log('ada banner ',banner)
         $("#banner_carrier_edit").css("background-image", "url(/metroland/assets/img_carrier/" + banner + ")");
     } else {
+        console.log('tidak ada banner')
         $("#banner_carrier_edit").css("background-image", "");
     }
 
@@ -185,7 +187,84 @@ function formEditCarrier() {
 
 };
 
+function formDeleteCarrier() {
+    const carrierId = $(this).data("carrier_id");
+    const department = $(this).data("department_name");
+    const description = $(this).data("description");
+    const banner = $(this).data("banner");
+    const exp = $(this).data("exp");
+
+    Swal.fire({
+        html: `Anda akan menghapus karir untuk department <strong>${department}</strong>, klik <span class='text-danger'>Hapus</span> untuk melanjutkan atau Batal`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: "btn btn-danger btn-sm",
+            cancelButton: 'btn btn-secondary btn-sm'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: "DELETE",
+                url: `${CARRIER_API_URL}/${carrierId}`,
+                headers: {
+                    "CSRF-Token": token,
+                },
+            })
+                .done((response) => {
+                    if (response.success) {
+                        const message = `Data karir dengan department <strong>${department}</strong> berhasil dihapus.`
+                        showSuccess(message)
+                    } else {
+                        const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    }
+                })
+                .fail((jqXHR) => {
+                    const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                });
+        }
+    });
+
+};
+
 
 for (const element of btnEditCarrier) {
     element.addEventListener("click", formEditCarrier);
+}
+
+for (const element of btnDeleteCarrier) {
+    element.addEventListener("click", formDeleteCarrier);
+}
+
+function showSuccess(message) {
+    Swal.fire({
+        html: `${message}`,
+        icon: "success",
+        buttonsStyling: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false,
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        window.location.reload();
+    })
+}
+
+function showAlertErr(body) {
+    Swal.fire({
+        html: body,
+        icon: "error",
+        buttonsStyling: false,
+        allowOutsideClick: false,
+        confirmButtonText: "Ok",
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    });
 }

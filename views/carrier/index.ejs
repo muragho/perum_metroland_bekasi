@@ -65,7 +65,7 @@
                                             <div class="ps-1 text-start">
 
                                                 <span class="text-gray-800 fw-boldest fs-5 text-hover-primary mb-1 row">
-                                                    <%= c.department.name %>
+                                                    <%= c.department_name %>
                                                 </span>
                                                 <span class="badge badge-danger px-2">
                                                     <span class="svg-icon svg-icon-7 svg-icon-white ms-n1">
@@ -156,13 +156,24 @@
                                                     <div class="menu-item px-3">
                                                         <a class="menu-link flex-stack px-3 btn-edit-carrier"
                                                             data-carrier_id="<%= c.id %>" data-csrf="<%= csrfToken %>"
-                                                            data-department="<%= c.departmentId%>"
                                                             data-exp="<%= c.expired %>"
+                                                            data-department_name="<%= c.department_name %>"
                                                             data-banner="<%= c.banner_image %>"
                                                             data-description="<%= c.description %>">Ubah
                                                             <i class="fas fa-exclamation-circle ms-2 fs-7"
                                                                 data-bs-toggle="tooltip"
                                                                 title="Fungsi yang digunakan untuk merubah isi data karir"></i></a>
+                                                    </div>
+                                                    <div class="menu-item px-3">
+                                                        <a class="menu-link flex-stack px-3 btn-delete-carrier"
+                                                            data-carrier_id="<%= c.id %>" data-csrf="<%= csrfToken %>"
+                                                            data-exp="<%= c.expired %>"
+                                                            data-department_name="<%= c.department_name %>"
+                                                            data-banner="<%= c.banner_image %>"
+                                                            data-description="<%= c.description %>">Hapus
+                                                            <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                                data-bs-toggle="tooltip"
+                                                                title="Fungsi yang digunakan untuk menghapus data karir"></i></a>
                                                     </div>
 
                                                 </div>

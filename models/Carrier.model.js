@@ -12,6 +12,10 @@ function model(sequelize) {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        department_name: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         banner_image: {
             type: DataTypes.STRING,
             allowNull: true

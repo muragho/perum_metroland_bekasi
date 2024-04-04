@@ -10,6 +10,8 @@ async function doAddCarrier(req, res) {
     try {
         const date = new Date();
         const logo = req.files[0];
+        console.log("total files : ",req.files.length)
+        console.log("original name : ",logo.originalname)
 
         let data = JSON.parse(JSON.stringify(reqBody));
 
@@ -28,7 +30,7 @@ async function doAddCarrier(req, res) {
         data.created_at = date;
         data.updated_at = date;
 
-        // console.log(JSON.stringify(reqBody))
+        console.log(JSON.stringify(data))
         await carrierService.doSave(data);
 
 
@@ -85,4 +87,21 @@ async function doEditCarrier(req, res) {
     }
 }
 
-module.exports = { doAddCarrier, doEditCarrier }
+async function doDeleteCarrier(req, res) {
+    console.info(`inside doDeleteCarrier`);
+    const id = req.params.id;
+
+    try {
+        
+        await carrierService.doDelete(id);
+
+        await response(res, 200, 200, 'data berhasil dihapus');
+
+    } catch (error) {
+        console.error(`err doDeleteCarrier : ${error}`);
+        // await t.rollback();
+        await response(res, 500, 400, error)
+    }
+}
+
+module.exports = { doAddCarrier, doEditCarrier ,doDeleteCarrier}

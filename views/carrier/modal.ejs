@@ -10,14 +10,7 @@
                 <form id="mdl-form-edit-product" class="form" action="#" autocomplete="off">
 
                     <div class="fv-row form-floating mb-7">
-                        <select class="form-select" id="mdl_add_carrier_department" aria-label="">
-                            <% departments.forEach(departmet=>{%>
-                                <option value="<%= departmet.id %>">
-                                    <%= departmet.name %>
-                                </option>
-                                <%}) %>
-
-                        </select>
+                        <input type="text" class="form-control" id="mdl_add_carrier_department" maxlength="30"/>
                         <label for="mdl_add_carrier_department">Pilih Devisi</label>
                     </div>
                     <div class="d-inline-flex mb-3">
@@ -112,14 +105,7 @@
 
                     <input type="hidden" id="mdl_carrier_id" value="" />
                     <div class="fv-row form-floating mb-7">
-                        <select class="form-select" id="mdl_edit_carrier_department" aria-label="">
-                            <% departments.forEach(departmet=>{%>
-                                <option value="<%= departmet.id %>">
-                                    <%= departmet.name %>
-                                </option>
-                                <%}) %>
-
-                        </select>
+                        <input type="text" class="form-control" id="mdl_edit_carrier_department" maxlength="30"/>
                         <label for="mdl_add_carrier_department">Pilih Devisi</label>
                     </div>
                     <div class="d-inline-flex mb-3">
