@@ -7,7 +7,7 @@ async function getAllProductByLimit(limit) {
 async function getAllProduct(where, page, per_page) {
     return await db.Product.findAndCountAll({
         where,
-        order: [["updated_at", "DESC"]],
+        order: [["title", "ASC"]],
         offset: (page - 1) * 10,
         limit: per_page,
         distinct: true,
