@@ -98,7 +98,7 @@ async function doDeleteCarrier(req, res) {
         await response(res, 200, 200, 'data berhasil dihapus');
 
     } catch (error) {
-        console.error(`err doDeleteCarrier : ${error}`);
+        console.error(error);
         // await t.rollback();
         await response(res, 500, 400, error)
     }
