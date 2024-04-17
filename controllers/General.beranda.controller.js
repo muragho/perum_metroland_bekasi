@@ -12,7 +12,7 @@ async function berandaPage(req, res) {
     console.log('inside berandaPage')
     try {
 
-        const products = await productServ.getAllProductByLimit(4);
+        const products = await productServ.getAllProducts();
         const news = await newsService.getAllNewsByLimit(3);
         console.log(JSON.stringify(news))
 
