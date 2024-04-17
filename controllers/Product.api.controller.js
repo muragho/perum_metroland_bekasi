@@ -195,4 +195,21 @@ async function removeLogoOrSitePlanImage(req, res) {
     }
 }
 
-module.exports = { doEditProduct, doAddProduct, getClusterByProduct, removeLogoOrSitePlanImage }
+async function doDeleteProduct(req, res) {
+    console.info(`inside doDeleteProduct`);
+    const id = req.params.id;
+
+    try {
+        
+        await productService.doDelete(id);
+
+        await response(res, 200, 200, 'data berhasil dihapus');
+
+    } catch (error) {
+        console.error(error);
+        // await t.rollback();
+        await response(res, 500, 400, error)
+    }
+}
+
+module.exports = { doEditProduct, doAddProduct, getClusterByProduct, removeLogoOrSitePlanImage ,doDeleteProduct}

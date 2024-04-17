@@ -1,5 +1,10 @@
 const { db } = require('../configs/Database.js');
 
+
+async function getAllProducts() {
+    return await db.Product.findAll({order: [['updated_at', 'DESC']] });
+}
+
 async function getAllProductByLimit(limit) {
     return await db.Product.findAll({ limit, order: [['updated_at', 'DESC']] });
 }
@@ -55,4 +60,9 @@ async function updateProduct(productId, data) {
     return await db.Product.update(data, { where: { id: productId } });
 }
 
-module.exports = { getAllProductByLimit, getAllProduct, doEdit, getProductCluster, addProduct, getProductById, updateProduct }
+async function doDelete(id) {
+    return await db.Product.destroy({where:{id}});
+}
+
+module.exports = {getAllProducts, getAllProductByLimit, getAllProduct, doEdit, getProductCluster, 
+    addProduct, getProductById, updateProduct,doDelete }

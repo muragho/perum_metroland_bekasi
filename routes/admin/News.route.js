@@ -23,5 +23,6 @@ router.post('/news', isLogin, upload.single("thubnail"), newsController.save);
 
 router.delete('/news/api/v1/image_thubnail/:id/news', csrfProt, newsController.removeThubnail);
 router.put('/news/api/v1/:id', multipartForm, urlEncodedParser, csrfProt, newsController.edit);
+router.delete('/news/api/v1/:id', csrfProt, newsController.doDeletenews);
 
 module.exports = router;

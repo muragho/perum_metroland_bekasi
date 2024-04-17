@@ -28,6 +28,8 @@ const mdlBtnCancleProduct = document.getElementById("mdl-btn-cancle-product");
 const btnRemoveSitePlanProduct = document.getElementById("btn-remove-site-plan-product");
 const btnRemoveImageCluster = document.getElementById("btn-remove-image-cluster");
 const btnRemoveLogoProduct = document.getElementById("btn-remove-logo-product");
+const btnDeleteCluster = document.getElementsByClassName("btn-delete-cluster");
+
 
 var myEditorEdit;
 var myEditorAdd;
@@ -45,7 +47,7 @@ ClassicEditor
 
 ClassicEditor
     .create(document.querySelector('#mdl-add-content-product'), {
-        toolbar: ['heading', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', 'undo', 'redo']
+        toolbar: ['heading', 'bold', 'italic', 'link', 'numberedList', 'bulletedList', 'undo', 'redo'],
     })
     .then(editor => {
         myEditorAdd = editor;
@@ -145,8 +147,55 @@ function formEditProduct() {
 
 };
 
+function formDeleteCluster() {
+    const product_id = $(this).data("product_id");
+    const title = $(this).data("title");
+
+    Swal.fire({
+        html: `Anda akan menghapus Produk <strong>${title}</strong>, klik <span class='text-danger'>Hapus</span> untuk melanjutkan atau Batal`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: "btn btn-danger btn-sm",
+            cancelButton: 'btn btn-secondary btn-sm'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: "DELETE",
+                url: `${PRODUCT_API_URL}/${product_id}`,
+                headers: {
+                    "CSRF-Token": token,
+                },
+            })
+                .done((response) => {
+                    if (response.success) {
+                        const message = `Data produk <strong>${title}</strong> berhasil dihapus.`
+                        showSuccess(message)
+                    } else {
+                        const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    }
+                })
+                .fail((jqXHR) => {
+                    const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                });
+        }
+    });
+
+};
+
+
 for (const element of btnEditProduct) {
     element.addEventListener("click", formEditProduct);
+}
+
+for (const element of btnDeleteCluster) {
+    element.addEventListener("click", formDeleteCluster);
 }
 
 mdlBtnAddProduct.addEventListener("click", function (e) {
@@ -413,4 +462,32 @@ function selectedCluster(productId) {
         }).fail((error) => {
             showErrorAlert(error);
         });
+}
+
+function showSuccess(message) {
+    Swal.fire({
+        html: `${message}`,
+        icon: "success",
+        buttonsStyling: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false,
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        window.location.reload();
+    })
+}
+
+function showAlertErr(body) {
+    Swal.fire({
+        html: body,
+        icon: "error",
+        buttonsStyling: false,
+        allowOutsideClick: false,
+        confirmButtonText: "Ok",
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    });
 }

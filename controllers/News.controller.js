@@ -132,4 +132,21 @@ async function removeThubnail(req, res) {
     }
 }
 
-module.exports = { newsPage, upload, save, edit, removeThubnail }
+async function doDeletenews(req, res) {
+    console.info(`inside doDeletenews`);
+    const id = req.params.id;
+
+    try {
+        
+        await db.News.destroy({where:{id}})
+
+        await response(res, 200, 200, 'data berhasil dihapus');
+
+    } catch (error) {
+        console.error(error);
+        // await t.rollback();
+        await response(res, 500, 400, error)
+    }
+}
+
+module.exports = { newsPage, upload, save, edit, removeThubnail,doDeletenews }

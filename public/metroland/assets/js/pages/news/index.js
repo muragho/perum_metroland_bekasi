@@ -13,6 +13,7 @@ const btnEditNews = document.getElementsByClassName('btn-edit-news')
 const btnRemoveThubnail = document.getElementById("btn-remove-thubnail");
 const btnMdlEditNews = document.getElementById("btn-mdl-edit-news");
 const btnCancelEditNews = document.getElementById("btn-cancel-edit-news");
+const btnDeleteNews = document.getElementsByClassName("btn-delete-news");
 
 
 addNews.addEventListener('click', function (e) {
@@ -112,8 +113,54 @@ function formEditNews() {
 
 };
 
+function formDeleteNews() {
+    const newsId = $(this).data("news_id");
+    const title = $(this).data("title");
+
+    Swal.fire({
+        html: `Anda akan menghapus data berita dengan judul <strong>${title}</strong>, klik <span class='text-danger'>Hapus</span> untuk melanjutkan atau Batal`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: "btn btn-danger btn-sm",
+            cancelButton: 'btn btn-secondary btn-sm'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: "DELETE",
+                url: `${NEWS_API}/api/v1/${newsId}`,
+                headers: {
+                    "CSRF-Token": token,
+                },
+            })
+                .done((response) => {
+                    if (response.success) {
+                        const message = `Data <strong>${title}</strong> berhasil dihapus.`
+                        showSuccess(message)
+                    } else {
+                        const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    }
+                })
+                .fail((jqXHR) => {
+                    const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                });
+        }
+    });
+
+};
+
 for (const element of btnEditNews) {
     element.addEventListener("click", formEditNews);
+}
+
+for (const element of btnDeleteNews) {
+    element.addEventListener("click", formDeleteNews);
 }
 
 btnMdlEditNews.addEventListener("click", function (e) {
@@ -152,3 +199,31 @@ btnMdlEditNews.addEventListener("click", function (e) {
             showErrorAlert(error);
         });
 })
+
+function showSuccess(message) {
+    Swal.fire({
+        html: `${message}`,
+        icon: "success",
+        buttonsStyling: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false,
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        window.location.reload();
+    })
+}
+
+function showAlertErr(body) {
+    Swal.fire({
+        html: body,
+        icon: "error",
+        buttonsStyling: false,
+        allowOutsideClick: false,
+        confirmButtonText: "Ok",
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    });
+}

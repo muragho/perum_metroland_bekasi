@@ -58,7 +58,7 @@
                                                 <%}%>
                                     </h1>
                                     <p class="card-text text-start fs-6 text-wrap">
-                                        <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
+                                        <%= JSDOM.fragment(products[i].content).textContent%>
                                     </p>
 
                                     <% if(i < (products.length -1)){ %>
@@ -102,7 +102,7 @@
                                                 <%}%>
                                     </h1>
                                     <p class="card-text fs-6 text-wrap">
-                                        <%= JSDOM.fragment(products[i].content.substring(0,350)).textContent%>...
+                                        <%= JSDOM.fragment(products[i].content).textContent%>
                                     </p>
 
                                     <% if(i < (products.length -1)){ %>
