@@ -3,7 +3,7 @@ const { db } = require('../configs/Database.js');
 const configService = require('../services/Config.service.js');
 const accessService = require("../services/Access.service.js");
 const facilityService = require("../services/Facility.service.js");
-const sharp = require('sharp');
+// const sharp = require('sharp');
 const fs2 = require('fs').promises;
 
 async function doEditConfig(req, res) {
@@ -55,11 +55,11 @@ async function doAddConfigAksesIcon(req, res) {
             const filename = req.files[0].originalname.replaceAll(' ', '');
             data.icon = filename;
 
-            const resizedImageBuffer = await sharp(req.files[0].buffer)
-            .resize(80, 80) // Resize to 300x300 pixels
-            .toBuffer();
+            // const resizedImageBuffer = await sharp(req.files[0].buffer)
+            // .resize(80, 80) // Resize to 300x300 pixels
+            // .toBuffer();
 
-            await fs2.writeFile('./public/metroland/assets/img/' + filename, resizedImageBuffer);
+            await fs2.writeFile('./public/metroland/assets/img/' + filename, req.files[0].buffer);
 
         }
         data.created_by = bearer.emailSignIn;
@@ -92,11 +92,11 @@ async function doEditConfigAksesIcon(req, res) {
             const filename = req.files[0].originalname.replaceAll(' ', '');
             data.icon = filename;
 
-            const resizedImageBuffer = await sharp(req.files[0].buffer)
-            .resize(80, 80) // Resize to 300x300 pixels
-            .toBuffer();
+            // const resizedImageBuffer = await sharp(req.files[0].buffer)
+            // .resize(80, 80) // Resize to 300x300 pixels
+            // .toBuffer();
 
-            await fs2.writeFile('./public/metroland/assets/img/' + filename, resizedImageBuffer);
+            await fs2.writeFile('./public/metroland/assets/img/' + filename, req.files[0].buffer);
 
         }
 
@@ -183,11 +183,11 @@ async function doAddConfigFacilityIcon(req, res) {
             const filename = req.files[0].originalname.replaceAll(' ', '');
             data.image = filename;
 
-            const resizedImageBuffer = await sharp(req.files[0].buffer)
-            .resize(139, 250) // Resize to 300x300 pixels
-            .toBuffer();
+            // const resizedImageBuffer = await sharp(req.files[0].buffer)
+            // .resize(139, 250) // Resize to 300x300 pixels
+            // .toBuffer();
 
-            await fs2.writeFile('./public/metroland/assets/img/' + filename, resizedImageBuffer);
+            await fs2.writeFile('./public/metroland/assets/img/' + filename, req.files[0].buffer);
 
         }
         data.created_by = bearer.emailSignIn;
@@ -220,11 +220,11 @@ async function doEditConfigFacilityIcon(req, res) {
             const filename = req.files[0].originalname.replaceAll(' ', '');
             data.image = filename;
 
-            const resizedImageBuffer = await sharp(req.files[0].buffer)
-            .resize(80, 80) // Resize to 300x300 pixels
-            .toBuffer();
+            // const resizedImageBuffer = await sharp(req.files[0].buffer)
+            // .resize(80, 80) // Resize to 300x300 pixels
+            // .toBuffer();
 
-            await fs2.writeFile('./public/metroland/assets/img/' + filename, resizedImageBuffer);
+            await fs2.writeFile('./public/metroland/assets/img/' + filename, req.files[0].buffer);
 
         }
 
