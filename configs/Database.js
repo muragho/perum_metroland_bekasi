@@ -38,6 +38,7 @@ async function initialize() {
     db.User = require('../models/User.model.js')(sequelize);
     db.AuditLog = require('../models/AuditLog.model.js')(sequelize);
     db.AboutUs = require('../models/AboutUs.model.js')(sequelize);
+    db.AccessIcon = require('../models/AccessIcon.model.js')(sequelize);
 
     db.Department.hasMany(db.Carrier, {
         foreignKey: 'departmentId',
@@ -66,6 +67,9 @@ async function initialize() {
 
     db.Cluster.hasMany(db.Access, { foreignKey: 'clusterId' });
     db.Access.belongsTo(db.Cluster);
+
+    db.AccessIcon.hasMany(db.Access,{foreignKey: 'accessIconId'});
+    db.Access.belongsTo(db.AccessIcon);
 }
 
 module.exports = { db, sequelize };
