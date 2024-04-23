@@ -15,6 +15,12 @@ const urlEncodedParser = bodyParser.urlencoded({
 router.get('/configs', csrfProt, configController.configPage);
 
 router.put('/api/v1/configs/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfig);
+router.post('/api/v1/configs/akses-icon', multipartForm, urlEncodedParser, csrfProt, configApiController.doAddConfigAksesIcon);
+router.put('/api/v1/configs/akses-icon/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigAksesIcon);
+router.delete('/api/v1/configs/akses-icon/:id', csrfProt, configApiController.deleteAccessIcon);
+router.delete('/api/v1/configs/fasility-icon/:id', csrfProt, configApiController.deleteFasilityIcon);
+router.put('/api/v1/configs/facility-icon/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigFacilityIcon);
 router.put('/api/v1/configs/about/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigAbout);
+router.post('/api/v1/configs/facility', multipartForm, urlEncodedParser, csrfProt, configApiController.doAddConfigFacilityIcon);
 
 module.exports = router;

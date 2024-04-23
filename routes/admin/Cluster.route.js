@@ -25,6 +25,8 @@ router.delete('/api/v1/clusters/images/:id', csrfProt, clusterApi.delClusterImag
 router.get('/api/v1/clusters/access/:id/cluster_id', csrfProt, clusterApi.getClusterAccess);
 router.post('/api/v1/clusters/access', csrfProt, clusterApi.addClusterAccess);
 router.delete('/api/v1/clusters/access/:id', csrfProt, clusterApi.deleteClusterAccess);
+router.delete('/api/v1/clusters/:id', csrfProt, clusterApi.deleteCluster);
+router.get('/api/v1/clusters/access_icons', csrfProt, clusterApi.getClusterIcons);
 
 
 module.exports = router;

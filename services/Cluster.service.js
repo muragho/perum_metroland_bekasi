@@ -81,7 +81,11 @@ async function getClusterFacilities(clusterId) {
     })
 }
 
+async function delCluster(id) {
+    return await db.Cluster.destroy({ where: { id} })
+}
+
 module.exports = {
     getAllClusterByLimit, getClusterById, getClusters, getAllCluster, doAdd, doEdit,
-    getClusterImageByCluster, delClusterImageById, upsertCustomerImage, getClusterFacilities
+    getClusterImageByCluster, delClusterImageById, upsertCustomerImage, getClusterFacilities,delCluster
 }

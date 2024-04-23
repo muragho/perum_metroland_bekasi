@@ -5,7 +5,7 @@ const moment = require('moment');
 const { Op } = require("sequelize");
 const jsdom = require('jsdom');
 const title = "Metroland | Cluster";
-const header = "Tipe Produk";
+const header = "Tipe Klaster";
 const INTERNAL_SERVER_ERROR = 500;
 
 const { JSDOM } = jsdom;

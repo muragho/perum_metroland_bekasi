@@ -177,8 +177,13 @@ async function getClusterAccess(req, res) {
     console.info(`inside getClusterAccess`)
     const clusterId = req.params.id;
     try {
+        console.log("cluster id : ",clusterId)
         const access = await accessServices.getAccessByCluster(clusterId);
-        await response(res, 200, 200, 'success', access);
+        const accessIcons = await accessServices.getAccessIcons();
+
+        const data = {access,accessIcons}
+
+        await response(res, 200, 200, 'success', data);
     } catch (error) {
         console.error(error)
         await response(res, 200, 400, error.message || 'cannot geting access')
@@ -186,7 +191,7 @@ async function getClusterAccess(req, res) {
 }
 
 async function addClusterAccess(req, res) {
-    console.info(`inside addClusterAccess`)
+    console.info(`inside addClusterAccess`,req.body)
     let reqBody = req.body;
     const bearer = req.bearer;
     try {
@@ -217,7 +222,32 @@ async function deleteClusterAccess(req, res) {
     }
 }
 
+async function deleteCluster(req, res) {
+    console.info(`inside deleteCluster`)
+    const clusterId = req.params.id
+    try {
+        await clusterService.delCluster(clusterId);
+        await response(res, 200, 200, 'data berhasil dihapus');
+    } catch (error) {
+        console.error(error)
+        await response(res, 200, 400, error.message || 'gagal menghapus data')
+    }
+}
+
+async function getClusterIcons(req, res) {
+    console.info(`inside getClusterIcons`)
+
+    try {
+        const data = await accessServices.getAccessIcons();
+
+        await response(res, 200, 200, 'success', data)
+    } catch (error) {
+        console.error(error);
+        await response(res, 200, 400, error.message || 'tidak mendapatkan file')
+    }
+}
+
 module.exports = {
     doAddCluster, doEditCluster, getAllCluster, getClusterImages, delClusterImage, getClusterFacilities,
-    getClusterAccess, addClusterAccess, deleteClusterAccess
+    getClusterAccess, addClusterAccess, deleteClusterAccess,deleteCluster,getClusterIcons
 }

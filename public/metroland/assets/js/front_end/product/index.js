@@ -88,7 +88,7 @@ function setClusterFacility(clusterId) {
 
                     htmlAccess += `<div class="col-md-4 col-sm-6">
                     <div class="symbol symbol-50px symbol-circle"><img class="symbol-label"
-                            src="/metroland/assets/img/${element.image}"></div>
+                            src="/metroland/assets/img/${element.access_icon.icon}"></div>
                     <h2>${element.title}</h2>
                     <p>${element.description}</p>
                 </div>`;

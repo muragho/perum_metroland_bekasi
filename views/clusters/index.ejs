@@ -172,6 +172,14 @@
                                                                 data-bs-toggle="tooltip"
                                                                 title="Fungsi yang digunakan untuk menambah,merubah atau menghapus akses yang dimiliki setiap klaster"></i></a>
                                                     </div>
+                                                    <div class="menu-item px-3">
+                                                        <a class="menu-link flex-stack px-3 btn-delete-cluster"
+                                                            data-cluster_id="<%= cluster.id %>" data-csrf="<%= csrfToken %>"
+                                                            data-cluster_name="<%= cluster.name%>">Hapus
+                                                            <i class="fas fa-exclamation-circle ms-2 fs-7"
+                                                                data-bs-toggle="tooltip"
+                                                                title="Fungsi yang digunakan untuk menghapus data klaster / tipe"></i></a>
+                                                    </div>
 
                                                 </div>
                                             </div>

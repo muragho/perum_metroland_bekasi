@@ -1,4 +1,6 @@
 const configService = require('../services/Config.service.js');
+const accessService = require('../services/Access.service.js');
+const FacilityService = require('../services/Facility.service.js');
 const moment = require('moment');
 const title = "Metroland | Konfigurasi";
 const header = "Konfigurasi";
@@ -15,9 +17,13 @@ async function configPage(req, res) {
 
         const promo = configs.find(c => c.code === CFG_PROMO_CODE);
 
-
+        const iconAkses = await accessService.getAccessIconsIncludeTipe();
+        const facilities = await FacilityService.getAllFacilitiesCluster();
+        console.log("facilities",JSON.stringify(facilities))
+        
         res.render("config/index", {
-            title, header, bearer, csrfToken: req.csrfToken(), promo: promo.value, promo_id: promo.id, moment, about
+            title, header, bearer, csrfToken: req.csrfToken(), promo: promo.value, 
+            promo_id: promo.id, moment, about,iconAkses,facilities
         })
     } catch (error) {
         console.error(error)

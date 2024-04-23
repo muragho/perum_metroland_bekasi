@@ -90,6 +90,510 @@
     </div>
 </div>
 
+<!-- begin: modal form add akses icon-->
+<div class="modal fade" id="mdl-show-add-akses-icon" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORM TAMBAH AKSES ICON</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="mdl-form-add-akses-icon" class="form" action="#" method="post" autocomplete="off">
+                    
+                    <div class="fv-row form-floating mb-7">
+                        <input type="text" class="form-control" name="mdl_akses_icon_type" id="mdl-add-akses-icon-type"
+                            placeholder="" />
+                        <label for="floatingInput" class="required">Tipe / Jenis</label>
+                    </div>
+
+
+                    <div class="d-inline-flex mb-3">
+
+                        <div class="col-md-6">
+                            <div class="overflow-auto pb-5">
+                                <div
+                                    class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">
+                                    
+                                    <div class="d-flex flex-column pe-0 pe-sm-10">
+                                        
+                                        <h5 class="mb-1"> Ukuran Icon (Rekomendasi)</h5>
+                                        
+                                        <div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary">
+                                            <div class="menu-item mb-3">
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-danger me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">kind : <span class="badge badge-light-danger">.png</span></span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-info me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">size : 4 KB</span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-success me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">dimension : 80x80</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <span>Pastikan ukuran sesuai dengan rekomendasi, sistem akan <strong class="text-danger">menyesuaikan ukuran</strong> secara otomatis</span>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <!--end::Alert-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="fv-row mb-7 me-5 text-center">
+                                <label class="d-block fw-bold fs-6 mb-5">
+                                    <span>Akses Icon</span>
+                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Akses Icon"></i>
+                                </label>
+                                <div class="image-input image-input-empty image-input-outline" data-kt-image-input="true">
+                                    <div class="image-input-wrapper w-125px h-125px" id="add-akses-icon"></div>
+    
+                                    <label
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                        title="Pilih foto untuk akses icon">
+                                        <i class="bi bi-pencil-fill fs-7"></i>
+                                        <input type="file" name="add_banner_akses_icon" id="add_banner_akses_icon" accept=".png" />
+                                        <input type="hidden" name="avatar_remove" />
+                                    </label>
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                        title="Batalkan foto akses icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+    
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="hapus icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="mdl-add-btn-cancle-akses-icon" class="btn btn-secondary btn-sm btn-close-modal">Batal</button>
+                <button type="button" id="mdl-btn-add-akses-icon" class="btn btn-primary btn-sm">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: modal form add akses icon-->
+
+<!-- begin: modal form edit akses icon-->
+<div class="modal fade" id="mdl-show-edit-akses-icon" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORM UBAH AKSES ICON</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="mdl-form-edit-akses-icon" class="form" action="#" method="post" autocomplete="off">
+                    <input type="hidden" id="mdl_akses_icon_id" value="" />
+                    <div class="fv-row form-floating mb-7">
+                        <input type="text" class="form-control" name="mdl-akses-icon-type" id="mdl-akses-icon-type"
+                            placeholder="" />
+                        <label for="floatingInput" class="required">Tipe / Jenis</label>
+                    </div>
+
+
+                    <div class="d-inline-flex mb-3">
+
+                        <div class="col-md-6">
+                            <div class="overflow-auto pb-5">
+                                <div
+                                    class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">
+                                    
+                                    <div class="d-flex flex-column pe-0 pe-sm-10">
+                                        
+                                        <h5 class="mb-1"> Ukuran Icon (Rekomendasi)</h5>
+                                        
+                                        <div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary">
+                                            <div class="menu-item mb-3">
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-danger me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">kind : <span class="badge badge-light-danger">.png</span></span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-info me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">size : 4 KB</span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-success me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">dimension : 80x80</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <span>Pastikan ukuran sesuai dengan rekomendasi, sistem akan <strong class="text-danger">menyesuaikan ukuran</strong> secara otomatis</span>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <!--end::Alert-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="fv-row mb-7 me-5 text-center">
+                                <label class="d-block fw-bold fs-6 mb-5">
+                                    <span>Akses Icon</span>
+                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Akses Icon"></i>
+                                </label>
+                                <div class="image-input image-input-empty image-input-outline" data-kt-image-input="true">
+                                    <div class="image-input-wrapper w-125px h-125px" id="akses-icon"></div>
+    
+                                    <label
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                        title="Pilih foto untuk akses icon">
+                                        <i class="bi bi-pencil-fill fs-7"></i>
+                                        <input type="file" name="banner_akses_icon" id="banner_akses_icon" accept=".png" />
+                                        <input type="hidden" name="avatar_remove" />
+                                    </label>
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                        title="Batalkan foto akses icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+    
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="hapus icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="mdl-btn-cancle-akses-icon" class="btn btn-secondary btn-sm btn-close-modal">Batal</button>
+                <button type="button" id="mdl-btn-edit-akses-icon" class="btn btn-primary btn-sm">Ubah</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: modal form edit akses icon-->
+
+
+<!-- begin: modal form add facility-->
+<div class="modal fade" id="mdl-show-add-facility-icon" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORM TAMBAH FASILITAS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="mdl-form-add-facility-icon" class="form" action="#" method="post" autocomplete="off">
+                    
+                    <div class="fv-row form-floating mb-7">
+                        <input type="text" class="form-control" name="mdl_facility_name" id="mdl_facility_name"
+                            placeholder="" />
+                        <label for="floatingInput" class="required">Fasilitas</label>
+                    </div>
+
+                    <div class="d-inline-flex mb-3">
+
+                        <div class="col-md-6">
+                            <div class="overflow-auto pb-5">
+                                <div
+                                    class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">
+                                    
+                                    <div class="d-flex flex-column pe-0 pe-sm-10">
+                                        
+                                        <h5 class="mb-1"> Ukuran Icon (Rekomendasi)</h5>
+                                        
+                                        <div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary">
+                                            <div class="menu-item mb-3">
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-danger me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold"><span class="badge badge-light-danger">.png , .jpg , .jpeg</span></span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-info me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">size : 139 KB</span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-success me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">dimension : 319x250</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <span>Pastikan ukuran sesuai dengan rekomendasi, sistem akan <strong class="text-danger">menyesuaikan ukuran</strong> secara otomatis</span>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <!--end::Alert-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="fv-row mb-7 me-5 text-center">
+                                <label class="d-block fw-bold fs-6 mb-5">
+                                    <span>Fasilitas Icon</span>
+                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Fasilitas Icon"></i>
+                                </label>
+                                <div class="image-input image-input-empty image-input-outline" data-kt-image-input="true">
+                                    <div class="image-input-wrapper w-125px h-125px" id="add-facility-icon"></div>
+    
+                                    <label
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                        title="Pilih foto untuk fasilitas icon">
+                                        <i class="bi bi-pencil-fill fs-7"></i>
+                                        <input type="file" name="add_banner_facility_icon" id="add_banner_facility_icon" accept=".png" />
+                                        <input type="hidden" name="avatar_remove" />
+                                    </label>
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                        title="Batalkan foto fasilitas icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+    
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="hapus icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="mdl-add-btn-cancle-facility-icon" class="btn btn-secondary btn-sm btn-close-modal">Batal</button>
+                <button type="button" id="mdl-btn-add-facility-icon" class="btn btn-primary btn-sm">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: modal form add facility-->
+
+<!-- begin: modal form edit facility-->
+<div class="modal fade" id="mdl-show-edit-facility-icon" data-bs-backdrop="static" tabindex="-1"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORM UBAH FASILITAS</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="mdl-form-edit-facility-icon" class="form" action="#" method="post" autocomplete="off">
+                    
+                    <div class="fv-row form-floating mb-7">
+                        <input type="hidden" id="mdl_edit_facility_icon_id" value=""/>
+                        <input type="text" class="form-control" name="mdl_edit_facility_name" id="mdl_edit_facility_name"
+                            placeholder="" />
+                        <label for="floatingInput" class="required">Fasilitas</label>
+                    </div>
+
+                    <div class="d-inline-flex mb-3">
+
+                        <div class="col-md-6">
+                            <div class="overflow-auto pb-5">
+                                <div
+                                    class="alert alert-dismissible bg-light-primary border border-primary d-flex flex-column flex-sm-row p-5 mb-10">
+                                    
+                                    <div class="d-flex flex-column pe-0 pe-sm-10">
+                                        
+                                        <h5 class="mb-1"> Ukuran Icon (Rekomendasi)</h5>
+                                        
+                                        <div class="menu menu-column menu-rounded menu-state-bg menu-state-title-primary">
+                                            <div class="menu-item mb-3">
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-danger me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold"><span class="badge badge-light-danger">.png , .jpg , .jpeg</span></span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-info me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">size : 139 KB</span>
+                                                </span>
+
+                                                <span class="menu-link">
+                                                    <span class="menu-icon">
+                                                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs009.svg-->
+                                                        <span class="svg-icon svg-icon-6 svg-icon-success me-3">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                <path d="M22 12C22 17.5 17.5 22 12 22C6.5 22 2 17.5 2 12C2 6.5 6.5 2 12 2C17.5 2 22 6.5 22 12ZM12 6C8.7 6 6 8.7 6 12C6 15.3 8.7 18 12 18C15.3 18 18 15.3 18 12C18 8.7 15.3 6 12 6Z" fill="black" />
+                                                            </svg>
+                                                        </span>
+                                                        <!--end::Svg Icon-->
+                                                    </span>
+                                                    <span class="menu-title fw-bold">dimension : 319x250</span>
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <span>Pastikan ukuran sesuai dengan rekomendasi, sistem akan <strong class="text-danger">menyesuaikan ukuran</strong> secara otomatis</span>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <!--end::Alert-->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="fv-row mb-7 me-5 text-center">
+                                <label class="d-block fw-bold fs-6 mb-5">
+                                    <span>Fasilitas Icon</span>
+                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Fasilitas Icon"></i>
+                                </label>
+                                <div class="image-input image-input-empty image-input-outline" data-kt-image-input="true">
+                                    <div class="image-input-wrapper w-125px h-125px" id="edit-facility-icon"></div>
+    
+                                    <label
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                        title="Pilih foto untuk fasilitas icon">
+                                        <i class="bi bi-pencil-fill fs-7"></i>
+                                        <input type="file" name="edit_banner_facility_icon" id="edit_banner_facility_icon" accept=".png" />
+                                        <input type="hidden" name="avatar_remove" />
+                                    </label>
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                        title="Batalkan foto fasilitas icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+    
+                                    <span
+                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="hapus icon">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="mdl-edit-btn-cancle-facility-icon" class="btn btn-secondary btn-sm btn-close-modal">Batal</button>
+                <button type="button" id="mdl-btn-edit-facility-icon" class="btn btn-primary btn-sm">Ubah</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: modal form edit facility-->
 
 <!--begin::Modal-->
 <!-- <div class="modal fade" tabindex="-1" data-bs-backdrop="static" id="mdl-show-promotion">

@@ -8,6 +8,70 @@ const btnPromotion = document.getElementById('btn-promotion');
 const mdlBtnSavePromotion = document.getElementById('mdl-btn-save-promotion');
 const mdlBtnCanclePromotion = document.getElementById('mdl-btn-cancle-promotion');
 const btnSaveAbout = document.getElementById("btn-save-about");
+const btnEditAksesIcon = document.getElementsByClassName("btn-edit-akses-icon");
+const mdlBtnEditAksesIcon = document.getElementById("mdl-btn-edit-akses-icon");
+const btnShowMdlAddAksesIcon = document.getElementById("btn-show-mdl-add-akses-icon");
+const formMdlAddAksesIcon = document.getElementById("mdl-form-add-akses-icon");
+const mdlBtnAddAksesIcon = document.getElementById("mdl-btn-add-akses-icon");
+const btnCloseModal = document.getElementsByClassName("btn-close-modal");
+const btnDeleteAksesIcon = document.getElementsByClassName("btn-delete-akses-icon");
+const btnShowMdlAddFacilityIcon = document.getElementById("btn-show-mdl-add-facility-icon");
+const mdlBtnAddFacilityIcon = document.getElementById("mdl-btn-add-facility-icon");
+const mdlFormAddFacilityIcon = document.getElementById("mdl-form-add-facility-icon");
+const mdlAddBtnCancleFacilityIcon = document.getElementById("mdl-add-btn-cancle-facility-icon");
+const btnDeleteFasilityIcon = document.getElementsByClassName("btn-delete-fasility-icon");
+const btnEditFacilityIcon = document.getElementsByClassName("btn-edit-facility-icon");
+const mdlBtnEditFacilityIcon = document.getElementById("mdl-btn-edit-facility-icon");
+
+var validator = FormValidation.formValidation(
+    formMdlAddAksesIcon,
+    {
+        fields: {
+            mdl_akses_icon_type: {
+                validators: {
+                    notEmpty: {
+                        message: 'Parameter wajib diisi'
+                    }
+                }
+            },
+            
+        },
+
+        plugins: {
+            trigger: new FormValidation.plugins.Trigger(),
+            bootstrap: new FormValidation.plugins.Bootstrap5({
+                rowSelector: '.fv-row',
+                eleInvalidClass: '',
+                eleValidClass: ''
+            })
+        }
+    }
+);
+
+var validatorFacility = FormValidation.formValidation(
+    mdlFormAddFacilityIcon,
+    {
+        fields: {
+            mdl_facility_name: {
+                validators: {
+                    notEmpty: {
+                        message: 'Parameter wajib diisi'
+                    }
+                }
+            },
+            
+        },
+
+        plugins: {
+            trigger: new FormValidation.plugins.Trigger(),
+            bootstrap: new FormValidation.plugins.Bootstrap5({
+                rowSelector: '.fv-row',
+                eleInvalidClass: '',
+                eleValidClass: ''
+            })
+        }
+    }
+);
 
 var myEditorEdit;
 ClassicEditor
@@ -22,6 +86,39 @@ ClassicEditor
     .catch(error => {
         console.error(error);
     });
+
+function formEditAksesIcon(){
+    const akses_icon_id = $(this).data("akses_icon_id");
+    const image = $(this).data("akses_icon");
+    const akses_icon_type = $(this).data("akses_icon_type");
+
+
+    $('#mdl_akses_icon_id').val(akses_icon_id);
+    $('#mdl-akses-icon-type').val(akses_icon_type)
+
+    if (image != '' || image != null) {
+        $("#akses-icon").css("background-image", "url(/metroland/assets/img/" + image + ")");
+    }
+
+    $('#mdl-show-edit-akses-icon').modal("show");
+}
+
+function formEditFacilityIcon(){
+    const facility_icon_id = $(this).data("facility_icon_id");
+    const image = $(this).data("facility_image");
+    const facility_name = $(this).data("facility_name");
+
+    console.log("name ",facility_name)
+
+    $('#mdl_edit_facility_icon_id').val(facility_icon_id);
+    $('#mdl_edit_facility_name').val(facility_name)
+
+    if (image != '' || image != null) {
+        $("#edit-facility-icon").css("background-image", "url(/metroland/assets/img/" + image + ")");
+    }
+
+    $('#mdl-show-edit-facility-icon').modal("show");
+}
 
 btnSaveAbout.addEventListener("click", function (e) {
     e.preventDefault();
@@ -92,7 +189,27 @@ mdlBtnCanclePromotion.addEventListener("click", function (e) {
     e.preventDefault();
     $('#mdl-show-promotion').modal('toggle');
     location.reload();
+});
+
+btnShowMdlAddAksesIcon.addEventListener("click",function(e){
+    e.preventDefault();
+    $('#mdl-show-add-akses-icon').modal("show");
+});
+
+btnShowMdlAddFacilityIcon.addEventListener("click",function(e){
+    e.preventDefault();
+
+    $('#mdl-show-add-facility-icon').modal("show");
 })
+
+for (const element of btnEditAksesIcon) {
+    element.addEventListener("click", formEditAksesIcon);
+}
+
+for (const element of btnEditFacilityIcon) {
+    element.addEventListener("click", formEditFacilityIcon);
+}
+
 
 $("#start_date").daterangepicker({
     singleDatePicker: true,
@@ -103,8 +220,47 @@ $("#start_date").daterangepicker({
 
 mdlBtnSavePromotion.addEventListener("click", function (e) {
     e.preventDefault();
-
     doEdit();
+});
+
+mdlBtnEditAksesIcon.addEventListener("click",function(e){
+    e.preventDefault();
+
+    doEditAksesIcon();
+});
+
+mdlBtnEditFacilityIcon.addEventListener("click",function(e){
+    e.preventDefault();
+
+    doEditFasilityIcon();
+});
+
+
+
+mdlBtnAddAksesIcon.addEventListener("click",function(e){
+    e.preventDefault();
+
+    if (validator) {
+        validator.validate().then(function (status) {
+
+            if (status == 'Valid') {
+                doAddAksesIcon();
+            }
+        })
+    }
+})
+
+mdlBtnAddFacilityIcon.addEventListener("click",function(e){
+    e.preventDefault();
+
+    if (validatorFacility) {
+        validatorFacility.validate().then(function (status) {
+
+            if (status == 'Valid') {
+                doAddFacilityIcon();
+            }
+        })
+    }
 })
 
 function doEdit() {
@@ -147,4 +303,262 @@ function doEdit() {
             showErrorAlert(error);
         });
 
+}
+
+function doEditAksesIcon(){
+    let id = $('#mdl_akses_icon_id').val();
+    let type = $('#mdl-akses-icon-type').val();
+    var img = $('#banner_akses_icon').prop('files')[0];
+
+    var formData = new FormData();
+    formData.append('type', type);
+    formData.append('image', img);
+
+    $.ajax({
+        method: "PUT",
+        url: `${CONFIG_API_URL}/akses-icon/${id}`,
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
+            if (response.code == 200) {
+                document.getElementById("mdl-btn-cancle-akses-icon").innerHTML = "Tutup";
+                showSuccessAlert(`data berhasil diubah`);
+            } else {
+                showErrorAlert(response.message);
+            }
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
+}
+
+function doEditFasilityIcon(){
+    let id = $('#mdl_edit_facility_icon_id').val();
+    let name = $('#mdl_edit_facility_name').val();
+    var img = $('#edit_banner_facility_icon').prop('files')[0];
+
+    var formData = new FormData();
+    formData.append('name', name);
+    formData.append('image', img);
+
+    $.ajax({
+        method: "PUT",
+        url: `${CONFIG_API_URL}/facility-icon/${id}`,
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
+            if (response.code == 200) {
+                document.getElementById("mdl-edit-btn-cancle-facility-icon").innerHTML = "Tutup";
+                showSuccessAlert(`data berhasil diubah`);
+            } else {
+                showErrorAlert(response.message);
+            }
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
+}
+
+function doAddAksesIcon(){
+    let type = $('#mdl-add-akses-icon-type').val();
+    var img = $('#add_banner_akses_icon').prop('files')[0];
+
+    var formData = new FormData();
+    formData.append('type', type);
+    formData.append('image', img);
+
+    console.log("req",JSON.stringify(formData))
+
+    $.ajax({
+        method: "POST",
+        url: `${CONFIG_API_URL}/akses-icon`,
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
+            if (response.code == 200) {
+                mdlBtnCanclePromotion.innerHTML = "Tutup";
+                showSuccessAlert(`data berhasil diubah`);
+            } else {
+                showErrorAlert(response.message);
+            }
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
+}
+
+function doAddFacilityIcon(){
+    let name = $('#mdl_facility_name').val();
+    var img = $('#add_banner_facility_icon').prop('files')[0];
+
+    var formData = new FormData();
+    formData.append('name', name);
+    formData.append('image', img);
+
+    console.log("req",JSON.stringify(formData))
+
+    $.ajax({
+        method: "POST",
+        url: `${CONFIG_API_URL}/facility`,
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: formData,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
+            if (response.code == 200) {
+                mdlAddBtnCancleFacilityIcon.innerHTML = "Tutup";
+                showSuccessAlert(`data berhasil diubah`);
+            } else {
+                showErrorAlert(response.message);
+            }
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
+}
+
+function closeModal(){
+    location.reload();
+}
+
+function formDelAccessIcon(){
+    let id = $(this).data('akses_icon_id');
+    let type = $(this).data('akses_icon_type');
+
+    Swal.fire({
+        html: `Anda akan menghapus Akses dengan tipe <strong>${type}</strong>, klik <span class='text-danger'>Hapus</span> untuk melanjutkan atau Batal`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: "btn btn-danger btn-sm",
+            cancelButton: 'btn btn-secondary btn-sm'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: "DELETE",
+                url: `${CONFIG_API_URL}/akses-icon/${id}`,
+                headers: {
+                    "CSRF-Token": token,
+                },
+            })
+                .done((response) => {
+                    if (response.success) {
+                        const message = `Data Akses icon dengan tipe <strong>${type}</strong> berhasil dihapus.`
+                        showSuccess(message)
+                    } else {
+                        const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    }
+                })
+                .fail((jqXHR) => {
+                    const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                    showAlertErr(message)
+                });
+        }
+    });
+}
+
+function formDelFasilityIcon(){
+    let id = $(this).data('facility_icon_id');
+    let name = $(this).data('facility_name');
+
+    Swal.fire({
+        html: `Anda akan menghapus fasilitas <strong>${name}</strong>, klik <span class='text-danger'>Hapus</span> untuk melanjutkan atau Batal`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: "btn btn-danger btn-sm",
+            cancelButton: 'btn btn-secondary btn-sm'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: "DELETE",
+                url: `${CONFIG_API_URL}/fasility-icon/${id}`,
+                headers: {
+                    "CSRF-Token": token,
+                },
+            })
+                .done((response) => {
+                    if (response.success) {
+                        const message = `Data fasilitas <strong>${name}</strong> berhasil dihapus.`
+                        showSuccess(message)
+                    } else {
+                        const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    }
+                })
+                .fail((jqXHR) => {
+                    const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                    showAlertErr(message)
+                });
+        }
+    });
+}
+
+for(const element of btnCloseModal){
+    element.addEventListener("click",closeModal)
+}
+
+for(const element of btnDeleteAksesIcon){
+    element.addEventListener("click",formDelAccessIcon)
+}
+
+for(const element of btnDeleteFasilityIcon){
+    element.addEventListener("click",formDelFasilityIcon)
+}
+
+
+
+function showSuccess(message) {
+    Swal.fire({
+        html: `${message}`,
+        icon: "success",
+        buttonsStyling: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false,
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        window.location.reload();
+    })
+}
+
+function showAlertErr(body) {
+    Swal.fire({
+        html: body,
+        icon: "error",
+        buttonsStyling: false,
+        allowOutsideClick: false,
+        confirmButtonText: "Ok",
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    });
 }

@@ -3,16 +3,12 @@ const { DataTypes } = require('sequelize');
 module.exports = model;
 
 function model(sequelize) {
-    const access = {
-        title: {
+    const accessIcon = {
+        type: {
             type: DataTypes.STRING,
             allowNull: true
         },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        image: {
+        icon: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -28,18 +24,10 @@ function model(sequelize) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        clusterId: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        accessIconId: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        }
     };
 
     const options = {
-        tableName: "access",
+        tableName: "access_icons",
         createdAt: "created_at",
         updatedAt: "updated_at",
         deletedAt: "deleted_at",
@@ -49,5 +37,5 @@ function model(sequelize) {
         }
     };
 
-    return sequelize.define('access', access, options);
+    return sequelize.define('access_icons', accessIcon, options);
 }

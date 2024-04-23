@@ -20,6 +20,7 @@ const mdlBtnCancelAddCluster = document.getElementById("mdl-btn-cancel-add-clust
 const btnRemoveImgCluster = document.getElementsByClassName("btn-remove-img-cluster");
 const btnClusterAccess = document.getElementsByClassName("btn-cluster-access");
 const mdlBtnAddAccessRow = document.getElementById("mdl-btn-add-access-row");
+const btnDeleteCluster = document.getElementsByClassName("btn-delete-cluster");
 
 var target;
 var blockUI;
@@ -349,12 +350,58 @@ function formAccessCluster() {
     $('#mdl-access-cluster').modal('show');
 };
 
+function formDeleteCluster() {
+    const clusterId = $(this).data("cluster_id");
+    const clusterName = $(this).data("cluster_name");
+
+    Swal.fire({
+        html: `Anda akan menghapus Klaster dengan tipe <strong>${clusterName}</strong>, klik <span class='text-danger'>Hapus</span> untuk melanjutkan atau Batal`,
+        icon: "info",
+        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        cancelButtonText: 'Batal',
+        customClass: {
+            confirmButton: "btn btn-danger btn-sm",
+            cancelButton: 'btn btn-secondary btn-sm'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                method: "DELETE",
+                url: `${CLUSTER_API}/${clusterId}`,
+                headers: {
+                    "CSRF-Token": token,
+                },
+            })
+                .done((response) => {
+                    if (response.success) {
+                        const message = `Data klaster dengan tipe <strong>${clusterName}</strong> berhasil dihapus.`
+                        showSuccess(message)
+                    } else {
+                        const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    }
+                })
+                .fail((jqXHR) => {
+                    const message = `Data gagal dihapus, mohon coba beberapa saat lagi atau hubungi administrator.`
+                    showAlertErr(message)
+                });
+        }
+    });
+
+};
+
 for (const element of btnEditCluster) {
     element.addEventListener("click", formEditCluster);
 }
 
 for (const element of btnClusterAccess) {
     element.addEventListener("click", formAccessCluster);
+}
+
+for (const element of btnDeleteCluster) {
+    element.addEventListener("click", formDeleteCluster);
 }
 
 function formRemoveImage() {
@@ -408,43 +455,67 @@ mdlBtnEditCluster.addEventListener("click", function (e) {
 mdlBtnAddAccessRow.addEventListener("click", function (e) {
     e.preventDefault();
 
-    var rowCount = $('#tbl-access tr').length;
+    $.ajax({
+        method: "GET",
+        url: `${CLUSTER_API}/access_icons`,
+        headers: {
+            'CSRF-Token': token
+        }
+    })
+        .done((response) => {
 
-    let html = `<tr id="row_new_${rowCount}">
-                    <td>
-                        <input type="text" class="form-control form-control-sm" id="access_title"
-                            name="accept_title" value="" />
-                    </td>
-                    <td>
-                        <textarea type="text" class="form-control form-control-sm" id="access_description"
-                            name="accept_description"></textarea>
-                    </td>
-                    <td>
-                        <select class="form-select form-select-sm" id="access_icon" name="access_icon"
-                            aria-label="Select example">
-                            <option value="tol.png">Pintu Tol</option>
-                            <option value="halte busway.png">Halte Busway</option>
-                            <option value="stasiun.png">Stasiun</option>
-                        </select>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-remove-access-cluster"
-                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-type="new" data-cluster_id="${rowCount}">
-                            <i class="bi bi-trash3 fs-4 text-danger"></i>
-                        </button>
-                        <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-save-access-cluster"
-                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" id="btn_save_access_${rowCount}">
-                            <span class="svg-icon icon-size-5 svg-icon-light">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-  <path d="M11 2H9v3h2z"/>
-  <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+            var rowCount = $('#tbl-access tr').length;
+
+            if (response.code == 200 && response.data.length > 0) {
+
+                let html = `<tr id="row_new_${rowCount}">
+                <td>
+                    <input type="text" class="form-control form-control-sm" id="access_title"
+                        name="accept_title" value="" />
+                </td>
+                <td>
+                    <textarea type="text" class="form-control form-control-sm" id="access_description"
+                        name="accept_description"></textarea>
+                </td>
+                <td>
+                    <select class="form-select form-select-sm" id="access_icon_${rowCount}" name="access_icon"
+                        aria-label="Select example">
+                        
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-remove-access-cluster"
+                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-type="new" data-cluster_id="${rowCount}">
+                        <i class="bi bi-trash3 fs-4 text-danger"></i>
+                    </button>
+                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-save-access-cluster"
+                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" id="btn_save_access_${rowCount}">
+                        <span class="svg-icon icon-size-5 svg-icon-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+<path d="M11 2H9v3h2z"/>
+<path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
 </svg>
-                            </span>
-                        </button>
-                    </td>
-                </tr>`;
+                        </span>
+                    </button>
+                </td>
+            </tr>`;
 
-    $("#tbl-access tbody").append(html);
+                $("#tbl-access tbody").append(html);
+
+                    var select = document.getElementById(`access_icon_${rowCount}`);
+
+                    response.data.forEach(dataIcon => {
+                        var opt = document.createElement('option');
+                        opt.value = dataIcon.id;
+                        opt.innerHTML = dataIcon.type;
+                        select.appendChild(opt);
+                    })
+                
+            }
+
+        }).fail((error) => {
+            showErrorAlert(error);
+        });
 
 })
 
@@ -474,7 +545,7 @@ $("#tbl-access").on("click", ".btn-save-access-cluster", function () {
     let data = {};
     data.title = title;
     data.description = description;
-    data.image = icon;
+    data.accessIconId = icon;
     data.clusterId = clusterId;
 
     $.ajax({
@@ -648,9 +719,9 @@ function getAccessByCluster(clusterId) {
 
             $("#tbl-access tbody").empty();
 
-            if (response.code == 200 && response.data.length > 0) {
+            if (response.code == 200 && response.data.access.length > 0) {
 
-                response.data.forEach(acc => {
+                response.data.access.forEach(acc => {
                     let html = `<tr id="row_${acc.id}">
                     <td>
                         <input type="text" class="form-control form-control-sm" id="access_title_${acc.id}"
@@ -663,9 +734,7 @@ function getAccessByCluster(clusterId) {
                     <td>
                         <select class="form-select form-select-sm" id="access_icon_${acc.id}" name="access_icon"
                             aria-label="Select example">
-                            <option value="tol.png">Pintu Tol</option>
-                            <option value="halte busway.png">Halte Busway</option>
-                            <option value="stasiun.png">Stasiun</option>
+                            
                         </select>
                     </td>
                     <td>
@@ -679,7 +748,16 @@ function getAccessByCluster(clusterId) {
 
                     $("#tbl-access tbody").append(html);
 
-                    $('#access_icon_' + acc.id).val(acc.image).change();
+                    var select = document.getElementById(`access_icon_${acc.id}`);
+
+                    response.data.accessIcons.forEach(dataIcon => {
+                        var opt = document.createElement('option');
+                        opt.value = dataIcon.id;
+                        opt.innerHTML = dataIcon.type;
+                        select.appendChild(opt);
+                    })
+                    
+                    if(acc.access_icon) $('#access_icon_' + acc.id).val(acc.access_icon.id).change();
                 })
             }
 
@@ -717,3 +795,31 @@ $('#btn-switch-block').click(function () {
         blockUI.block();
     }
 });
+
+function showSuccess(message) {
+    Swal.fire({
+        html: `${message}`,
+        icon: "success",
+        buttonsStyling: false,
+        confirmButtonText: "Ok",
+        allowOutsideClick: false,
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    }).then((result) => {
+        window.location.reload();
+    })
+}
+
+function showAlertErr(body) {
+    Swal.fire({
+        html: body,
+        icon: "error",
+        buttonsStyling: false,
+        allowOutsideClick: false,
+        confirmButtonText: "Ok",
+        customClass: {
+            confirmButton: "btn btn-primary"
+        }
+    });
+}
