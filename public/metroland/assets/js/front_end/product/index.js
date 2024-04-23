@@ -61,16 +61,15 @@ function setClusterFacility(clusterId) {
         url: `${CLUSTER_API}/${clusterId}/facility`
     })
         .done((response) => {
-
+            console.log("response : ",JSON.stringify(response))
             if (response.code == 200) {
                 document.getElementById("facility-body").innerHTML = '';
                 document.getElementById("access-body").innerHTML = '';
 
                 let html = ``;
                 response.data.facilities.forEach(element => {
-                    html += `
-                    
-                        <div class="col-md-3 col-sm-6 mb-2">
+                    console.log("img facility : ",element.image)
+                    html += `<div class="col-md-3 col-sm-6 mb-2">
                             <div class="card mx-auto">
                                 <a class="pop-zoom">
                                     <img src="/metroland/assets/img/${element.image}" class="card-img-top">
@@ -86,12 +85,15 @@ function setClusterFacility(clusterId) {
                 let htmlAccess = ``;
                 response.data.access.forEach(element => {
 
-                    htmlAccess += `<div class="col-md-4 col-sm-6">
-                    <div class="symbol symbol-50px symbol-circle"><img class="symbol-label"
-                            src="/metroland/assets/img/${element.access_icon.icon}"></div>
-                    <h2>${element.title}</h2>
-                    <p>${element.description}</p>
-                </div>`;
+                    if(element.access_icon != null){
+
+                        htmlAccess += `<div class="col-md-4 col-sm-6">
+                        <div class="symbol symbol-50px symbol-circle"><img class="symbol-label"
+                                src="/metroland/assets/img/${element.access_icon.icon}"></div>
+                        <h2>${element.title}</h2>
+                        <p>${element.description}</p>
+                    </div>`;
+                    }
                 })
 
                 let clusterImages = '';
