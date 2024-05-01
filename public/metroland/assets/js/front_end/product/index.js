@@ -1,8 +1,12 @@
 
 const CLUSTER_API = '/api/v1/clusters'
 var cluster = document.querySelector('meta[name="first_cluster"]').getAttribute('content');
+var productFacility = document.querySelector('meta[name="product_facility"]').getAttribute('content');
+var productAccess = document.querySelector('meta[name="product_access"]').getAttribute('content');
 
 $(document).ready(function () {
+    setFacility(JSON.parse(productFacility));
+    setAccess(JSON.parse(productAccess));
     setClusterFacility(cluster);
     // AOS.init({
     //     disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
@@ -55,47 +59,54 @@ for (const element of btnTabCluster) {
     element.addEventListener("click", formTabChangeCluster);
 }
 
+function setFacility(facilities) {
+    let html = '';
+
+    facilities.forEach(element => {
+        html += `
+            <div class="col-md-3 col-sm-6 mb-2">
+                    <div class="card mx-auto">
+                        <a class="pop-zoom">
+                            <img src="/metroland/assets/img/${element.image}" class="card-img-top">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">${element.name}</h5>
+                        </div>
+                    </div>
+                </div>
+        `;
+    });
+
+    document.getElementById("facility-body").innerHTML = html;
+};
+
+function setAccess(accesses) {
+    let html = '';
+
+    accesses.forEach(element => {
+        if (element.access_icon != null) {
+            html += `
+                <div class="col-md-4 col-sm-6">
+                    <div class="symbol symbol-50px symbol-circle"><img class="symbol-label"
+                            src="/metroland/assets/img/${element.access_icon.icon}"></div>
+                    <h2>${element.title}</h2>
+                    <p>${element.description}</p>
+                </div>
+            `;
+        };
+    });
+
+    document.getElementById("access-body").innerHTML = html;
+};
+
 function setClusterFacility(clusterId) {
     $.ajax({
         method: "GET",
         url: `${CLUSTER_API}/${clusterId}/facility`
     })
         .done((response) => {
-            console.log("response : ",JSON.stringify(response))
+            console.log("response : ", JSON.stringify(response))
             if (response.code == 200) {
-                document.getElementById("facility-body").innerHTML = '';
-                document.getElementById("access-body").innerHTML = '';
-
-                let html = ``;
-                response.data.facilities.forEach(element => {
-                    console.log("img facility : ",element.image)
-                    html += `<div class="col-md-3 col-sm-6 mb-2">
-                            <div class="card mx-auto">
-                                <a class="pop-zoom">
-                                    <img src="/metroland/assets/img/${element.image}" class="card-img-top">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">${element.name}</h5>
-                                </div>
-                            </div>
-                        </div>
-                `;
-                });
-
-                let htmlAccess = ``;
-                response.data.access.forEach(element => {
-
-                    if(element.access_icon != null){
-
-                        htmlAccess += `<div class="col-md-4 col-sm-6">
-                        <div class="symbol symbol-50px symbol-circle"><img class="symbol-label"
-                                src="/metroland/assets/img/${element.access_icon.icon}"></div>
-                        <h2>${element.title}</h2>
-                        <p>${element.description}</p>
-                    </div>`;
-                    }
-                })
-
                 let clusterImages = '';
                 response.data.cluster_images.forEach(element => {
                     clusterImages += `<div class="carousel-item carousel-item-mdl" id="img-${element.id}">
@@ -108,8 +119,6 @@ function setClusterFacility(clusterId) {
                 </div>`
                 })
 
-                document.getElementById("facility-body").innerHTML = html;
-                document.getElementById("access-body").innerHTML = htmlAccess;
                 document.getElementById("clusterImage").innerHTML = clusterImages;
 
 
