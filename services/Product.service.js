@@ -30,13 +30,23 @@ async function doEdit(id, data, transaction) {
 
 async function getProductCluster(productId) {
     return await db.Product.findOne({
-        include: [{
-            model: db.Cluster, required: true,
-            include: [
-                { model: db.ClusterImage, required: true, attributes: ['id', 'clusterId', 'image'] },
-                { model: db.Facility, required: false, attributes: ['id', 'name', 'image'] }
-            ]
-        }],
+        include: [
+            {
+                model: db.Cluster, required: true,
+                include: [
+                    { model: db.ClusterImage, required: true, attributes: ['id', 'clusterId', 'image'] },
+                ]
+            },
+            {
+                model: db.Facility, required: true, attributes: ['id', 'name', 'image']
+            },
+            {
+                model: db.Access, required: true, attributes: ['id', 'title', 'description'],
+                include: [
+                    { model: db.AccessIcon, required: true, attributes: ['id', 'icon'] }
+                ]
+            }
+        ],
         where: {
             id: productId
         }

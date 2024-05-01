@@ -156,13 +156,9 @@ async function getClusterFacilities(req, res) {
     const clusterId = req.params.id;
     try {
 
-        const facilities = await clusterService.getClusterFacilities(clusterId);
-        const access = await accessServices.getAccessByCluster(clusterId);
         const cluster_images = await clusterService.getClusterImageByCluster(clusterId);
 
         let data = {};
-        data.facilities = facilities.facilities;
-        data.access = access;
         data.cluster_images = cluster_images;
 
         await response(res, 200, 200, 'success', data);

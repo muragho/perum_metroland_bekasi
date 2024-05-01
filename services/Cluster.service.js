@@ -74,7 +74,6 @@ async function upsertCustomerImage(data, transaction) {
 
 async function getClusterFacilities(clusterId) {
     return await db.Cluster.findOne({
-        include: [{ model: db.Facility, attributes: ['id', 'name', 'image'] }],
         where: {
             id: clusterId
         }

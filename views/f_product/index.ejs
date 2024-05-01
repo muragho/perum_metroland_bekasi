@@ -56,6 +56,8 @@
 }
  </style>
     <meta name="first_cluster" content="<%= data.clusters[0].id %>">
+    <meta name="product_facility" content="<%= JSON.stringify(data.facilities) %>">
+    <meta name="product_access" content="<%= JSON.stringify(data.accesses) %>">
     <%- include('../layouts/f_menu_general') %>
 
         <!--CONTENT-->

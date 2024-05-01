@@ -28,7 +28,7 @@ function model(sequelize) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        clusterId: {
+        productId: {
             type: DataTypes.INTEGER,
             allowNull: true
         },

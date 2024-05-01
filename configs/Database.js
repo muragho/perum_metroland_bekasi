@@ -57,18 +57,18 @@ async function initialize() {
     db.Product.belongsToMany(db.Cluster, { through: 'products_clusters' });
     db.Cluster.belongsToMany(db.Product, { through: 'products_clusters' });
 
-    db.Facility.belongsToMany(db.Cluster, { through: 'clusters_facilities' });
-    db.Cluster.belongsToMany(db.Facility, { through: 'clusters_facilities' });
+    db.Facility.belongsToMany(db.Product, { through: 'products_facilities' });
+    db.Product.belongsToMany(db.Facility, { through: 'products_facilities' });
 
     db.Cluster.hasMany(db.ClusterImage, {
         foreignKey: 'clusterId',
     });
     db.ClusterImage.belongsTo(db.Cluster);
 
-    db.Cluster.hasMany(db.Access, { foreignKey: 'clusterId' });
-    db.Access.belongsTo(db.Cluster);
+    db.Product.hasMany(db.Access, { foreignKey: 'productId' });
+    db.Access.belongsTo(db.Product);
 
-    db.AccessIcon.hasMany(db.Access,{foreignKey: 'accessIconId'});
+    db.AccessIcon.hasMany(db.Access, { foreignKey: 'accessIconId' });
     db.Access.belongsTo(db.AccessIcon);
 }
 
