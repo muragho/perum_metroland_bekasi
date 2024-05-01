@@ -33,6 +33,8 @@ const news = require('./routes/admin/News.route.js');
 const config = require('./routes/admin/Config.route.js');
 const user = require('./routes/admin/User.route.js');
 const karir = require('./routes/admin/Carrier.route.js');
+const facility = require('./routes/admin/Facility.route.js');
+const access = require('./routes/admin/Access.route.js');
 
 const app = express();
 // const __filename = fileURLToPath(import.meta.url);
@@ -93,6 +95,8 @@ app.use('/auth', news);
 app.use('/auth', config);
 app.use('/auth', user);
 app.use('/auth', karir);
+app.use('/auth', facility);
+app.use('/auth', access);
 
 app.post('/auth/news/upload', multipartMiddleware, (req, res) => {
 

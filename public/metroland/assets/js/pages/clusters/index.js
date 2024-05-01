@@ -701,9 +701,9 @@ function addImageInput(response) {
     }
 
     let facilityIds = [];
-    response.data.facilities.forEach(facility => {
-        facilityIds.push(facility.id);
-    });
+    // response.data.facilities.forEach(facility => {
+    //     facilityIds.push(facility.id);
+    // });
     $("#mdl_edit_clusters_facility").val(facilityIds).trigger('change');
 }
 

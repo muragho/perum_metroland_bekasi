@@ -1,6 +1,7 @@
 const response = require('../helpers/Response.js');
 const productService = require('../services/Product.service.js');
 const clusterService = require('../services/Cluster.service.js');
+const fasilityService = require('../services/Facility.service.js');
 const fs = require('fs');
 const fs2 = require('fs').promises;
 const { db } = require('../configs/Database.js');
@@ -142,6 +143,11 @@ async function doAddProduct(req, res) {
             await c.addProducts(newProduct.id);
         }))
 
+        const facilities_ = reqBody.facilities.split(',');
+        await Promise.all(facilities_.map(async (element) => {
+            const c = await fasilityService.getFasilityById(element);
+            await c.addProducts(newProduct.id);
+        }))
 
         // await t.commit()
         await response(res, 200, 200);
@@ -212,4 +218,4 @@ async function doDeleteProduct(req, res) {
     }
 }
 
-module.exports = { doEditProduct, doAddProduct, getClusterByProduct, removeLogoOrSitePlanImage ,doDeleteProduct}
+module.exports = { doEditProduct, doAddProduct, getClusterByProduct, removeLogoOrSitePlanImage, doDeleteProduct }

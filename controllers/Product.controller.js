@@ -1,4 +1,6 @@
 const productServ = require('../services/Product.service.js');
+const facilityServ = require('../services/Facility.service.js');
+const clusterServ = require('../services/Cluster.service.js');
 const pagination = require('../helpers/Pagination.js');
 const moment = require('moment');
 const { Op } = require("sequelize");
@@ -23,9 +25,10 @@ async function productPage(req, res) {
         }
         const { count, rows } = await productServ.getAllProduct(where, page, size)
         let { number, pageNumUi } = pagination.setPagination(rows, count, page, size, key, "/auth/products");
+        const facilities = await facilityServ.getAllFacilities();
 
         res.render("products/index", {
-            title, header, bearer, products: rows, moment, csrfToken: req.csrfToken(), JSDOM, pagination: pageNumUi
+            title, header, bearer, products: rows, moment, csrfToken: req.csrfToken(), JSDOM, facilities, pagination: pageNumUi
         });
     } catch (error) {
         console.error(error);

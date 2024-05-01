@@ -2,7 +2,7 @@ const { db } = require('../configs/Database.js');
 
 
 async function getAllProducts() {
-    return await db.Product.findAll({order: [['updated_at', 'DESC']] });
+    return await db.Product.findAll({ order: [['updated_at', 'DESC']] });
 }
 
 async function getAllProductByLimit(limit) {
@@ -53,6 +53,10 @@ async function getProductCluster(productId) {
     })
 }
 
+async function getAccessByProduct(productId) {
+    return await db.Product.findAll({ where: { productId }, include: { model: db.AccessIcon } });
+}
+
 async function addProduct(data, transaction) {
 
     if (transaction != null) {
@@ -71,8 +75,10 @@ async function updateProduct(productId, data) {
 }
 
 async function doDelete(id) {
-    return await db.Product.destroy({where:{id}});
+    return await db.Product.destroy({ where: { id } });
 }
 
-module.exports = {getAllProducts, getAllProductByLimit, getAllProduct, doEdit, getProductCluster, 
-    addProduct, getProductById, updateProduct,doDelete }
+module.exports = {
+    getAllProducts, getAllProductByLimit, getAllProduct, doEdit, getProductCluster,
+    addProduct, getProductById, updateProduct, doDelete, getAccessByProduct
+}

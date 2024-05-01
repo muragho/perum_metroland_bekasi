@@ -556,86 +556,12 @@
 
                     </div>
 
-                    <div class="row">
-                        <div class="d-inline-flex mb-2">
-                            <div class="badge badge-light">
-                                <div class="symbol symbol-20px me-3">
-                                    <span class="svg-icon svg-icon-2 svg-icon-warning">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
-                                            <path
-                                                d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z" />
-                                            <path
-                                                d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1" />
-                                        </svg>
-                                    </span>
-                                </div>
-                                <span>Fasilitas yang terdapat pada klaster</span>
-                            </div>
-                        </div>
-                        <div class="fv-row mb-7">
-                            <select class="form-select rounded-start-0" name="mdl_edit_clusters_facility"
-                                data-control="select2" id="mdl_edit_clusters_facility"
-                                data-placeholder="Pilih Fasilitas" data-allow-clear="true" multiple="multiple">
-                                <% facilities.forEach(facility=> { %>
-                                    <option value="<%= facility.id %>">
-                                        <%= facility.name %>
-                                    </option>
-                                    <% }) %>
-                            </select>
-
-                        </div>
-                    </div>
-
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
                 <button type="button" id="mdl-btn-edit-cluster" class="btn btn-primary btn-sm">Simpan</button>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- ACCESS CLUSTER-->
-<div class="modal fade" id="mdl-access-cluster" data-bs-backdrop="static" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">FORM AKSES KLASTER [<b id="form-cluster-name"
-                        class="text-uppercase"></b>]</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="alert alert-primary">
-                    <div class="d-flex flex-column">
-                        <span>Form ini digunakan untuk menambahkan akses disetiap klaster, akses akan tampil pada
-                            halaman setiap klaster, masukan judul dan tuliskan deskripsi yang sesuai lalu pilih icon
-                            untuk akses ini dan akhiri dengan klik tombol <b>Simpan</b></span>
-                    </div>
-                </div>
-                <div class="text-end mb-5">
-                    <button type="button" id="mdl-btn-add-access-row" class="btn btn-success btn-sm">Tambah
-                        Akses</button>
-                </div>
-
-                <input type="hidden" id="access_cluster_id" />
-
-                <table class="table table-responsive px-5" id="tbl-access">
-                    <thead>
-                        <th>Judul</th>
-                        <th>Deskripsi</th>
-                        <th>Icon</th>
-                        <th>Hapus</th>
-                    </thead>
-                    <tbody>
-
-
-                    </tbody>
-                </table>
-            </div>
-
         </div>
     </div>
 </div>
