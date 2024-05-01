@@ -23,7 +23,7 @@ async function getAccessIcons() {
 async function getAccessIconsIncludeTipe() {
     return await db.AccessIcon.findAll({
         attributes: ['id', 'type', 'icon', 'created_at'],
-        include: { model: db.Access, required: false, attributes: ['id', 'title', 'description'], include: { model: db.Cluster, attributes: ['id', 'name'] } }
+        include: { model: db.Access, required: false, attributes: ['id', 'title', 'description'], include: { model: db.Product, attributes: ['id', 'title'] } }
     });
 }
 

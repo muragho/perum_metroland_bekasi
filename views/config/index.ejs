@@ -81,7 +81,7 @@
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="alert alert-primary">
                                         <div class="d-flex flex-column">
-                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas / akses yang dapat terhubung dengan setiap tipe / klaster</span>
+                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas / akses yang dapat terhubung dengan setiap klaster</span>
                                         </div>
                                     </div>
                                     
@@ -99,7 +99,7 @@
                                                             Icon
                                                         </th>
                                                         <th class="min-w-200px">
-                                                            Tipe / Klaster
+                                                            Klaster
                                                             <i class="bi bi-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                                                 title="Setiap akses icon dapat memiliki relasi dengan tipe untuk masing-masing klaster, untuk mengubah akses icon pada setiap tipe/klaster dapat mengubah melalui menu Tipe"></i>
                                                         </th>
@@ -214,7 +214,7 @@
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="alert alert-primary">
                                         <div class="d-flex flex-column">
-                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas yang dapat terhubung dengan setiap tipe / klaster</span>
+                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas yang dapat terhubung dengan setiap klaster</span>
                                         </div>
                                     </div>
                                     
@@ -232,7 +232,7 @@
                                                             Icon
                                                         </th>
                                                         <th class="min-w-200px">
-                                                            Tipe / Klaster
+                                                            Klaster
                                                             <i class="bi bi-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                                                 title="Setiap fasilitas dapat memiliki relasi dengan tipe untuk masing-masing klaster, untuk mengubah fasilitas pada setiap tipe/klaster dapat mengubah melalui menu Tipe"></i>
                                                         </th>
@@ -261,10 +261,11 @@
                                                             <td>
                                                                 <div class="symbol-group symbol-hover">
     
-                                                                    <% let facility_n = 1; facility.clusters.forEach(cluster=>{%>
+                                                                    <% let facility_n = 1; facility.products.forEach(product=>{%>
                                                                         <% var randomColor = ['bg-warning','bg-success','bg-info','bg-danger','bg-primary'][(Math.floor(Math.random() * 4))] %>
-                                                                        <%if(cluster != null){%>
-                                                                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="<%=cluster.name%>">
+                                                                        <%if(product != null){%>
+                                                                            <div><% product.name %></div>
+                                                                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="<%=product.name%>">
                                                                                 <span class="symbol-label <%-randomColor%> text-inverse-warning fw-bolder"><%= facility_n%></span>
                                                                             </div>
                                                                             <%facility_n++}%>

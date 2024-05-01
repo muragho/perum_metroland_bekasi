@@ -13,7 +13,7 @@ async function getAllFacilities() {
 }
 
 async function getAllFacilitiesCluster() {
-    return await db.Facility.findAll({ include: { model: db.Cluster, attributes: ['id', 'name', 'created_by', 'created_at'] } });
+    return await db.Facility.findAll({ include: { model: db.Product, attributes: ['id', 'title', 'created_by', 'created_at'] } });
 }
 
 async function doAddFacility(data) {
