@@ -9,6 +9,7 @@ const { JSDOM } = jsdom;
 async function newsPage(req, res) {
     const page = req.query.page;
     const products = req.products;
+    const header_images = req.header_image;
     console.log(page)
     try {
         const page_ = typeof page === 'undefined' ? 1 : page;
@@ -18,7 +19,7 @@ async function newsPage(req, res) {
         const { count, rows } = await newsService.getNewsList(where, page_, size_);
         let { number, pageNumUi } = pagination.setPagination(rows, count, page_, size_, null, "/berita");
         // console.log(JSON.stringify(rows))
-        res.render("f_news/index", { products, rows, moment, pagination: pageNumUi, JSDOM });
+        res.render("f_news/index", { products, rows, moment, pagination: pageNumUi, JSDOM,header_images });
     } catch (error) {
         console.error(error);
         return res.status(INTERNAL_SERVER_ERROR).render("500/index");

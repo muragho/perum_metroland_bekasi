@@ -20,10 +20,12 @@ async function configPage(req, res) {
         const iconAkses = await accessService.getAccessIconsIncludeTipe();
         const facilities = await FacilityService.getAllFacilitiesCluster();
         console.log("facilities",JSON.stringify(facilities))
-        
+
+        const headerPages = await configService.getHeaderPages();
+        console.log("header page : ",JSON.stringify(headerPages))
         res.render("config/index", {
             title, header, bearer, csrfToken: req.csrfToken(), promo: promo.value, 
-            promo_id: promo.id, moment, about,iconAkses,facilities
+            promo_id: promo.id, moment, about,iconAkses,facilities,headerPages
         })
     } catch (error) {
         console.error(error)

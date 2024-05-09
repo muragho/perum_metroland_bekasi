@@ -19,7 +19,7 @@ const mdlBtnAddCluster = document.getElementById("mdl-btn-add-cluster");
 const mdlBtnCancelAddCluster = document.getElementById("mdl-btn-cancel-add-cluster");
 const btnRemoveImgCluster = document.getElementsByClassName("btn-remove-img-cluster");
 const btnClusterAccess = document.getElementsByClassName("btn-cluster-access");
-const mdlBtnAddAccessRow = document.getElementById("mdl-btn-add-access-row");
+// const mdlBtnAddAccessRow = document.getElementById("mdl-btn-add-access-row");
 const btnDeleteCluster = document.getElementsByClassName("btn-delete-cluster");
 
 var target;
@@ -452,72 +452,72 @@ mdlBtnEditCluster.addEventListener("click", function (e) {
     }
 })
 
-mdlBtnAddAccessRow.addEventListener("click", function (e) {
-    e.preventDefault();
+// mdlBtnAddAccessRow.addEventListener("click", function (e) {
+//     e.preventDefault();
 
-    $.ajax({
-        method: "GET",
-        url: `${CLUSTER_API}/access_icons`,
-        headers: {
-            'CSRF-Token': token
-        }
-    })
-        .done((response) => {
+//     $.ajax({
+//         method: "GET",
+//         url: `${CLUSTER_API}/access_icons`,
+//         headers: {
+//             'CSRF-Token': token
+//         }
+//     })
+//         .done((response) => {
 
-            var rowCount = $('#tbl-access tr').length;
+//             var rowCount = $('#tbl-access tr').length;
 
-            if (response.code == 200 && response.data.length > 0) {
+//             if (response.code == 200 && response.data.length > 0) {
 
-                let html = `<tr id="row_new_${rowCount}">
-                <td>
-                    <input type="text" class="form-control form-control-sm" id="access_title"
-                        name="accept_title" value="" />
-                </td>
-                <td>
-                    <textarea type="text" class="form-control form-control-sm" id="access_description"
-                        name="accept_description"></textarea>
-                </td>
-                <td>
-                    <select class="form-select form-select-sm" id="access_icon_${rowCount}" name="access_icon"
-                        aria-label="Select example">
+//                 let html = `<tr id="row_new_${rowCount}">
+//                 <td>
+//                     <input type="text" class="form-control form-control-sm" id="access_title"
+//                         name="accept_title" value="" />
+//                 </td>
+//                 <td>
+//                     <textarea type="text" class="form-control form-control-sm" id="access_description"
+//                         name="accept_description"></textarea>
+//                 </td>
+//                 <td>
+//                     <select class="form-select form-select-sm" id="access_icon_${rowCount}" name="access_icon"
+//                         aria-label="Select example">
                         
-                    </select>
-                </td>
-                <td>
-                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-remove-access-cluster"
-                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-type="new" data-cluster_id="${rowCount}">
-                        <i class="bi bi-trash3 fs-4 text-danger"></i>
-                    </button>
-                    <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-save-access-cluster"
-                        data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" id="btn_save_access_${rowCount}">
-                        <span class="svg-icon icon-size-5 svg-icon-light">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
-<path d="M11 2H9v3h2z"/>
-<path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
-</svg>
-                        </span>
-                    </button>
-                </td>
-            </tr>`;
+//                     </select>
+//                 </td>
+//                 <td>
+//                     <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-remove-access-cluster"
+//                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-type="new" data-cluster_id="${rowCount}">
+//                         <i class="bi bi-trash3 fs-4 text-danger"></i>
+//                     </button>
+//                     <button class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary btn-save-access-cluster"
+//                         data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" id="btn_save_access_${rowCount}">
+//                         <span class="svg-icon icon-size-5 svg-icon-light">
+//                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+// <path d="M11 2H9v3h2z"/>
+// <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0M1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5m3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4zM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5z"/>
+// </svg>
+//                         </span>
+//                     </button>
+//                 </td>
+//             </tr>`;
 
-                $("#tbl-access tbody").append(html);
+//                 $("#tbl-access tbody").append(html);
 
-                    var select = document.getElementById(`access_icon_${rowCount}`);
+//                     var select = document.getElementById(`access_icon_${rowCount}`);
 
-                    response.data.forEach(dataIcon => {
-                        var opt = document.createElement('option');
-                        opt.value = dataIcon.id;
-                        opt.innerHTML = dataIcon.type;
-                        select.appendChild(opt);
-                    })
+//                     response.data.forEach(dataIcon => {
+//                         var opt = document.createElement('option');
+//                         opt.value = dataIcon.id;
+//                         opt.innerHTML = dataIcon.type;
+//                         select.appendChild(opt);
+//                     })
                 
-            }
+//             }
 
-        }).fail((error) => {
-            showErrorAlert(error);
-        });
+//         }).fail((error) => {
+//             showErrorAlert(error);
+//         });
 
-})
+// })
 
 $("#tbl-access").on("click", ".btn-remove-access-cluster", function () {
 

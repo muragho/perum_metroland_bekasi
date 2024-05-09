@@ -22,5 +22,6 @@ router.delete('/api/v1/configs/fasility-icon/:id', csrfProt, configApiController
 router.put('/api/v1/configs/facility-icon/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigFacilityIcon);
 router.put('/api/v1/configs/about/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigAbout);
 router.post('/api/v1/configs/facility', multipartForm, urlEncodedParser, csrfProt, configApiController.doAddConfigFacilityIcon);
+router.put('/api/v1/configs/header/:id', multipartForm, urlEncodedParser, csrfProt, configApiController.doEditConfigHeaderIcon);
 
 module.exports = router;

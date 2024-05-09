@@ -7,7 +7,7 @@ const fs2 = require('fs').promises;
 const { db } = require('../configs/Database.js');
 
 async function doEditProduct(req, res) {
-    console.info(`inside doEditProduct`);
+    console.info(`inside doEditProduct 1`);
     const productId = req.params.id;
     const reqBody = req.body;
     const bearer = req.bearer;
@@ -46,19 +46,21 @@ async function doEditProduct(req, res) {
             }));
         }
 
-
-
         db.Product.findByPk(productId).then(product => {
 
             const clusters_ = reqBody.clusters.split(',');
+            const facilities_ = reqBody.facilities.split(',');
 
             if (product) {
                 product.setClusters(clusters_).then(() => {
-                    response(res, 200, 200, 'Data berhasil diubah');
+                    
+                    product.setFacilities(facilities_).then(() => {
+                        response(res, 200, 200, 'Data berhasil diubah');
+                    })
                 })
             }
         })
-
+        
     } catch (error) {
         console.error(`err doEditProduct : ${error}`);
         // await t.rollback();

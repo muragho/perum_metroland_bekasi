@@ -240,5 +240,44 @@ async function doEditConfigFacilityIcon(req, res) {
     }
 }
 
+async function doEditConfigHeaderIcon(req, res) {
+    console.info(`inside doEditConfigHeaderIcon`);
+    const id = req.params.id;
+    const reqBody = req.body;
+    const bearer = req.bearer;
+    console.log(`id : ${id} , body : ${JSON.stringify(reqBody)}`)
+
+    try {
+        const date = new Date();
+        let data = {};
+
+        if (req.files.length > 0) {
+
+            const filename = req.files[0].originalname.replaceAll(' ', '');
+            data.image = filename;
+
+            const resizedImageBuffer = await sharp(req.files[0].buffer)
+            .resize(1920, 1080) // Resize to 300x300 pixels
+            .toBuffer();
+
+            await fs2.writeFile('./public/metroland/assets/img/' + filename, resizedImageBuffer);
+
+        }else{
+            throw new Error('image header is required');
+        }
+
+        data.updated_by = bearer.emailSignIn;
+        data.updated_at = date;
+        console.log("data header : ",data)
+
+        await configService.doEditHeader(id,data)
+
+        response(res, 200, 200, 'Data berhasil diubah');
+    } catch (error) {
+        console.error(`err doEditConfig : ${error}`);
+        await response(res, 200, 400, error.message || 'Data gagal diubah')
+    }
+}
+
 module.exports = { doEditConfig, doEditConfigAbout,doAddConfigAksesIcon,doEditConfigAksesIcon ,
-    deleteAccessIcon,deleteFasilityIcon,doAddConfigFacilityIcon,doEditConfigFacilityIcon}
+    deleteAccessIcon,deleteFasilityIcon,doAddConfigFacilityIcon,doEditConfigFacilityIcon,doEditConfigHeaderIcon}

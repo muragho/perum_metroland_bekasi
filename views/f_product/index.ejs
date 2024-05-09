@@ -180,17 +180,17 @@
 
                                                     <div class="spec-img col-md-7 nomor-1">
                                                         <div id="carouselExample_<%= cluster.id %>"
-                                                            class="carousel carousel-dark slide" data-bs-ride="carousel"
-                                                            data-bs-pause="hover">
-
+                                                            class="carousel carousel-dark slide" >
+                                                            <!-- data-bs-interval="2000" data-bs-ride="carousel"
+                                                            data-bs-pause="hover"-->
                                                             <div class="carousel-inner">
                                                                 <%let ciNo=1; cluster.ClusterImages.forEach(ci=>{%>
                                                                     <div class="carousel-item <%-ciNo == 1?" active":""
-                                                                        %>" data-bs-interval="2000">
-                                                                        <div class="img-container img-cluster">
+                                                                        %>" >
+                                                                        <div class="img-container1 img-cluster1">
                                                                             <a class="pop">
                                                                                 <img src="/metroland/assets/img_cluster/<%= ci.image %>"
-                                                                                    class="img-thumbnail"
+                                                                                    class="img-fluid"
                                                                                     id="<%= ci.id %>" loading="lazy">
                                                                             </a>
                                                                         </div>

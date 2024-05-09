@@ -81,7 +81,7 @@
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="alert alert-primary">
                                         <div class="d-flex flex-column">
-                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas / akses yang dapat terhubung dengan setiap klaster</span>
+                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas / akses yang dapat terhubung dengan setiap tipe / klaster</span>
                                         </div>
                                     </div>
                                     
@@ -99,7 +99,7 @@
                                                             Icon
                                                         </th>
                                                         <th class="min-w-200px">
-                                                            Klaster
+                                                            Tipe / Klaster
                                                             <i class="bi bi-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                                                 title="Setiap akses icon dapat memiliki relasi dengan tipe untuk masing-masing klaster, untuk mengubah akses icon pada setiap tipe/klaster dapat mengubah melalui menu Tipe"></i>
                                                         </th>
@@ -130,8 +130,9 @@
     
                                                                     <% let n = 1; akses.accesses.forEach(tipe=>{%>
                                                                         <% var randomColor = ['bg-warning','bg-success','bg-info','bg-danger','bg-primary'][(Math.floor(Math.random() * 4))] %>
-                                                                        <%if(tipe.cluster != null){%>
-                                                                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="<%=tipe.cluster.name%>">
+                                                                        
+                                                                        <%if(tipe.product != null){%>
+                                                                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="<%=tipe.product.title%>">
                                                                                 <span class="symbol-label <%-randomColor%> text-inverse-warning fw-bolder"><%= n%></span>
                                                                             </div>
                                                                             <%n++}%>
@@ -214,7 +215,7 @@
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <div class="alert alert-primary">
                                         <div class="d-flex flex-column">
-                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas yang dapat terhubung dengan setiap klaster</span>
+                                            <span>Card ini berfungsi untuk mengelola icon-icon yang berhubungan dengan fasilitas yang dapat terhubung dengan setiap tipe / klaster</span>
                                         </div>
                                     </div>
                                     
@@ -232,7 +233,7 @@
                                                             Icon
                                                         </th>
                                                         <th class="min-w-200px">
-                                                            Klaster
+                                                            Tipe / Klaster
                                                             <i class="bi bi-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
                                                                 title="Setiap fasilitas dapat memiliki relasi dengan tipe untuk masing-masing klaster, untuk mengubah fasilitas pada setiap tipe/klaster dapat mengubah melalui menu Tipe"></i>
                                                         </th>
@@ -264,8 +265,8 @@
                                                                     <% let facility_n = 1; facility.products.forEach(product=>{%>
                                                                         <% var randomColor = ['bg-warning','bg-success','bg-info','bg-danger','bg-primary'][(Math.floor(Math.random() * 4))] %>
                                                                         <%if(product != null){%>
-                                                                            <div><% product.name %></div>
-                                                                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="<%=product.name%>">
+                                                                            <div><% product.title %></div>
+                                                                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" data-bs-original-title="<%=product.title%>">
                                                                                 <span class="symbol-label <%-randomColor%> text-inverse-warning fw-bolder"><%= facility_n%></span>
                                                                             </div>
                                                                             <%facility_n++}%>
@@ -346,8 +347,11 @@
                                     <div class="alert alert-primary">
                                         <div class="d-flex flex-column">
                                             <span>Halaman ini berfungsi untuk merubah latar gambar header pada website
-                                                front end disetiap
+                                                front end pada masing - masing
                                                 halaman</span>
+                                                <div>
+                                                    rekomendasi ukuran : <span class="badge badge-danger">1920 x 1080</span>
+                                                </div>
                                             <!--end::Content-->
                                         </div>
 
@@ -356,121 +360,55 @@
 
                                     <div class="row border-1 border-dark">
                                         <h1 class="title">Halaman Beranda</h1>
-                                        <div class="col-md-12 d-inline-flex">
+                                        <div class="col-md-12 d-inline-flex overflow-scroll">
 
-                                            <div class="fv-row mb-7 me-5">
-                                                <label class="d-block fw-bold fs-6 mb-5">
-                                                    <span>Header 1</span>
-                                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                        title="gambar latar pada halaman beranda."></i>
-                                                </label>
-                                                <div class="image-input image-input-outline image-input-outline"
-                                                    data-kt-image-input="true">
-                                                    <div class="image-input-wrapper w-125px h-125px"
-                                                        id="header_1_background_home">
+                                            <% headerPages.forEach(header =>{%>
+
+                                                
+                                                <div class="shadow-sm">
+
+                                                    <div class="card-body">
+                                                        <div class="fv-row mb-7 me-5">
+                                                            <label class="d-block fw-bold fs-6 mb-5">
+                                                                <span><%= header.url.replace('/','')%></span>
+                                                                <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
+                                                                    title="gambar latar pada halaman beranda."></i>
+                                                            </label>
+                                                            <div class="image-input image-input-outline image-input-outline"
+                                                                data-kt-image-input="true">
+                                                                <div class="image-input-wrapper w-125px h-125px" style="background-image: url(/metroland/assets/img/<%=header.image%>);">
+                                                                </div>
+            
+                                                                <label
+                                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                                    data-kt-image-input-action="change" data-bs-toggle="tooltip"
+                                                                    title
+                                                                    data-bs-original-title="Pilih foto untuk gambar latar pada halaman beranda">
+                                                                    <i class="bi bi-pencil-fill fs-7"></i>
+                                                                    <input type="file" name="file_header_1_home"
+                                                                        id="header_img_<%= header.id%>" accept=".png, .jpg, .jpeg" />
+                                                                    <input type="hidden" name="avatar_remove" />
+                                                                </label>
+                                                                <span
+                                                                    class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                                    data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
+                                                                    title data-bs-original-title="Batalkan foto latar">
+                                                                    <i class="bi bi-x fs-2"></i>
+                                                                </span>
+            
+                                                                
+                                                            </div>
+
+                                                            <button type="button" class="btn btn-success btn-hover-scale me-5 btn-sm mb-2 btn-header" data-page_id="<%= header.id %>">Ubah</button>
+                                                        </div>
                                                     </div>
-
-                                                    <label
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                                        title
-                                                        data-bs-original-title="Pilih foto untuk gambar latar pada halaman beranda">
-                                                        <i class="bi bi-pencil-fill fs-7"></i>
-                                                        <input type="file" name="file_header_1_home"
-                                                            id="file_header_1_home" accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="avatar_remove" />
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                                                        title data-bs-original-title="Batalkan foto latar">
-                                                        <i class="bi bi-x fs-2"></i>
-                                                    </span>
-
-                                                    <span id="btn-remove-header-1-home"
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                                        title data-bs-original-title="Remove avatar">
-                                                        <i class="bi bi-x fs-2"></i>
-                                                    </span>
                                                 </div>
-                                            </div>
 
-                                            <div class="fv-row mb-7 me-5">
-                                                <label class="d-block fw-bold fs-6 mb-5">
-                                                    <span>Header 2</span>
-                                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                        title="gambar latar pada halaman beranda."></i>
-                                                </label>
-                                                <div class="image-input image-input-outline image-input-outline"
-                                                    data-kt-image-input="true">
-                                                    <div class="image-input-wrapper w-125px h-125px"
-                                                        id="header_2_background_home">
-                                                    </div>
+                                            <%})%>
+                                            
 
-                                                    <label
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                                        title
-                                                        data-bs-original-title="Pilih foto untuk gambar latar pada halaman beranda">
-                                                        <i class="bi bi-pencil-fill fs-7"></i>
-                                                        <input type="file" name="file_header_2_home"
-                                                            id="file_header_2_home" accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="avatar_remove" />
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                                                        title data-bs-original-title="Batalkan foto latar">
-                                                        <i class="bi bi-x fs-2"></i>
-                                                    </span>
+                                           
 
-                                                    <span id="btn-remove-header-2-home"
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                                        title data-bs-original-title="Remove avatar">
-                                                        <i class="bi bi-x fs-2"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <div class="fv-row mb-7 me-5">
-                                                <label class="d-block fw-bold fs-6 mb-5">
-                                                    <span>Header 3</span>
-                                                    <i class="fas fa-info-circle ms-2 fs-7" data-bs-toggle="tooltip"
-                                                        title="gambar latar pada halaman beranda."></i>
-                                                </label>
-                                                <div class="image-input image-input-outline image-input-outline"
-                                                    data-kt-image-input="true">
-                                                    <div class="image-input-wrapper w-125px h-125px"
-                                                        id="header_3_background_home">
-                                                    </div>
-
-                                                    <label
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                                        title
-                                                        data-bs-original-title="Pilih foto untuk gambar latar pada halaman beranda">
-                                                        <i class="bi bi-pencil-fill fs-7"></i>
-                                                        <input type="file" name="file_header_3_home"
-                                                            id="file_header_3_home" accept=".png, .jpg, .jpeg" />
-                                                        <input type="hidden" name="avatar_remove" />
-                                                    </label>
-                                                    <span
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                                                        title data-bs-original-title="Batalkan foto latar">
-                                                        <i class="bi bi-x fs-2"></i>
-                                                    </span>
-
-                                                    <span id="btn-remove-header-3-home"
-                                                        class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                        data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                                        title data-bs-original-title="Remove avatar">
-                                                        <i class="bi bi-x fs-2"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 

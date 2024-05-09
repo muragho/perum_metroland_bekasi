@@ -41,7 +41,7 @@ async function getProductCluster(productId) {
                 model: db.Facility, required: true, attributes: ['id', 'name', 'image']
             },
             {
-                model: db.Access, required: true, attributes: ['id', 'title', 'description'],
+                model: db.Access, required: false, attributes: ['id', 'title', 'description'],
                 include: [
                     { model: db.AccessIcon, required: true, attributes: ['id', 'icon'] }
                 ]

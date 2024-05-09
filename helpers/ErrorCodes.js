@@ -1,0 +1,4 @@
+exports.NOT_FOUND = 404
+exports.INTERNET_SERVER_ERROR = 500
+exports.BAD_REQUEST = 400
+exports.FORBIDDEN_ACCESS = 403

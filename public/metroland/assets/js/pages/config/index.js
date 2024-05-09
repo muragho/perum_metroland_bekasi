@@ -22,6 +22,7 @@ const mdlAddBtnCancleFacilityIcon = document.getElementById("mdl-add-btn-cancle-
 const btnDeleteFasilityIcon = document.getElementsByClassName("btn-delete-fasility-icon");
 const btnEditFacilityIcon = document.getElementsByClassName("btn-edit-facility-icon");
 const mdlBtnEditFacilityIcon = document.getElementById("mdl-btn-edit-facility-icon");
+const btnHeader = document.getElementsByClassName("btn-header");
 
 var validator = FormValidation.formValidation(
     formMdlAddAksesIcon,
@@ -34,7 +35,7 @@ var validator = FormValidation.formValidation(
                     }
                 }
             },
-            
+
         },
 
         plugins: {
@@ -59,7 +60,7 @@ var validatorFacility = FormValidation.formValidation(
                     }
                 }
             },
-            
+
         },
 
         plugins: {
@@ -87,7 +88,7 @@ ClassicEditor
         console.error(error);
     });
 
-function formEditAksesIcon(){
+function formEditAksesIcon() {
     const akses_icon_id = $(this).data("akses_icon_id");
     const image = $(this).data("akses_icon");
     const akses_icon_type = $(this).data("akses_icon_type");
@@ -103,12 +104,12 @@ function formEditAksesIcon(){
     $('#mdl-show-edit-akses-icon').modal("show");
 }
 
-function formEditFacilityIcon(){
+function formEditFacilityIcon() {
     const facility_icon_id = $(this).data("facility_icon_id");
     const image = $(this).data("facility_image");
     const facility_name = $(this).data("facility_name");
 
-    console.log("name ",facility_name)
+    console.log("name ", facility_name)
 
     $('#mdl_edit_facility_icon_id').val(facility_icon_id);
     $('#mdl_edit_facility_name').val(facility_name)
@@ -191,12 +192,12 @@ mdlBtnCanclePromotion.addEventListener("click", function (e) {
     location.reload();
 });
 
-btnShowMdlAddAksesIcon.addEventListener("click",function(e){
+btnShowMdlAddAksesIcon.addEventListener("click", function (e) {
     e.preventDefault();
     $('#mdl-show-add-akses-icon').modal("show");
 });
 
-btnShowMdlAddFacilityIcon.addEventListener("click",function(e){
+btnShowMdlAddFacilityIcon.addEventListener("click", function (e) {
     e.preventDefault();
 
     $('#mdl-show-add-facility-icon').modal("show");
@@ -223,13 +224,13 @@ mdlBtnSavePromotion.addEventListener("click", function (e) {
     doEdit();
 });
 
-mdlBtnEditAksesIcon.addEventListener("click",function(e){
+mdlBtnEditAksesIcon.addEventListener("click", function (e) {
     e.preventDefault();
 
     doEditAksesIcon();
 });
 
-mdlBtnEditFacilityIcon.addEventListener("click",function(e){
+mdlBtnEditFacilityIcon.addEventListener("click", function (e) {
     e.preventDefault();
 
     doEditFasilityIcon();
@@ -237,7 +238,7 @@ mdlBtnEditFacilityIcon.addEventListener("click",function(e){
 
 
 
-mdlBtnAddAksesIcon.addEventListener("click",function(e){
+mdlBtnAddAksesIcon.addEventListener("click", function (e) {
     e.preventDefault();
 
     if (validator) {
@@ -250,7 +251,7 @@ mdlBtnAddAksesIcon.addEventListener("click",function(e){
     }
 })
 
-mdlBtnAddFacilityIcon.addEventListener("click",function(e){
+mdlBtnAddFacilityIcon.addEventListener("click", function (e) {
     e.preventDefault();
 
     if (validatorFacility) {
@@ -305,7 +306,7 @@ function doEdit() {
 
 }
 
-function doEditAksesIcon(){
+function doEditAksesIcon() {
     let id = $('#mdl_akses_icon_id').val();
     let type = $('#mdl-akses-icon-type').val();
     var img = $('#banner_akses_icon').prop('files')[0];
@@ -337,7 +338,7 @@ function doEditAksesIcon(){
         });
 }
 
-function doEditFasilityIcon(){
+function doEditFasilityIcon() {
     let id = $('#mdl_edit_facility_icon_id').val();
     let name = $('#mdl_edit_facility_name').val();
     var img = $('#edit_banner_facility_icon').prop('files')[0];
@@ -369,7 +370,7 @@ function doEditFasilityIcon(){
         });
 }
 
-function doAddAksesIcon(){
+function doAddAksesIcon() {
     let type = $('#mdl-add-akses-icon-type').val();
     var img = $('#add_banner_akses_icon').prop('files')[0];
 
@@ -377,7 +378,7 @@ function doAddAksesIcon(){
     formData.append('type', type);
     formData.append('image', img);
 
-    console.log("req",JSON.stringify(formData))
+    console.log("req", JSON.stringify(formData))
 
     $.ajax({
         method: "POST",
@@ -402,7 +403,7 @@ function doAddAksesIcon(){
         });
 }
 
-function doAddFacilityIcon(){
+function doAddFacilityIcon() {
     let name = $('#mdl_facility_name').val();
     var img = $('#add_banner_facility_icon').prop('files')[0];
 
@@ -410,7 +411,7 @@ function doAddFacilityIcon(){
     formData.append('name', name);
     formData.append('image', img);
 
-    console.log("req",JSON.stringify(formData))
+    console.log("req", JSON.stringify(formData))
 
     $.ajax({
         method: "POST",
@@ -435,11 +436,11 @@ function doAddFacilityIcon(){
         });
 }
 
-function closeModal(){
+function closeModal() {
     location.reload();
 }
 
-function formDelAccessIcon(){
+function formDelAccessIcon() {
     let id = $(this).data('akses_icon_id');
     let type = $(this).data('akses_icon_type');
 
@@ -480,7 +481,7 @@ function formDelAccessIcon(){
     });
 }
 
-function formDelFasilityIcon(){
+function formDelFasilityIcon() {
     let id = $(this).data('facility_icon_id');
     let name = $(this).data('facility_name');
 
@@ -521,18 +522,90 @@ function formDelFasilityIcon(){
     });
 }
 
-for(const element of btnCloseModal){
-    element.addEventListener("click",closeModal)
+function formHeader() {
+    let id = $(this).data("page_id");
+    var img = $('#header_img_' + id).prop('files')[0];
+
+    console.log(img)
+    if (typeof img !== 'undefined') {
+
+        Swal.fire({
+            html: `Anda akan mengubah image header, klik <span class='text-danger'>Ubah</span> untuk melanjutkan atau Batal`,
+            icon: "info",
+            buttonsStyling: false,
+            showCancelButton: true,
+            confirmButtonText: "Ubah",
+            cancelButtonText: 'Batal',
+            customClass: {
+                confirmButton: "btn btn-danger btn-sm",
+                cancelButton: 'btn btn-secondary btn-sm'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                var formData = new FormData();
+                formData.append('image', img);
+
+                $.ajax({
+                    method: "PUT",
+                    url: `${CONFIG_API_URL}/header/${id}`,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: formData,
+                    headers: {
+                        "CSRF-Token": token,
+                    },
+                })
+                    .done((response) => {
+                        if (response.success) {
+                            const message = `Image header berhasil diubah.`
+                            showSuccess(message)
+                        } else {
+                            const message = `Peoses gagal, mohon coba beberapa saat lagi atau hubungi administrator.`
+                            showAlertErr(message)
+                        }
+                    })
+                    .fail((jqXHR) => {
+                        const message = `Proses gagal, mohon coba beberapa saat lagi atau hubungi administrator.`
+                        showAlertErr(message)
+                    });
+            }
+        });
+    } else {
+
+        Swal.fire({
+            html: `Error : File image tidak ditemukan, pastikan image sudah terpilih`,
+            icon: "error",
+            buttonsStyling: false,
+            showCancelButton: true,
+            showConfirmButton: false,
+            cancelButtonText: 'Tutup',
+            customClass: {
+
+                cancelButton: 'btn btn-secondary btn-sm'
+            }
+        })
+    }
+
+
 }
 
-for(const element of btnDeleteAksesIcon){
-    element.addEventListener("click",formDelAccessIcon)
+for (const element of btnCloseModal) {
+    element.addEventListener("click", closeModal)
 }
 
-for(const element of btnDeleteFasilityIcon){
-    element.addEventListener("click",formDelFasilityIcon)
+for (const element of btnDeleteAksesIcon) {
+    element.addEventListener("click", formDelAccessIcon)
 }
 
+for (const element of btnDeleteFasilityIcon) {
+    element.addEventListener("click", formDelFasilityIcon)
+}
+
+for (const element of btnHeader) {
+    element.addEventListener("click", formHeader)
+}
 
 
 function showSuccess(message) {

@@ -4,9 +4,11 @@
         <!--CONTENT-->
         <div class="carousel slide">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/metroland/assets/img/Aglonema.jpg" class="d-block w-100" alt="...">
-                </div>
+                <% if(Object.keys(header_images).length !==0 ){let no=1; header_images.forEach(hi =>{%>
+                    <div class="carousel-item <%- no==1 ? 'active':''%>">
+                        <img src="/metroland/assets/img/<%-hi.image%>" class="d-block w-100" alt="...">
+                    </div>
+                <%no++ })}%>
             </div>
         </div>
 

@@ -35,6 +35,7 @@ const user = require('./routes/admin/User.route.js');
 const karir = require('./routes/admin/Carrier.route.js');
 const facility = require('./routes/admin/Facility.route.js');
 const access = require('./routes/admin/Access.route.js');
+const errorHandler = require("./middlewares/ErrorHandler.js");
 
 const app = express();
 // const __filename = fileURLToPath(import.meta.url);
@@ -122,12 +123,14 @@ app.post('/auth/about/upload', multipartMiddleware, (req, res) => {
 });
 
 
+app.use(errorHandler)
+
 // api routes
 // app.use(api_current_user);
 
-app.use((req, res) => {
-    res.status(404).render("404/index");
-})
+// app.use((req, res) => {
+//     res.status(404).render("404/index");
+// })
 
 // app.use((req, res) => {
 //     res.status(403).render("forbidden/index");

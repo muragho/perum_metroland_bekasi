@@ -21,4 +21,12 @@ async function getAbout() {
     return await db.AboutUs.findOne({ limit: 1, order: [['created_at', 'DESC']] });
 }
 
-module.exports = { getPromo, getConfigs, doEditConfig, getAbout }
+async function getHeaderPages(){
+    return await db.Headerpage.findAll();
+}
+
+async function doEditHeader(id, data) {
+    return await db.Headerpage.update(data, { where: { id } })
+}
+
+module.exports = { getPromo, getConfigs, doEditConfig, getAbout,getHeaderPages,doEditHeader }

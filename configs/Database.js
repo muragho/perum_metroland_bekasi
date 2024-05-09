@@ -39,6 +39,7 @@ async function initialize() {
     db.AuditLog = require('../models/AuditLog.model.js')(sequelize);
     db.AboutUs = require('../models/AboutUs.model.js')(sequelize);
     db.AccessIcon = require('../models/AccessIcon.model.js')(sequelize);
+    db.Headerpage = require('../models/HeaderPage.model.js')(sequelize);
 
     db.Department.hasMany(db.Carrier, {
         foreignKey: 'departmentId',

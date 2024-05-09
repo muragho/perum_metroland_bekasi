@@ -84,13 +84,13 @@ async function doEditCluster(req, res) {
             }
         }
 
-        if (reqBody.facilities != '') {
+        // if (reqBody.facilities != '') {
 
-            const facilities = reqBody.facilities.split(',');
+        //     const facilities = reqBody.facilities.split(',');
 
-            const cluster = await db.Cluster.findByPk(clusterId);
-            await cluster.setFacilities(facilities, { transaction: t });
-        }
+        //     const cluster = await db.Cluster.findByPk(clusterId);
+        //     await cluster.setFacilities(facilities, { transaction: t });
+        // }
 
         await t.commit();
         await response(res, 200, 200, 'success', reqBody);

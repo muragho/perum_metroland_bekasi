@@ -10,13 +10,16 @@ const { JSDOM } = jsdom;
 
 async function berandaPage(req, res) {
     console.log('inside berandaPage')
+
+    const header_images = req.header_image;
     try {
+        console.log("header",JSON.stringify(header_images))
 
         const products = await productServ.getAllProducts();
         const news = await newsService.getAllNewsByLimit(3);
-        console.log(JSON.stringify(news))
+        // console.log(JSON.stringify(news))
 
-        res.render("f_beranda/index", { products, news, JSDOM, moment });
+        res.render("f_beranda/index", { products, news, JSDOM, moment,header_images });
     } catch (error) {
         console.error(`err clusterPage : ${error}`)
         return res.status(INTERNAL_SERVER_ERROR).render("500/index");
