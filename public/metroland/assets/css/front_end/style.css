@@ -90,6 +90,11 @@ h1 {
     .nav-color .nav-link{
         color: #B37F2C;
     }
+
+    /* .img-fluid{
+        height: auto;
+        width: 100%;
+    } */
 }
 .nav-color .navbar-brand img {
     width: 90px;
@@ -227,9 +232,11 @@ h1 {
     background: transparent;
 }
 
-#cluster .carousel-item img{
-    height: 500px;
-    object-fit: cover;
+@media screen and (min-width:922px) {
+    #cluster .carousel-item img{
+        height: 500px;
+        object-fit: cover;
+    }
 }
 
 .table td {
