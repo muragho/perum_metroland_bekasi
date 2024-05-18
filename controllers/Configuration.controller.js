@@ -21,7 +21,7 @@ async function configPage(req, res) {
         const facilities = await FacilityService.getAllFacilitiesCluster();
         console.log("facilities",JSON.stringify(facilities))
 
-        const headerPages = await configService.getHeaderPages();
+        const headerPages = await configService.getHeaderPagesExcludeVideo();
         console.log("header page : ",JSON.stringify(headerPages))
         res.render("config/index", {
             title, header, bearer, csrfToken: req.csrfToken(), promo: promo.value, 

@@ -24,9 +24,14 @@ async function getAbout() {
 async function getHeaderPages(){
     return await db.Headerpage.findAll();
 }
+async function getHeaderPagesExcludeVideo(){
+    return await db.Headerpage.findAll({where:{
+        productId:null
+    }});
+}
 
 async function doEditHeader(id, data) {
     return await db.Headerpage.update(data, { where: { id } })
 }
 
-module.exports = { getPromo, getConfigs, doEditConfig, getAbout,getHeaderPages,doEditHeader }
+module.exports = { getPromo, getConfigs, doEditConfig, getAbout,getHeaderPages,doEditHeader,getHeaderPagesExcludeVideo }
