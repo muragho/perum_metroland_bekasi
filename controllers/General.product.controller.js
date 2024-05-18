@@ -24,15 +24,27 @@ async function productPage(req, res) {
 
     const productId = req.params.id;
     const products = req.products;
-    console.log(productId);
+    const header_images =await req.header_image;
+    let videoProduct = 'vgr_1.mp4';
+
+    if(header_images.length > 0){
+        
+        header_images.forEach(element => {
+            if(element.productId == productId){
+                videoProduct = element.image;
+            }
+        });
+        
+    }
+    console.log(productId+" | "+videoProduct);
 
     const data = await productService.getProductCluster(productId);
     if (!data) {
         throw new AppError(NOT_FOUND,'data not found',404);
     }
-
-    console.log(JSON.stringify(data))
-    return res.render("f_product/index", { products, data, moment, JSDOM });
+    
+    // console.log(JSON.stringify(data))
+    res.render("f_product/index", { products, data, moment, JSDOM,videoProduct });
 
 }
 

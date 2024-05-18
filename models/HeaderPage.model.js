@@ -23,6 +23,10 @@ function model(sequelize) {
         deleted_by: {
             type: DataTypes.STRING,
             allowNull: true
+        },
+        productId: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     };
 

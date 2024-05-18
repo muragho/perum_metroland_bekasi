@@ -8,7 +8,7 @@ async function setHeaderImage(req, res, next){
         const basepath = urlPath.split("/");
         const basePath_ = `/${basepath[1]}`;
         console.log("basePath_",basePath_)
-        const headerImages = await db.Headerpage.findAll({attributes:['id','url','image'],where:{url:basePath_}})
+        const headerImages = await db.Headerpage.findAll({attributes:['id','url','image','productId'],where:{url:basePath_}})
         console.log("headerImages",JSON.stringify(headerImages))
         
         req.header_image = headerImages;
