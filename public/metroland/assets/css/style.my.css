@@ -111,6 +111,12 @@
     color: var(--clr-white);
 }
 
+.bank{
+	width: 160px;
+	height: auto;
+	object-fit: fill;
+}
+
 /* .float{
 	position:fixed;
 	bottom:40px;
