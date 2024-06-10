@@ -4,18 +4,18 @@
         <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel"
             data-bs-pause="hover">
             <div class="carousel-indicators" id="first_prd">
-                <% if(Object.keys(header_images).length !==0 ){let no=1; header_images.forEach(hi =>{%>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%- no-1 %>" class="<%- no==1 ? 'active':''%>"
-                    aria-current="true" aria-label="Slide <%- no%>"></button>
-                <%no++ })}%>
-                
+                <% if(Object.keys(header_images).length !==0 ){let no=1; header_images.forEach(hi=>{%>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%- no-1 %>"
+                        class="<%- no==1 ? 'active':''%>" aria-current="true" aria-label="Slide <%- no%>"></button>
+                    <%no++ })}%>
+
             </div>
             <div class="carousel-inner">
-                <% if(Object.keys(header_images).length !==0 ){let no=1; header_images.forEach(hi =>{%>
+                <% if(Object.keys(header_images).length !==0 ){let no=1; header_images.forEach(hi=>{%>
                     <div class="carousel-item <%- no==1 ? 'active':''%>" data-bs-interval="2000">
                         <img src="/metroland/assets/img/<%-hi.image%>" class="d-block w-100" alt="...">
                     </div>
-                <%no++ })}%>
+                    <%no++ })}%>
 
             </div>
 
@@ -32,12 +32,12 @@
         </div>
 
         <!-- produk -->
-        <div class="container-fluid py-2" id="produk">
-            <div class="container-fluid px-3">
-                <% let number=1; for(i=0;i<products.length;i++){ const title=products[i].title.split(" ");const totWord = title.length;
+        <div class="container-fluid py-5" id="produk">
+            <div class="container-fluid py-3 px-3">
+                <% let number=1; 
+                    for(i=0;i<products.length;i++){ const title=products[i].title.split(" ");const totWord = title.length;
                     if(number % 2 === 0){%>
-                    <div class=" card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
-                    id="<%= products[i].title.replaceAll(' ',' _')%>">
+                    <div class=" card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded" id="<%= products[i].title.replaceAll(' ',' _')%>">
 
                     <a href="/produk/<%= products[i].id %>">
 
@@ -73,9 +73,7 @@
                         </div>
                     </a>
 
-
-
-            </div>
+                    </div>
             <%}else{%>
                 <div class="card mx-auto mx-5 my-5 shadow-lg bg-body-tertiary rounded"
                     id="<%= products[i].title.replaceAll(' ',' _')%>">
@@ -123,8 +121,6 @@
                     </div>
         </div>
 
-        </div>
-
         <!-- brand value -->
         <div class="container-fluid bg-white my-5 py-5" id="brand-value">
             <div class="container-fluid text-center py-md-5">
@@ -164,13 +160,16 @@
         </div>
 
         <!-- simulasi kpr -->
-        <div class="container-fluid py-5" id="simulasi">
+        <div class="container-fluid py-1" id="simulasi_">
             <div class="container text-center py-5">
                 <h1>Simulasi KPR</h1>
                 <h4>Bebas Biaya</h4>
                 <h4>KPR, AJB, BPHTB</h4>
                 <p>Di sini Anda dapat mensimulasikan biaya KPR dengan bank-bank yang tersedia.</p>
-                <div class="img-fluid p-3">
+                <div class="p-3">
+                    <img class="img-fluid" src="/metroland/assets/img/allbank.png">
+                </div>
+                <!-- <div class="img-fluid p-3">
                     <img class="bank" src="/metroland/assets/img/bank-mandiri.png">
                     <img class="bank" src="/metroland/assets/img/bank-bri.png">
                     <img class="bank" src="/metroland/assets/img/bank-btn.png">
@@ -179,14 +178,14 @@
                 <div class="img-fluid pt-3">
                     <img class="bank" src="/metroland/assets/img/bank-dki.png">
                     <img class="bank" src="/metroland/assets/img/bank-bsi.png">
-                    <img class="bank" src="/metroland/assets/img/cinb.png">  
+                    <img class="bank" src="/metroland/assets/img/cinb.png">
                 </div>
                 <div class="img-fluid pt-3">
                     <img class="bank" src="/metroland/assets/img/bjb.png">
                     <img class="bank" src="/metroland/assets/img/bank-danamon.png">
                     <img class="bank" src="/metroland/assets/img/ocbc.png">
-                    
-                </div>
+
+                </div> -->
 
                 <button class="btn-primary text-white my-5" id="btn-kpr">
                     <img src="/metroland/assets/img/simulasi kpr.png"

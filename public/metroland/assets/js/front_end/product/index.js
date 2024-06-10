@@ -22,6 +22,20 @@ $(document).ready(function () {
 
 });
 
+// $(window).on('resize load', function () {
+//     if ($(window).width() <= 922) {
+//         console.log("remove class carousel-item")
+//         const parent = document.getElementById('card-product-detail');
+//         if (parent) {
+//             const child = parent.querySelector('.carousel-item');
+//             if (child) {
+//                 child.classList.remove('carousel-item');
+//             }
+//         }
+
+//     }
+// });
+
 var video = document.getElementById("my_video");
 video.addEventListener('loadeddata', (e) => {
     if (video.readyState >= 3) {
@@ -51,7 +65,20 @@ function formTabChangeCluster() {
     // if (lat != '' && long != '') {
     //     reloadMap(-6.175403, 106.824584)
     // }
-
+    // if ($(window).width() <= 922) {
+    //     console.log("remove class carousel-item")
+    //     const parent = document.getElementById('card-product-detail');
+    //     if (parent) {
+    //         const child = parent.querySelector('.carousel-item');
+    //         if (child) {
+    //             child.classList.remove('carousel-item');
+    //         } else {
+    //             console.log("child tidak ada")
+    //         }
+    //     } else {
+    //         console.log("parent tidak ada")
+    //     }
+    // }
 
 };
 
@@ -168,34 +195,6 @@ function reloadMap(lat, long) {
     // document.getElementById("mapView").reload(true);
 }
 
-// function zoomin() {
-//     var myImg = document.getElementById("img-proyek-area");
-//     var currWidth = myImg.clientWidth;
-
-//     myImg.classList.remove("img-fluid");
-//     if (currWidth == 2500) return false;
-//     else {
-//       myImg.style.width = (currWidth + 100) + "px";
-//     }
-//   }
-
-//   function zoomout() {
-//     var myImg = document.getElementById("img-proyek-area");
-//     var currWidth = myImg.clientWidth;
-
-//     myImg.classList.remove("img-fluid");
-//     if (currWidth == 100) return false;
-//     else {
-//       myImg.style.width = (currWidth - 100) + "px";
-//     }
-//   }
-
-
-
-
-
-
-
 // Get references to DOM elements
 const zoomContainer = document.getElementById("zoomContainer"),
     zoomImage = document.getElementById("zoomImage"),
@@ -206,36 +205,13 @@ const zoomContainer = document.getElementById("zoomContainer"),
 
 let scl = 1.2;
 let zoomRatio = 1
-// zoomIn.addEventListener("click",(e)=>{
-
-//     // Get the dimensions and position of the zoomContainer
-// const { left, top, width, height } = zoomContainer.getBoundingClientRect();
-// console.log("left : "+left+" , top : "+top)
-// // Calculate mouse position relative to zoomContainer
-// const mouseX = e.clientX - left;
-// const mouseY = e.clientY - top;
-// console.log("mouseX : "+mouseX+" , mouseY : "+mouseY)
-
-// // Set the zoom ratio (1.5x) and calculate zoom offsets
-
-// const zoomX = (mouseX / width) * (1 - zoomRatio);
-// const zoomY = (mouseY / height) * (1 - zoomRatio);
-
-// // Apply zoom and translation to the zoomImage
-// zoomImage.style.transform = `scale(${zoomRatio}) translate(${zoomX * scl}%, ${zoomY * scl
-//     }%)`;
-// scl = scl + 2;
-// zoomRatio = zoomRatio + 1;
-// // Change cursor to indicate zoom-in
-// zoomContainer.style.cursor = "zoom-in";
-// })
 
 zoomOut.addEventListener("click", (e) => {
-    
+
     console.log("out")
     if (scl <= 1.2) {
         zoomOut.disabled = true
-        
+
     }
     zoomIn.disabled = false
 
@@ -253,13 +229,13 @@ zoomIn.addEventListener("click", (e) => {
     zoomContainer.style.display = "flex";
     zoomContainer.style.alignItems = "center";
     zoomContainer.style.justifyContent = "center";
-    
+
     zoomContainer.style.cursor = "move";
     scl = scl + 0.2
 
-    if(scl > 4){
+    if (scl > 4) {
         zoomIn.disabled = true
-        
+
     }
     zoomOut.disabled = false
 
@@ -285,31 +261,3 @@ boxes.forEach((box) => {
         originalImageSrc = zoomImage.src;
     });
 });
-
-// Zoom effect on mousemove inside the zoomContainer
-// zoomContainer.addEventListener("mousemove", (e) => {
-//     // Get the dimensions and position of the zoomContainer
-//     const { left, top, width, height } = zoomContainer.getBoundingClientRect();
-
-//     // Calculate mouse position relative to zoomContainer
-//     const mouseX = e.clientX - left;
-//     const mouseY = e.clientY - top;
-
-//     // Set the zoom ratio (1.5x) and calculate zoom offsets
-//     const zoomRatio = 1.5;
-//     const zoomX = (mouseX / width) * (1 - zoomRatio);
-//     const zoomY = (mouseY / height) * (1 - zoomRatio);
-
-//     // Apply zoom and translation to the zoomImage
-//     zoomImage.style.transform = `scale(${zoomRatio}) translate(${zoomX * 100}%, ${zoomY * 100
-//         }%)`;
-
-//     // Change cursor to indicate zoom-in
-//     zoomContainer.style.cursor = "zoom-in";
-// });
-
-// Reset zoom effect and cursor on mouseout
-// zoomContainer.addEventListener("mouseout", () => {
-//     zoomImage.style.transform = "scale(1) translate(0%, 0%)";
-//     zoomContainer.style.cursor = "default";
-// });
